@@ -1,0 +1,15 @@
+ÁREA (Código, descripción, nombre)
+PK Código
+
+PROYECTO INTEGRADOR (Identificador_único, nombre, componentes, URL_proyecto, año, 
+curos, grupo, nota, área_código)
+PK Identificador único
+FK Área_código -> PROYECTO INTEGRADOR 
+
+ALUMNO (Número_único, nombre, apellido, número_expediente)
+PK Número_único
+
+REALIZA (Número_alumno, identificador_proyecto)
+PK Número_alumno, Identificador_proyecto
+FK Número_alumno -> ALUMNO
+FK Identificador_proyecto -> PROYECTO INTEGRADOR
