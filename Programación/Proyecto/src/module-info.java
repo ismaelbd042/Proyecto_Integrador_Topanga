@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author ismael
- *
- */
-module Proyecto {
-}
