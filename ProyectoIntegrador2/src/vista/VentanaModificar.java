@@ -8,18 +8,18 @@ import javax.swing.JFrame;
 
 import modelo.ProyectosIntegradores;
 
-public class VentanaModificar extends JFrame implements IVentanaModificar {
+public class VentanaModificar extends JFrame implements IVentana {
 	
 	private JButton btnEditar;
 	private JButton btnBorrar;
 	
 	public VentanaModificar() {
 		super();
-		inicializarComponentesModificar();
+		inicializarComponentes();
 	}
 	
 	
-	public void inicializarComponentesModificar() {
+	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 	
 		JComboBox<ProyectosIntegradores> proyectos = new JComboBox<>();

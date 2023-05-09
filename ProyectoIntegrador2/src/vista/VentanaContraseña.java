@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class VentanaContraseña extends JFrame implements IVentanaContraseña {
+public class VentanaContraseña extends JFrame implements IVentana {
 	
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
@@ -17,11 +17,11 @@ public class VentanaContraseña extends JFrame implements IVentanaContraseña {
 	
 	public VentanaContraseña() {
 		super("Verificar Contraseña");
-		inicializarComponentesContraseña();
+		inicializarComponentes();
 	}
 
 	@Override
-	public void inicializarComponentesContraseña() {
+	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 		
 		lblIntroduzca = new JLabel("Introduzca la contraseña:");
