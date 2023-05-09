@@ -1,10 +1,8 @@
 package vista;
 
-import java.awt.HeadlessException;
-
 import javax.swing.*;
 
-import controlador.Controlador;
+import controlador.ControladorPrincipal_Ver;
 
 public class Ventana extends JFrame implements IVentana {
 
@@ -16,6 +14,7 @@ public class Ventana extends JFrame implements IVentana {
 	public Ventana() {
 		super("Administrador de Proyectos");
 		inicializarComponentes();
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	@Override
@@ -29,28 +28,30 @@ public class Ventana extends JFrame implements IVentana {
 		getContentPane().add(lblLogo);
 
 		btnSubir = new JButton("Subir Proyecto");
-		btnSubir.setBounds(10, 202, 125, 48);
+		btnSubir.setBounds(250, 138, 200, 50);
 		getContentPane().add(btnSubir);
 
 		btnVer = new JButton("Ver Proyecto");
-		btnVer.setBounds(299, 202, 125, 48);
+//		btnVer.addActionListener(new ActionListener());
+		btnVer.setBounds(250, 54, 200, 50);
 		getContentPane().add(btnVer);
 
 		btnBorrar = new JButton("Borrar Proyecto");
-		btnBorrar.setBounds(155, 202, 125, 48);
+		btnBorrar.setBounds(250, 221, 200, 50);
 		getContentPane().add(btnBorrar);
+
+		setSize(512, 384);
+		setLocationRelativeTo(null);
 	}
 
 	@Override
 	public void hacerVisible() {
-		// TODO Auto-generated method stub
-
+		setVisible(true);
 	}
 
 	@Override
-	public void setControlador(Controlador c) {
-		// TODO Auto-generated method stub
-
+	public void setControlador(ControladorPrincipal_Ver c) {
+		btnVer.addActionListener(c);
 	}
-
+// crea el controlador aqui
 }

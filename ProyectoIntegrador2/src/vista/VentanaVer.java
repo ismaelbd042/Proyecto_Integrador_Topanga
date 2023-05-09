@@ -2,7 +2,7 @@ package vista;
 
 import javax.swing.JFrame;
 
-import controlador.Controlador;
+import controlador.ControladorPrincipal_Ver;
 import modelo.ProyectosIntegradores;
 
 import javax.swing.*;
@@ -28,11 +28,11 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(true);
+		setVisible(false);
 	}
 
 	@Override
-	public void setControlador(Controlador c) {
+	public void setControlador(ControladorPrincipal_Ver c) {
 		// TODO Auto-generated method stub
 
 	}

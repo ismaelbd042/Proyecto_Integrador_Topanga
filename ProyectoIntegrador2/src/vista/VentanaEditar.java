@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controlador.Controlador;
+import controlador.ControladorPrincipal_Ver;
 
 import javax.swing.JButton;
 
@@ -56,11 +56,11 @@ getContentPane().setLayout(null);
 
 	@Override
 	public void hacerVisible() {
-		setVisible(true);
+		setVisible(false);
 	}
 
 	@Override
-	public void setControlador(Controlador c) {
+	public void setControlador(ControladorPrincipal_Ver c) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,7 +2,7 @@ package vista;
 
 import javax.swing.*;
 
-import controlador.Controlador;
+import controlador.ControladorPrincipal_Ver;
 import modelo.Áreas;
 
 import java.awt.event.ActionListener;
@@ -138,11 +138,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(true);
+		setVisible(false);
 	}
 
 	@Override
-	public void setControlador(Controlador c) {
+	public void setControlador(ControladorPrincipal_Ver c) {
 		// TODO Auto-generated method stub
 
 	}
