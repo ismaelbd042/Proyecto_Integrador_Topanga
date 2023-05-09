@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
+import controlador.Controlador;
 import modelo.ProyectosIntegradores;
 
 public class VentanaModificar extends JFrame implements IVentana {
@@ -40,6 +41,20 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnBorrar.setBounds(168, 99, 136, 29);
 		getContentPane().add(btnBorrar);
 	
+	}
+
+
+	@Override
+	public void hacerVisible() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setControlador(Controlador c) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

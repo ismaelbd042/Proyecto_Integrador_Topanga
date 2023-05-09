@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import controlador.Controlador;
+
 
 public class VentanaContraseña extends JFrame implements IVentana {
 	
@@ -57,6 +59,18 @@ public class VentanaContraseña extends JFrame implements IVentana {
 		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
 		verContraseña.setBounds(195, 53, 77, 40);
 		getContentPane().add(verContraseña);
+		
+	}
+
+	@Override
+	public void hacerVisible() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(Controlador c) {
+		// TODO Auto-generated method stub
 		
 	}
 }
