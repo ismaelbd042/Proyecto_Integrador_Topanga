@@ -1,7 +1,12 @@
 package vista;
 
+import controlador.Controlador;
+
 public interface IVentana {
 
-	void inicializarComponentes();
+	public void inicializarComponentes();
 
+	public void hacerVisible();
+
+	public void setControlador(Controlador c);
 }
