@@ -21,10 +21,9 @@ public class Ventana extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
-		lblLogo = new JLabel("Logo");
-		// lblLogo.setIcon(new
-		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
-		lblLogo.setBounds(155, 34, 135, 131);
+		lblLogo = new JLabel();
+		lblLogo.setIcon(new ImageIcon(Ventana.class.getResource("/img/logo1.png")));
+		lblLogo.setBounds(60, 79, 166, 173);
 		getContentPane().add(lblLogo);
 
 		btnSubir = new JButton("Subir Proyecto");
@@ -54,5 +53,4 @@ public class Ventana extends JFrame implements IVentana {
 		btnVer.addActionListener(c);
 	}
 
-	
 }
