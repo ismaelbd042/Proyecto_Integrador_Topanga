@@ -54,5 +54,4 @@ public class Ventana extends JFrame implements IVentana {
 		btnVer.addActionListener(c);
 	}
 
-	
 }
