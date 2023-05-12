@@ -20,7 +20,7 @@ public class VentanaEditar extends JFrame implements IVentana {
 
 	@Override
 	public void inicializarComponentes() {
-getContentPane().setLayout(null);
+		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setBounds(26, 43, 45, 13);

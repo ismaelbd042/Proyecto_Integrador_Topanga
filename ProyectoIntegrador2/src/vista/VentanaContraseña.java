@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import controlador.ControladorPrincipal_Ver;
+import controlador.Controlador;
 
 
 public class VentanaContraseña extends JFrame implements IVentana {
@@ -64,11 +64,12 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
+	public void setControlador(Controlador c) {
 		// TODO Auto-generated method stub
 		
 	}
