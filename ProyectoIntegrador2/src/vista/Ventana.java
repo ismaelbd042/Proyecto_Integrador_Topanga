@@ -53,5 +53,6 @@ public class Ventana extends JFrame implements IVentana {
 	public void setControlador(ControladorPrincipal_Ver c) {
 		btnVer.addActionListener(c);
 	}
-// crea el controlador aqui
+
+	
 }
