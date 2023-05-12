@@ -8,6 +8,7 @@ import modelo.ProyectosIntegradores;
 import javax.swing.*;
 
 public class VentanaVer extends JFrame implements IVentana {
+	private JTextField textField;
 	public VentanaVer() {
 		super("Ver proyectos");
 		inicializarComponentes();
@@ -18,14 +19,19 @@ public class VentanaVer extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		JButton btnNewButton = new JButton("Inspeccionar");
-		btnNewButton.setBounds(67, 104, 91, 21);
+		btnNewButton.setBounds(154, 254, 195, 45);
 		getContentPane().add(btnNewButton);
 
 		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
-		comboBox.setBounds(25, 29, 168, 29);
+		comboBox.setBounds(264, 28, 195, 52);
 		getContentPane().add(comboBox);
+		
+		textField = new JTextField();
+		textField.setBounds(25, 32, 195, 45);
+		getContentPane().add(textField);
+		textField.setColumns(10);
 
-		setSize(239, 198);
+		setSize(512, 384);
 		setLocationRelativeTo(null);
 
 	}
@@ -40,5 +46,4 @@ public class VentanaVer extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 
 	}
-
 }
