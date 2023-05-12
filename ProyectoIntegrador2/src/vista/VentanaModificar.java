@@ -38,6 +38,9 @@ public class VentanaModificar extends JFrame implements IVentana {
 		//lblLogo.setIcon(new ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
 		btnBorrar.setBounds(168, 99, 136, 29);
 		getContentPane().add(btnBorrar);
+		
+		setSize(463, 206);
+		setLocationRelativeTo(null);
 	
 	}
 
