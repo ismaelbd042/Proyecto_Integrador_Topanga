@@ -15,6 +15,7 @@ Create table proyectos (
     nombre_proyecto VARCHAR(30) not null,
     URL VARCHAR(200) not null,
     componentes INT,
+    ultima_modificacion DATE DEFAULT (CURRENT_TIMESTAMP),
     año int not null,
     curso VARCHAR(2) not null,
     grupo varchar(5) not null,
