@@ -98,7 +98,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 		lblArea2 = new JLabel("-- DAW, DESAROLLO DE APLICACIONES WEB --");
 		lblArea2.setBounds(163, 245, 230, 20);
 		getContentPane().add(lblArea2);
-
+		
 		setSize(469, 315);
 		setLocationRelativeTo(null);
 
