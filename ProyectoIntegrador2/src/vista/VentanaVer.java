@@ -24,6 +24,10 @@ public class VentanaVer extends JFrame implements IVentana {
 		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
 		comboBox.setBounds(25, 29, 168, 29);
 		getContentPane().add(comboBox);
+
+		setSize(239, 198);
+		setLocationRelativeTo(null);
+
 	}
 
 	@Override
