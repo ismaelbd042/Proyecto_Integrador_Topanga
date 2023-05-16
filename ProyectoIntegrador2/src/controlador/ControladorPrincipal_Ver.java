@@ -24,10 +24,10 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
 		vv.hacerVisible();
+
 	}
 
 }
-
 
 // Hasta aqui funciona y pasa de la ventana principal a la de ver.
 // Es posible que haya que hacer una IVentana para cada vista
