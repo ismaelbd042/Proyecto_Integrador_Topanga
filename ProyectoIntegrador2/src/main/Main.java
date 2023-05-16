@@ -1,6 +1,7 @@
 package main;
 
 import controlador.ControladorModificar_Editar;
+import conexionBBDD.AccesoBBDD;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
@@ -10,6 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		AccesoBBDD prueba = new AccesoBBDD();
 
 		java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -35,6 +37,10 @@ public class Main {
 
 			}
 		});
+//		Prueba para imprimir los nombres de los alumnos
+//		AccesoBBDD prueba = new AccesoBBDD();
+//		prueba.getConexion();
+//		prueba.prueba();
 	}
 
 }
