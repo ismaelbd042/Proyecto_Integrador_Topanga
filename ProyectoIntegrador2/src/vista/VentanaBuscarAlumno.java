@@ -62,7 +62,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		//ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
 		//listAlumnos.addListSelectionListener(escuchadorLista);
 
-		setSize(302, 306);
+		setSize(512, 384);
 		setLocationRelativeTo(null);
 		
 	}
