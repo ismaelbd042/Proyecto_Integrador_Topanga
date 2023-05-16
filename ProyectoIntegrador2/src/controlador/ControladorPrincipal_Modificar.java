@@ -5,25 +5,25 @@ import java.awt.event.ActionListener;
 
 import vista.*;
 
-public class ControladorPrincipal_Borrar implements ActionListener {
+public class ControladorPrincipal_Modificar implements ActionListener {
 
 	private Ventana v;
 	private VentanaVer vv;
 //	private VentanaEditar ve;
 //	private VentanaInfo vi;
 //	private VentanaSubir vs;
-//	private VentanaModificar vm;
+	private VentanaModificar vm;
 //	private VentanaContraseña vc;
 
-	public ControladorPrincipal_Borrar(Ventana v, VentanaVer vv) {
+	public ControladorPrincipal_Modificar(Ventana v, VentanaModificar vm) {
 		this.v = v;
-		this.vv = vv;
+		this.vm = vm;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
-		vv.setVisible(true);
+		vm.hacerVisible();
 	}
 
 }

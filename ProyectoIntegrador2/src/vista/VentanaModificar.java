@@ -47,7 +47,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		setVisible(true);
 	}
 
 	@Override
