@@ -38,9 +38,8 @@ public class Main {
 			}
 		});
 //		Prueba para imprimir los nombres de los alumnos
-//		AccesoBBDD prueba = new AccesoBBDD();
-//		prueba.getConexion();
-//		prueba.prueba();
+		prueba.getConexion();
+		prueba.prueba();
 	}
 
 }
