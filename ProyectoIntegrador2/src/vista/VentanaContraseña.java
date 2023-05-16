@@ -6,9 +6,12 @@ import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
+import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
+import controlador.ControladorSubir_Principal;
+import controlador.ControladorVer_Principal;
 
 public class VentanaContraseña extends JFrame implements IVentana {
 
@@ -106,5 +109,23 @@ public class VentanaContraseña extends JFrame implements IVentana {
 	@Override
 	public void setControlador(ControladorContraseña_Modificar c) {
 		btnVerificar.addActionListener(c);
+	}
+
+	@Override
+	public void setControlador(ControladorSubir_Principal c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorVer_Principal c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorModificar_Principal c) {
+		// TODO Auto-generated method stub
+		
 	}
 }

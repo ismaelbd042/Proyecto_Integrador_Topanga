@@ -4,9 +4,12 @@ import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
+import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
+import controlador.ControladorSubir_Principal;
+import controlador.ControladorVer_Principal;
 import modelo.Áreas;
 
 import java.awt.event.ActionListener;
@@ -22,6 +25,17 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JTextField textField_5;
 	private JPasswordField passwordField_1;
 	private JTextField textField_6;
+	
+	private JLabel lblarea;
+	private JLabel lblnota;
+	private JLabel lblano;
+	private JLabel lblcurso;
+	private JLabel lblgrupo;
+	private JLabel lblurl;
+	private JLabel lblcontrasena;
+	
+	private JButton btnatras;
+	private JButton btnsubir;
 
 	public VentanaSubir() {
 		super("Subir proyecto");
@@ -63,33 +77,33 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
-		JLabel lblNewLabel_4 = new JLabel("URL:");
-		lblNewLabel_4.setBounds(10, 195, 45, 13);
-		getContentPane().add(lblNewLabel_4);
+		lblurl = new JLabel("URL:");
+		lblurl.setBounds(10, 195, 45, 13);
+		getContentPane().add(lblurl);
 
-		JLabel lblNewLabel_5 = new JLabel("Contraseña:");
-		lblNewLabel_5.setBounds(10, 244, 112, 13);
-		getContentPane().add(lblNewLabel_5);
+		lblcontrasena = new JLabel("Contraseña:");
+		lblcontrasena.setBounds(10, 244, 112, 13);
+		getContentPane().add(lblcontrasena);
 
 		passwordField = new JPasswordField();
 		passwordField.setBounds(172, 240, 75, 19);
 		getContentPane().add(passwordField);
 
-		JButton btnNewButton = new JButton("Volver atrás");
-		btnNewButton.setBounds(83, 285, 131, 36);
-		getContentPane().add(btnNewButton);
+		btnatras = new JButton("Volver atrás");
+		btnatras.setBounds(83, 285, 131, 36);
+		getContentPane().add(btnatras);
 
-		JLabel lblNewLabel_1_1 = new JLabel("Año:");
-		lblNewLabel_1_1.setBounds(287, 54, 31, 13);
-		getContentPane().add(lblNewLabel_1_1);
+		lblano = new JLabel("Año:");
+		lblano.setBounds(287, 54, 31, 13);
+		getContentPane().add(lblano);
 
-		JLabel lblNewLabel_2_1 = new JLabel("Curso:");
-		lblNewLabel_2_1.setBounds(287, 102, 37, 13);
-		getContentPane().add(lblNewLabel_2_1);
+		lblcurso = new JLabel("Curso:");
+		lblcurso.setBounds(287, 102, 37, 13);
+		getContentPane().add(lblcurso);
 
-		JLabel lblNewLabel_3_1 = new JLabel("Grupo:");
-		lblNewLabel_3_1.setBounds(287, 148, 45, 13);
-		getContentPane().add(lblNewLabel_3_1);
+		lblgrupo = new JLabel("Grupo:");
+		lblgrupo.setBounds(287, 148, 45, 13);
+		getContentPane().add(lblgrupo);
 
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
@@ -106,25 +120,25 @@ public class VentanaSubir extends JFrame implements IVentana {
 		textField_5.setBounds(342, 144, 96, 19);
 		getContentPane().add(textField_5);
 
-		JLabel lblNewLabel_4_1 = new JLabel("Nota:");
-		lblNewLabel_4_1.setBounds(287, 199, 45, 13);
-		getContentPane().add(lblNewLabel_4_1);
+		lblnota = new JLabel("Nota:");
+		lblnota.setBounds(287, 199, 45, 13);
+		getContentPane().add(lblnota);
 
-		JLabel lblNewLabel_5_1 = new JLabel("Área:");
-		lblNewLabel_5_1.setBounds(287, 244, 45, 13);
-		getContentPane().add(lblNewLabel_5_1);
+		lblarea = new JLabel("Área:");
+		lblarea.setBounds(287, 244, 45, 13);
+		getContentPane().add(lblarea);
 
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setBounds(358, 195, 75, 19);
 		getContentPane().add(passwordField_1);
 
-		JButton btnNewButton_1 = new JButton("Subir proyecto");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnsubir = new JButton("Subir proyecto");
+		btnsubir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(271, 285, 122, 36);
-		getContentPane().add(btnNewButton_1);
+		btnsubir.setBounds(271, 285, 122, 36);
+		getContentPane().add(btnsubir);
 
 		JComboBox<Áreas> comboBox = new JComboBox();
 		comboBox.setBounds(358, 240, 69, 21);
@@ -159,6 +173,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void setControlador(ControladorSubir_Principal c) {
+		btnatras.addActionListener(c);
+		
+	}
+
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar c) {
@@ -173,6 +194,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 
 	@Override
+	public void setControlador(ControladorVer_Principal c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorModificar_Principal c) {
+    // TODO Auto-generated method stub
+		
+	}
+  
+  @Override
 	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
 		
