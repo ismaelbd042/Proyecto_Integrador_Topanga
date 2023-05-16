@@ -54,7 +54,10 @@ getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Actualizar datos");
 		btnNewButton.setBounds(52, 191, 151, 21);
-		getContentPane().add(btnNewButton);		
+		getContentPane().add(btnNewButton);	
+		
+		setSize(512, 384);
+		setLocationRelativeTo(null);
 	}
 
 	@Override
