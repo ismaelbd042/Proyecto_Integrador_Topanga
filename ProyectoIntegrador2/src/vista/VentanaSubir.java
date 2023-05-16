@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
@@ -127,10 +128,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		JComboBox<Áreas> comboBox = new JComboBox();
 		comboBox.setBounds(358, 240, 69, 21);
-//		comboBox.addItem(new ComboBox ("DAW", "Manfredotti", "465484156B", 19));
-//		comboBox.addItem(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
-//		comboBox.addItem(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
-//		comboBox.addItem(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+//		comboBox.addItem(new Área ("DAW", "Manfredotti", "465484156B", 19));
+//		comboBox.addItem(new Área ("Mateo", "Manfredotti", "789987898Z", 16));
+//		comboBox.addItem(new Área("Aldo", "Manfredotti", "120654894Z", 64));
+//		comboBox.addItem(new Área ("Karina", "Garcia", "465489421Z", 53));
 		getContentPane().add(comboBox);
 
 		textField_6 = new JTextField();
@@ -167,6 +168,12 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}

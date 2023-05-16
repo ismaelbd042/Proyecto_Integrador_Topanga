@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
@@ -91,6 +92,12 @@ public class VentanaAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}
