@@ -11,6 +11,9 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import controlador.ControladorModificar_Editar;
+import controlador.ControladorPrincipal_Modificar;
+import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 import modelo.Alumnos;
 
@@ -72,6 +75,24 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Ver c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorModificar_Editar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Subir c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}
