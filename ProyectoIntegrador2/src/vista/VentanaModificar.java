@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
@@ -43,12 +44,12 @@ public class VentanaModificar extends JFrame implements IVentana {
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
 		btnBorrar.setBounds(248, 181, 184, 29);
 		getContentPane().add(btnBorrar);
-		
+
 		textField = new JTextField();
 		textField.setBounds(33, 33, 136, 27);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(179, 33, 38, 27);
 		getContentPane().add(btnNewButton);
@@ -83,6 +84,12 @@ public class VentanaModificar extends JFrame implements IVentana {
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
+
+	}
+
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
+		// TODO Auto-generated method stub
 
 	}
 }

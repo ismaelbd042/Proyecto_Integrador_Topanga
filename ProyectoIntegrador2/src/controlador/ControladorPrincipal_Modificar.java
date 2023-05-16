@@ -13,17 +13,16 @@ public class ControladorPrincipal_Modificar implements ActionListener {
 //	private VentanaInfo vi;
 //	private VentanaSubir vs;
 	private VentanaModificar vm;
-//	private VentanaContraseña vc;
+	private VentanaContraseña vc;
 
-	public ControladorPrincipal_Modificar(Ventana v, VentanaModificar vm) {
+	public ControladorPrincipal_Modificar(Ventana v, VentanaContraseña vc) {
 		this.v = v;
-		this.vm = vm;
+		this.vc = vc;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		v.dispose();
-		vm.hacerVisible();
+		vc.hacerVisible();
 	}
 
 }
