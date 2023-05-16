@@ -2,7 +2,9 @@ package conexionBBDD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
@@ -27,6 +29,23 @@ public class AccesoBBDD {
 		}
 
 		return con;
+	}
+
+	public void prueba() {
+		
+		try {
+			Statement statement = con.createStatement();
+			// Creamos la query
+			String query = "select * from alumno";
+			// Guardamos en un Resultset la ejecución de la query anterior
+			ResultSet resultado = statement.executeQuery(query);
+			while (resultado.next()) {
+				System.out.println(resultado.getString("nombre_alumno"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
