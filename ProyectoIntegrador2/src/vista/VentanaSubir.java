@@ -27,7 +27,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Introduce los datos para subir el proyecto");
 		lblNewLabel.setBounds(117, 10, 196, 18);
 		getContentPane().add(lblNewLabel);
@@ -134,11 +134,14 @@ public class VentanaSubir extends JFrame implements IVentana {
 		textField_6.setBounds(37, 147, 96, 19);
 		getContentPane().add(textField_6);
 		textField_6.setColumns(10);
+
+		setSize(512, 384);
+		setLocationRelativeTo(null);
 	}
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		setVisible(true);
 	}
 
 	@Override
