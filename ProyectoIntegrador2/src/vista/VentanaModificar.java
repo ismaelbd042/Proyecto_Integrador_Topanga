@@ -43,7 +43,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnBorrar.setBounds(168, 99, 136, 29);
 		getContentPane().add(btnBorrar);
 
-		setSize(463, 206);
+		setSize(512, 384);
 		setLocationRelativeTo(null);
 
 	}
@@ -57,23 +57,23 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public void setControlador(ControladorPrincipal_Ver c) {
 
 	}
-	
+
 	@Override
 	public void setControlador(ControladorPrincipal_Subir c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
-		
+
 	}
 
 }
