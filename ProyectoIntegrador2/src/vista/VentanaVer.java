@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class VentanaVer extends JFrame implements IVentana {
 	private JTextField textField;
+
 	public VentanaVer() {
 		super("Ver proyectos");
 		inicializarComponentes();
@@ -25,7 +26,7 @@ public class VentanaVer extends JFrame implements IVentana {
 		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
 		comboBox.setBounds(264, 28, 195, 52);
 		getContentPane().add(comboBox);
-		
+
 		textField = new JTextField();
 		textField.setBounds(25, 32, 195, 45);
 		getContentPane().add(textField);
@@ -38,7 +39,7 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		setVisible(true);
 	}
 
 	@Override

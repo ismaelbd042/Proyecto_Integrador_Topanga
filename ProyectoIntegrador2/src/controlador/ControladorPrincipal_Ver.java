@@ -23,7 +23,7 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
-		vv.setVisible(true);
+		vv.hacerVisible();
 	}
 
 }

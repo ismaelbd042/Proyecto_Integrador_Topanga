@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 
+import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 
 public class Ventana extends JFrame implements IVentana {
@@ -52,5 +53,8 @@ public class Ventana extends JFrame implements IVentana {
 	public void setControlador(ControladorPrincipal_Ver c) {
 		btnVer.addActionListener(c);
 	}
-// crea el controlador aqui
+
+	public void setControlador(ControladorPrincipal_Subir controladorP_S) {
+		btnSubir.addActionListener(controladorP_S);
+	}
 }
