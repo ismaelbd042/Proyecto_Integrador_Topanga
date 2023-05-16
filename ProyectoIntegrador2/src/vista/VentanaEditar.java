@@ -26,34 +26,34 @@ public class VentanaEditar extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(26, 43, 45, 13);
+		lblNewLabel.setBounds(26, 43, 143, 13);
 		getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Colaboradores:");
-		lblNewLabel_1.setBounds(26, 94, 84, 13);
+		lblNewLabel_1.setBounds(26, 94, 161, 13);
 		getContentPane().add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Última modificación:");
-		lblNewLabel_2.setBounds(26, 148, 110, 13);
+		lblNewLabel_2.setBounds(26, 148, 177, 13);
 		getContentPane().add(lblNewLabel_2);
 
 		textField = new JTextField();
-		textField.setBounds(81, 40, 96, 19);
+		textField.setBounds(248, 39, 151, 19);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(106, 91, 96, 19);
+		textField_1.setBounds(248, 90, 151, 19);
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 
 		textField_2 = new JTextField();
-		textField_2.setBounds(130, 145, 96, 19);
+		textField_2.setBounds(249, 144, 150, 19);
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
 		JButton btnNewButton = new JButton("Actualizar datos");
-		btnNewButton.setBounds(52, 191, 151, 21);
+		btnNewButton.setBounds(124, 198, 177, 34);
 
 		getContentPane().add(btnNewButton);	
 		
