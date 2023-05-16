@@ -1,5 +1,6 @@
 package main;
 
+import controlador.ControladorModificar_Editar;
 import controlador.ControladorPrincipal_Modificar;
 import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
@@ -19,15 +20,17 @@ public class Main {
 				VentanaSubir vs = new VentanaSubir();
 				VentanaModificar vm = new VentanaModificar();
 //				VentanaInfo vi = new VentanaInfo();
-//				VentanaEditar ve = new VentanaEditar();
+				VentanaEditar ve = new VentanaEditar();
 				ControladorPrincipal_Ver controladorP_V = new ControladorPrincipal_Ver(v, vv);
 				ControladorPrincipal_Subir controladorP_S = new ControladorPrincipal_Subir(v, vs);
 				ControladorPrincipal_Modificar controladorP_M = new ControladorPrincipal_Modificar(v, vm);
+				ControladorModificar_Editar controladorM_E = new ControladorModificar_Editar(vm, ve);
 
 
 				v.setControlador(controladorP_V);
 				v.setControlador(controladorP_S);
 				v.setControlador(controladorP_M);
+				vm.setControlador(controladorM_E);
 				v.hacerVisible();
 
 			}

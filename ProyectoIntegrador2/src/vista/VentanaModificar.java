@@ -1,9 +1,12 @@
 package vista;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
+import controlador.ControladorModificar_Editar;
+import controlador.ControladorPrincipal_Modificar;
+import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 import modelo.ProyectosIntegradores;
 
@@ -52,8 +55,25 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Ver c) {
-		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public void setControlador(ControladorPrincipal_Subir c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Modificar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorModificar_Editar c) {
+		btnEditar.addActionListener(c);
+		
 	}
 
 }
