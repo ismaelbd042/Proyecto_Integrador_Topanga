@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -31,7 +32,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		lblIntroduzca = new JLabel("Introduzca la contraseña:");
-		lblIntroduzca.setBounds(21, 23, 135, 29);
+		lblIntroduzca.setBounds(21, 40, 135, 29);
 		getContentPane().add(lblIntroduzca);
 
 		btnVerificar = new JButton("Verificar Contraseña");
@@ -60,15 +61,25 @@ public class VentanaContraseña extends JFrame implements IVentana {
 			}
 		});
 
-		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
+//		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
 		verContraseña.setBounds(195, 53, 77, 40);
 		getContentPane().add(verContraseña);
 
+		setSize(300, 200);
+		setLocationRelativeTo(null);
+
+	}
+	
+	public String getPassword() {
+		char[] PwrdChar = contraseña.getPassword();
+		String pwrd = new String(PwrdChar);
+		
+		return pwrd;
 	}
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		setVisible(true);
 	}
 
 	@Override
@@ -80,19 +91,24 @@ public class VentanaContraseña extends JFrame implements IVentana {
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar c) {
 		// TODO Auto-generated method stub
-		
+
+	}
+	
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
+		btnVerificar.addActionListener(c);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -59,7 +60,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		textField.setBounds(33, 33, 136, 27);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(179, 33, 38, 27);
 		getContentPane().add(btnNewButton);
@@ -113,5 +114,11 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public void setControlador(ControladorVer_Principal c) {
 		// TODO Auto-generated method stub
 		
+  }
+
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
+		// TODO Auto-generated method stub
+
 	}
 }

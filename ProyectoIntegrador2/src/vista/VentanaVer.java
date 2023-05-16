@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JFrame;
 
+import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -69,19 +70,25 @@ public class VentanaVer extends JFrame implements IVentana {
 	@Override
 	public void setControlador(ControladorPrincipal_Subir c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
