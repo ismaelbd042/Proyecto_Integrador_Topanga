@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -17,6 +18,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
+	private JButton btnverContrasena;
 	private JPasswordField contraseña;
 	private JButton verContraseña;
 	private boolean seVe;
@@ -45,6 +47,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 		seVe = false;
 		echoChar = contraseña.getEchoChar();
+    
 		JButton verContraseña = new JButton();
 		verContraseña.addActionListener(new ActionListener() {
 
@@ -125,6 +128,12 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorModificar_Principal c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}

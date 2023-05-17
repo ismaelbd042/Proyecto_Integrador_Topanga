@@ -3,6 +3,7 @@ package vista;
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -35,15 +36,17 @@ public class Ventana extends JFrame implements IVentana {
 
 		btnSubir = new JButton("Subir Proyecto");
 		btnSubir.setBounds(250, 138, 200, 50);
+		btnSubir.setFocusable(false);
 		getContentPane().add(btnSubir);
 
 		btnVer = new JButton("Ver Proyecto");
-//		btnVer.addActionListener(new ActionListener());
 		btnVer.setBounds(250, 54, 200, 50);
+		btnVer.setFocusable(false);
 		getContentPane().add(btnVer);
 
 		btnBorrar = new JButton("Borrar Proyecto");
 		btnBorrar.setBounds(250, 221, 200, 50);
+		btnBorrar.setFocusable(false);
 		getContentPane().add(btnBorrar);
 
 		setSize(512, 384);
@@ -93,6 +96,12 @@ public class Ventana extends JFrame implements IVentana {
   
 	@Override
   public void setControlador(ControladorContraseña_Modificar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}
