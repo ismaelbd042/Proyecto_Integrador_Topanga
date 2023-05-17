@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 
@@ -27,6 +29,7 @@ public class Ventana extends JFrame implements IVentana {
 
 	public Ventana() {
 		super("Administrador de Proyectos");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana.class.getResource("/img/logo1.png")));
 		getContentPane().setBackground(new Color(255, 255, 255));
 		setBackground(new Color(255, 255, 255));
 		inicializarComponentes();
@@ -36,8 +39,6 @@ public class Ventana extends JFrame implements IVentana {
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
-		
-		
 
 		lblLogo = new JLabel();
 		lblLogo.setIcon(new ImageIcon(Ventana.class.getResource("/img/logo1.png")));
