@@ -17,15 +17,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class VentanaSubir extends JFrame implements IVentana {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JPasswordField passwordField_1;
-	private JTextField textField_6;
+	private JTextField nombre;
+	private JTextField colaboradores;
+	private JTextField año;
+	private JTextField nota;
+	private JTextField curso;
+	private JTextField grupo;
+	private JTextField url;
 	
 	private JLabel lblarea;
 	private JLabel lblnota;
@@ -33,7 +31,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JLabel lblcurso;
 	private JLabel lblgrupo;
 	private JLabel lblurl;
-	private JLabel lblcontrasena;
 	
 	private JLabel lblintroducir;
 	private JLabel lblnombreGrupo;
@@ -52,6 +49,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
+		nombre = new JTextField();
+		nombre.setBounds(151, 51, 96, 19);
+		getContentPane().add(nombre);
+		nombre.setColumns(10);
+
 		lblintroducir = new JLabel("Introduce los datos para subir el proyecto");
 		lblintroducir.setBounds(117, 10, 253, 18);
 		getContentPane().add(lblintroducir);
@@ -60,7 +62,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		lblnombreGrupo.setBounds(10, 55, 131, 13);
 		getContentPane().add(lblnombreGrupo);
 
-		lblcolaboradores = new JLabel("Colaboradores:");
+		lblcolaboradores = new JLabel("Nº de colaboradores:");
 		lblcolaboradores.setBounds(10, 99, 112, 18);
 		getContentPane().add(lblcolaboradores);
 
@@ -68,39 +70,26 @@ public class VentanaSubir extends JFrame implements IVentana {
 		lblultimaModi.setBounds(10, 148, 131, 13);
 		getContentPane().add(lblultimaModi);
 
-		textField = new JTextField();
-		textField.setBounds(151, 51, 96, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		colaboradores = new JTextField();
+		colaboradores.setBounds(151, 98, 96, 19);
+		getContentPane().add(colaboradores);
+		colaboradores.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(151, 98, 96, 19);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-
-		textField_2 = new JTextField();
-		textField_2.setBounds(151, 144, 96, 19);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		año = new JTextField();
+		año.setBounds(151, 144, 96, 19);
+		getContentPane().add(año);
+		año.setColumns(10);
 
 		lblurl = new JLabel("URL:");
 		lblurl.setBounds(10, 195, 45, 13);
 		getContentPane().add(lblurl);
 
-		lblcontrasena = new JLabel("Contraseña:");
-		lblcontrasena.setBounds(10, 244, 112, 13);
-		getContentPane().add(lblcontrasena);
-
-		passwordField = new JPasswordField();
-		passwordField.setBounds(172, 240, 75, 19);
-		getContentPane().add(passwordField);
-
 		btnatras = new JButton("Volver atrás");
-		btnatras.setBounds(83, 285, 131, 36);
+		btnatras.setBounds(103, 285, 131, 36);
 		getContentPane().add(btnatras);
 
-		lblano = new JLabel("Año:");
-		lblano.setBounds(287, 54, 31, 13);
+		lblano = new JLabel("Año de entrega:");
+		lblano.setBounds(10, 148, 112, 13);
 		getContentPane().add(lblano);
 
 		lblcurso = new JLabel("Curso:");
@@ -111,32 +100,28 @@ public class VentanaSubir extends JFrame implements IVentana {
 		lblgrupo.setBounds(287, 148, 45, 13);
 		getContentPane().add(lblgrupo);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(352, 50, 96, 19);
-		getContentPane().add(textField_3);
+		nota = new JTextField();
+		nota.setColumns(10);
+		nota.setBounds(352, 51, 96, 19);
+		getContentPane().add(nota);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(352, 98, 96, 19);
-		getContentPane().add(textField_4);
+		curso = new JTextField();
+		curso.setColumns(10);
+		curso.setBounds(352, 98, 96, 19);
+		getContentPane().add(curso);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(342, 144, 96, 19);
-		getContentPane().add(textField_5);
+		grupo = new JTextField();
+		grupo.setColumns(10);
+		grupo.setBounds(352, 144, 96, 19);
+		getContentPane().add(grupo);
 
 		lblnota = new JLabel("Nota:");
-		lblnota.setBounds(287, 199, 45, 13);
+		lblnota.setBounds(287, 55, 45, 13);
 		getContentPane().add(lblnota);
 
 		lblarea = new JLabel("Área:");
-		lblarea.setBounds(287, 244, 45, 13);
+		lblarea.setBounds(287, 195, 45, 13);
 		getContentPane().add(lblarea);
-
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(358, 195, 75, 19);
-		getContentPane().add(passwordField_1);
 
 		btnsubir = new JButton("Subir proyecto");
 		btnsubir.addActionListener(new ActionListener() {
@@ -146,18 +131,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 		btnsubir.setBounds(271, 285, 122, 36);
 		getContentPane().add(btnsubir);
 
-		JComboBox<Áreas> comboBox = new JComboBox();
-		comboBox.setBounds(358, 240, 69, 21);
+		JComboBox<Áreas> areas = new JComboBox();
+		areas.setBounds(352, 191, 96, 21);
 //		comboBox.addItem(new Área ("DAW", "Manfredotti", "465484156B", 19));
 //		comboBox.addItem(new Área ("Mateo", "Manfredotti", "789987898Z", 16));
 //		comboBox.addItem(new Área("Aldo", "Manfredotti", "120654894Z", 64));
 //		comboBox.addItem(new Área ("Karina", "Garcia", "465489421Z", 53));
-		getContentPane().add(comboBox);
+		getContentPane().add(areas);
 
-		textField_6 = new JTextField();
-		textField_6.setBounds(151, 196, 96, 19);
-		getContentPane().add(textField_6);
-		textField_6.setColumns(10);
+		url = new JTextField();
+		url.setBounds(64, 191, 183, 19);
+		getContentPane().add(url);
+		url.setColumns(10);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);

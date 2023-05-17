@@ -34,7 +34,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		lblIntroduzca = new JLabel("Introduzca la contraseña:");
-		lblIntroduzca.setBounds(21, 40, 135, 29);
+		lblIntroduzca.setBounds(39, 35, 168, 20);
 		getContentPane().add(lblIntroduzca);
 
 		btnVerificar = new JButton("Verificar Contraseña");
@@ -42,13 +42,14 @@ public class VentanaContraseña extends JFrame implements IVentana {
 		getContentPane().add(btnVerificar);
 
 		contraseña = new JPasswordField();
-		contraseña.setBounds(10, 63, 159, 20);
+		contraseña.setBounds(33, 66, 162, 20);
 		getContentPane().add(contraseña);
 
 		seVe = false;
 		echoChar = contraseña.getEchoChar();
-		btnverContrasena = new JButton("Ver");
-		btnverContrasena.addActionListener(new ActionListener() {
+    
+		JButton verContraseña = new JButton();
+		verContraseña.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -63,11 +64,11 @@ public class VentanaContraseña extends JFrame implements IVentana {
 			}
 		});
 
-//		btnverContrasena.setIcon(new ImageIcon(VentanaContrasena.class.getResource("/img/botonOJO.png")));
-		btnverContrasena.setBounds(195, 53, 77, 40);
-		getContentPane().add(btnverContrasena);
+		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
+		verContraseña.setBounds(222, 60, 30, 30);
+		getContentPane().add(verContraseña);
 
-		setSize(300, 200);
+		setSize(300, 217);
 		setLocationRelativeTo(null);
 
 	}
