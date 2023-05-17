@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.*;
 
@@ -13,11 +14,6 @@ import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
-<<<<<<< HEAD
-import java.awt.Color;
-=======
-import java.awt.Font;
->>>>>>> branch 'main' of https://github.com/ismaelbd042/Proyecto_Integrador_Topanga
 
 public class Ventana extends JFrame implements IVentana {
 
