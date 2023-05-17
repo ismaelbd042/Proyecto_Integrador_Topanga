@@ -1,7 +1,5 @@
 package vista;
 
-import javax.swing.JFrame;
-
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
@@ -18,6 +16,8 @@ public class VentanaVer extends JFrame implements IVentana {
 	private JTextField textField;
 	private JButton btninspeccionar;
 	private JButton btnatras;
+	private JList<ProyectosIntegradores> proyectos;
+	private JButton btnLupa;
 
 	public VentanaVer() {
 		super("Ver proyectos");
@@ -37,13 +37,30 @@ public class VentanaVer extends JFrame implements IVentana {
 		getContentPane().add(btnatras);
 
 		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
-		comboBox.setBounds(264, 28, 195, 52);
+		comboBox.setBounds(277, 28, 195, 52);
 		getContentPane().add(comboBox);
 
 		textField = new JTextField();
 		textField.setBounds(25, 32, 195, 45);
 		getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		proyectos = new JList<>();
+		DefaultListModel<ProyectosIntegradores> mod = new DefaultListModel<>();
+		//mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
+		//mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
+		//mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
+		//mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+		proyectos.setModel(mod);
+		JScrollPane panelScroll2 = new JScrollPane();
+		panelScroll2.setBounds(152, 101, 181, 116);
+		getContentPane().add(panelScroll2);
+		panelScroll2.setViewportView(proyectos);
+		
+		btnLupa = new JButton();
+		//btnLupa.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonLUPA.png")));
+		btnLupa.setBounds(230, 37, 37, 37);
+		getContentPane().add(btnLupa);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
