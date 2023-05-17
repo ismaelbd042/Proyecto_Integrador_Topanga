@@ -12,6 +12,7 @@ import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import modelo.Alumnos;
 import modelo.Áreas;
 
 import java.awt.event.ActionListener;
@@ -19,12 +20,14 @@ import java.awt.event.ActionEvent;
 
 public class VentanaSubir extends JFrame implements IVentana {
 	private JTextField nombre;
-	private JTextField colaboradores;
+	private JButton colaboradores;
 	private JTextField año;
 	private JTextField nota;
-	private JTextField curso;
+	private JRadioButton rbtn1;
+	private JRadioButton rbtn2;
 	private JTextField grupo;
 	private JTextField url;
+	private JList<Alumnos> listaAlu;
 	
 	private JLabel lblarea;
 	private JLabel lblnota;
@@ -50,34 +53,49 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		nombre = new JTextField();
-		nombre.setBounds(151, 51, 96, 19);
+		nombre.setBounds(164, 51, 96, 19);
 		getContentPane().add(nombre);
 		nombre.setColumns(10);
 
 		lblintroducir = new JLabel("Introduce los datos para subir el proyecto");
-		lblintroducir.setBounds(117, 10, 253, 18);
+		lblintroducir.setBounds(126, 10, 244, 18);
 		getContentPane().add(lblintroducir);
 
-		lblnombreGrupo = new JLabel("Nombre del grupo:");
-		lblnombreGrupo.setBounds(10, 55, 131, 13);
+		lblnombreGrupo = new JLabel("Nombre del proyecto:");
+		lblnombreGrupo.setBounds(38, 55, 131, 13);
 		getContentPane().add(lblnombreGrupo);
 
-		lblcolaboradores = new JLabel("Nº de colaboradores:");
-		lblcolaboradores.setBounds(10, 99, 131, 18);
+		lblcolaboradores = new JLabel("Colaboradores:");
+		lblcolaboradores.setBounds(38, 192, 112, 18);
 		getContentPane().add(lblcolaboradores);
-
-		colaboradores = new JTextField();
-		colaboradores.setBounds(151, 98, 96, 19);
+		
+		colaboradores = new JButton("Añadir Alumno");
+		colaboradores.setBounds(137, 191, 123, 19);
 		getContentPane().add(colaboradores);
-		colaboradores.setColumns(10);
+		
+		listaAlu = new JList<>();
+		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
+		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
+		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
+		// mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+		listaAlu.setModel(mod);
+		// listadoAlumnos.setBounds(300, 45, 20, 20);
+		// getContentPane().add(listadoAlumnos);
+		JScrollPane panelScrollAlumnos = new JScrollPane();
+		panelScrollAlumnos.setBounds(38, 221, 222, 53);
+		getContentPane().add(panelScrollAlumnos);
+		panelScrollAlumnos.setViewportView(listaAlu);
+		// ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
+		// listAlumnos.addListSelectionListener(escuchadorLista);
 
 		año = new JTextField();
-		año.setBounds(151, 144, 96, 19);
+		año.setBounds(164, 98, 96, 19);
 		getContentPane().add(año);
 		año.setColumns(10);
 
 		lblurl = new JLabel("URL:");
-		lblurl.setBounds(10, 195, 45, 13);
+		lblurl.setBounds(38, 148, 45, 13);
 		getContentPane().add(lblurl);
 
 		btnatras = new JButton("Volver atrás");
@@ -85,26 +103,32 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(btnatras);
 
 		lblano = new JLabel("Año de entrega:");
-		lblano.setBounds(10, 148, 112, 13);
+		lblano.setBounds(38, 102, 112, 13);
 		getContentPane().add(lblano);
 
 		lblcurso = new JLabel("Curso:");
-		lblcurso.setBounds(287, 102, 37, 13);
+		lblcurso.setBounds(295, 102, 37, 13);
 		getContentPane().add(lblcurso);
 
 		lblgrupo = new JLabel("Grupo:");
-		lblgrupo.setBounds(287, 148, 45, 13);
+		lblgrupo.setBounds(295, 148, 45, 13);
 		getContentPane().add(lblgrupo);
 
 		nota = new JTextField();
 		nota.setColumns(10);
 		nota.setBounds(352, 51, 96, 19);
 		getContentPane().add(nota);
-
-		curso = new JTextField();
-		curso.setColumns(10);
-		curso.setBounds(352, 98, 96, 19);
-		getContentPane().add(curso);
+		
+		ButtonGroup curso = new ButtonGroup();
+		rbtn1 = new JRadioButton("1º");
+		rbtn1.setBounds(352, 98, 58, 20);
+		curso.add(rbtn1);
+		getContentPane().add(rbtn1);
+		
+		rbtn2 = new JRadioButton("2º");
+		rbtn2.setBounds(412, 98, 55, 20);
+		curso.add(rbtn2);
+		getContentPane().add(rbtn2);
 
 		grupo = new JTextField();
 		grupo.setColumns(10);
@@ -112,11 +136,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(grupo);
 
 		lblnota = new JLabel("Nota:");
-		lblnota.setBounds(287, 55, 45, 13);
+		lblnota.setBounds(297, 55, 45, 13);
 		getContentPane().add(lblnota);
 
 		lblarea = new JLabel("Área:");
-		lblarea.setBounds(287, 195, 45, 13);
+		lblarea.setBounds(295, 195, 45, 13);
 		getContentPane().add(lblarea);
 
 		btnsubir = new JButton("Subir proyecto");
@@ -136,7 +160,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(areas);
 
 		url = new JTextField();
-		url.setBounds(64, 191, 183, 19);
+		url.setBounds(106, 144, 154, 19);
 		getContentPane().add(url);
 		url.setColumns(10);
 

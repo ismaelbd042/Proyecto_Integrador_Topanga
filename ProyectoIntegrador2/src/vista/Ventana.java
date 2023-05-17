@@ -70,15 +70,16 @@ public class Ventana extends JFrame implements IVentana {
 		btnBorrar.setBackground(new Color(0,58,102));
 		btnBorrar.setFocusable(false);
 		getContentPane().add(btnBorrar);
-		
-		lblCopy = new JLabel();
-		lblCopy.setBounds(39, 297, 404, 23);
-		getContentPane().add(lblCopy);
 
+		lblCopy = new JLabel("Copyright © 2004, 2023, Topanga and/or its affiliates.");
+		lblCopy.setForeground(new Color(255, 255, 255));
+		lblCopy.setFont(new Font("Calibri", Font.BOLD, 13));
+		lblCopy.setBounds(103, 297, 340, 23);
+		getContentPane().add(lblCopy);
 		
 		lblFondo = new JLabel();
         lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
-        lblFondo.setBounds(0, 0, 512, 384);
+        lblFondo.setBounds(0, 0, 496, 345);
         getContentPane().add(lblFondo);
 
 		setSize(512, 384);

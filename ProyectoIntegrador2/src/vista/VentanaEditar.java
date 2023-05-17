@@ -18,16 +18,16 @@ import controlador.ControladorVer_Principal;
 import javax.swing.JButton;
 
 public class VentanaEditar extends JFrame implements IVentana {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField nombre;
+	private JTextField nota;
+	private JTextField url;
 	
 	private JButton btnatras;
 	private JButton btnactualizar;
 	
 	private JLabel lblnombre;
-	private JLabel lblcolaboradores;
-	private JLabel lblultimamodi;
+	private JLabel lblnota;
+	private JLabel lblurl;
 
 	public VentanaEditar() {
 		super("Editar proyecto");
@@ -38,32 +38,32 @@ public class VentanaEditar extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
-		lblnombre = new JLabel("Nombre:");
-		lblnombre.setBounds(26, 43, 143, 13);
+		lblnombre = new JLabel("Nombre del proyecto:");
+		lblnombre.setBounds(100, 43, 125, 13);
 		getContentPane().add(lblnombre);
 
-		lblcolaboradores = new JLabel("Colaboradores:");
-		lblcolaboradores.setBounds(26, 94, 161, 13);
-		getContentPane().add(lblcolaboradores);
+		lblnota = new JLabel("Nota:");
+		lblnota.setBounds(100, 94, 143, 13);
+		getContentPane().add(lblnota);
 
-		lblultimamodi = new JLabel("Última modificación:");
-		lblultimamodi.setBounds(26, 148, 177, 13);
-		getContentPane().add(lblultimamodi);
+		lblurl = new JLabel("URL:");
+		lblurl.setBounds(100, 148, 78, 13);
+		getContentPane().add(lblurl);
 
-		textField = new JTextField();
-		textField.setBounds(248, 39, 151, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		nombre = new JTextField();
+		nombre.setBounds(235, 39, 151, 19);
+		getContentPane().add(nombre);
+		nombre.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(248, 90, 151, 19);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		nota = new JTextField();
+		nota.setBounds(235, 90, 95, 19);
+		getContentPane().add(nota);
+		nota.setColumns(10);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(249, 144, 150, 19);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		url = new JTextField();
+		url.setBounds(188, 144, 198, 19);
+		getContentPane().add(url);
+		url.setColumns(10);
 
 		btnactualizar = new JButton("Actualizar datos");
 		btnactualizar.setBounds(250, 198, 177, 34);

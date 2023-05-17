@@ -38,7 +38,7 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		
 		getContentPane().setLayout(null);
 
-		lblNombre = new JLabel("Nombre");
+		lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(48, 41, 93, 27);
 		getContentPane().add(lblNombre);
 
@@ -46,24 +46,24 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		btnAñadir.setBounds(48, 185, 196, 50);
 		getContentPane().add(btnAñadir);
 		
-		lblApellidos = new JLabel("Apellidos");
+		lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setBounds(48, 88, 93, 27);
 		getContentPane().add(lblApellidos);
 		
-		lblExpediente = new JLabel("Expediente");
+		lblExpediente = new JLabel("Expediente:");
 		lblExpediente.setBounds(48, 132, 93, 27);
 		getContentPane().add(lblExpediente);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(151, 38, 93, 33);
+		txtNombre.setBounds(126, 44, 118, 20);
 		getContentPane().add(txtNombre);
 		
 		txtApellidos = new JTextField();
-		txtApellidos.setBounds(151, 82, 93, 33);
+		txtApellidos.setBounds(126, 91, 118, 20);
 		getContentPane().add(txtApellidos);
 		
 		txtExpediente = new JTextField();
-		txtExpediente.setBounds(151, 129, 93, 33);
+		txtExpediente.setBounds(126, 135, 118, 20);
 		getContentPane().add(txtExpediente);
 
 		setSize(302, 306);
