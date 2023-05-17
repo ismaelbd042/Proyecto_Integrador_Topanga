@@ -62,7 +62,7 @@ public class Ventana extends JFrame implements IVentana {
 		btnVer.setFocusable(false);
 		getContentPane().add(btnVer);
 
-		btnBorrar = new JButton("Borrar Proyecto");
+		btnBorrar = new JButton("Modificar Proyecto");
 		btnBorrar.setBounds(250, 221, 200, 50);
 		btnBorrar.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
 		btnBorrar.setBorderPainted(false);
