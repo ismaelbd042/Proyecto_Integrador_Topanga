@@ -3,6 +3,7 @@ package vista;
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -34,6 +35,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JLabel lblurl;
 	private JLabel lblcontrasena;
 	
+	private JLabel lblintroducir;
+	private JLabel lblnombreGrupo;
+	private JLabel lblcolaboradores;
+	private JLabel lblultimaModi;
+	
 	private JButton btnatras;
 	private JButton btnsubir;
 
@@ -46,21 +52,21 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Introduce los datos para subir el proyecto");
-		lblNewLabel.setBounds(117, 10, 253, 18);
-		getContentPane().add(lblNewLabel);
+		lblintroducir = new JLabel("Introduce los datos para subir el proyecto");
+		lblintroducir.setBounds(117, 10, 253, 18);
+		getContentPane().add(lblintroducir);
 
-		JLabel lblNewLabel_1 = new JLabel("Nombre del grupo:");
-		lblNewLabel_1.setBounds(10, 55, 131, 13);
-		getContentPane().add(lblNewLabel_1);
+		lblnombreGrupo = new JLabel("Nombre del grupo:");
+		lblnombreGrupo.setBounds(10, 55, 131, 13);
+		getContentPane().add(lblnombreGrupo);
 
-		JLabel lblNewLabel_2 = new JLabel("Colaboradores:");
-		lblNewLabel_2.setBounds(10, 99, 112, 18);
-		getContentPane().add(lblNewLabel_2);
+		lblcolaboradores = new JLabel("Colaboradores:");
+		lblcolaboradores.setBounds(10, 99, 112, 18);
+		getContentPane().add(lblcolaboradores);
 
-		JLabel lblNewLabel_3 = new JLabel("Última modificación:");
-		lblNewLabel_3.setBounds(10, 148, 131, 13);
-		getContentPane().add(lblNewLabel_3);
+		lblultimaModi = new JLabel("Última modificación:");
+		lblultimaModi.setBounds(10, 148, 131, 13);
+		getContentPane().add(lblultimaModi);
 
 		textField = new JTextField();
 		textField.setBounds(151, 51, 96, 19);
@@ -210,4 +216,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+
+@Override
+public void setControlador(ControladorEditar_Modificar c) {
+	// TODO Auto-generated method stub
+	
+}
 }

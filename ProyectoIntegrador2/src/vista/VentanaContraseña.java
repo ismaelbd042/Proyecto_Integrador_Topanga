@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -17,6 +18,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
+	private JButton btnverContrasena;
 	private JPasswordField contraseña;
 	private JButton verContraseña;
 	private boolean seVe;
@@ -45,8 +47,8 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 		seVe = false;
 		echoChar = contraseña.getEchoChar();
-		JButton verContraseña = new JButton("Ver");
-		verContraseña.addActionListener(new ActionListener() {
+		btnverContrasena = new JButton("Ver");
+		btnverContrasena.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -61,9 +63,9 @@ public class VentanaContraseña extends JFrame implements IVentana {
 			}
 		});
 
-//		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
-		verContraseña.setBounds(195, 53, 77, 40);
-		getContentPane().add(verContraseña);
+//		btnverContrasena.setIcon(new ImageIcon(VentanaContrasena.class.getResource("/img/botonOJO.png")));
+		btnverContrasena.setBounds(195, 53, 77, 40);
+		getContentPane().add(btnverContrasena);
 
 		setSize(300, 200);
 		setLocationRelativeTo(null);
@@ -125,6 +127,12 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorModificar_Principal c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}

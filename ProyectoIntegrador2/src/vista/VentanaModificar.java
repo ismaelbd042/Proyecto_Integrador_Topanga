@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -18,6 +19,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	private JButton btnEditar;
 	private JButton btnBorrar;
+	private JButton btnLupa;
 	
 	private JButton btnatras;
 	private JTextField textField;
@@ -30,14 +32,6 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
-		JComboBox<ProyectosIntegradores> proyectos = new JComboBox<>();
-		proyectos.setBounds(248, 32, 184, 29);
-		// alumnos.addItem(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
-		// alumnos.addItem(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
-		// alumnos.addItem(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
-		// alumnos.addItem(new Alumno ("Karina", "Garcia", "465489421Z", 53));
-		getContentPane().add(proyectos);
-
 		btnEditar = new JButton("Editar");
 		// lblLogo.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
@@ -47,23 +41,29 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnBorrar = new JButton("Borrar");
 		// lblLogo.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
-		btnBorrar.setBounds(248, 181, 184, 29);
+		btnBorrar.setBounds(288, 181, 184, 29);
 		getContentPane().add(btnBorrar);
 		
 		btnatras = new JButton("Volver Atras");
 		// lblLogo.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
-		btnatras.setBounds(146, 230, 184, 29);
+		btnatras.setBounds(161, 229, 184, 29);
 		getContentPane().add(btnatras);
-		
+
+		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
+		comboBox.setBounds(277, 28, 195, 52);
+		getContentPane().add(comboBox);
+
 		textField = new JTextField();
-		textField.setBounds(33, 33, 136, 27);
+		textField.setBounds(25, 32, 195, 45);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(179, 33, 38, 27);
-		getContentPane().add(btnNewButton);
+		
+		btnLupa = new JButton();
+		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
+		btnLupa.setBounds(230, 37, 37, 37);
+		btnLupa.setBorderPainted(false);
+		getContentPane().add(btnLupa);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -120,5 +120,11 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
+		// TODO Auto-generated method stub
+		
 	}
 }

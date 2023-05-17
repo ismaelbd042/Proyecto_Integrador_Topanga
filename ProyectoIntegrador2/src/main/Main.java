@@ -1,6 +1,7 @@
 package main;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import conexionBBDD.AccesoBBDD;
@@ -35,6 +36,7 @@ public class Main {
 				ControladorVer_Principal controladorV_P = new ControladorVer_Principal(v, vv);
 				ControladorModificar_Principal controladorM_P = new ControladorModificar_Principal(vm, v);
 				ControladorContraseña_Modificar controladorC_M = new ControladorContraseña_Modificar(vc, vm, v);
+				ControladorEditar_Modificar controladorE_M = new ControladorEditar_Modificar(vm, ve);
 
 
 
@@ -46,6 +48,7 @@ public class Main {
 				vv.setControlador(controladorV_P);
 				vm.setControlador(controladorM_P);
 				vc.setControlador(controladorC_M);
+				ve.setControlador(controladorE_M);
 				v.hacerVisible();
 
 			}

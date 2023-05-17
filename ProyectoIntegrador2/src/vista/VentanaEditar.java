@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controlador.ControladorContraseña_Modificar;
+import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar;
@@ -19,6 +20,13 @@ public class VentanaEditar extends JFrame implements IVentana {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	private JButton btnatras;
+	private JButton btnactualizar;
+	
+	private JLabel lblnombre;
+	private JLabel lblcolaboradores;
+	private JLabel lblultimamodi;
 
 	public VentanaEditar() {
 		super("Editar proyecto");
@@ -29,17 +37,17 @@ public class VentanaEditar extends JFrame implements IVentana {
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(26, 43, 143, 13);
-		getContentPane().add(lblNewLabel);
+		lblnombre = new JLabel("Nombre:");
+		lblnombre.setBounds(26, 43, 143, 13);
+		getContentPane().add(lblnombre);
 
-		JLabel lblNewLabel_1 = new JLabel("Colaboradores:");
-		lblNewLabel_1.setBounds(26, 94, 161, 13);
-		getContentPane().add(lblNewLabel_1);
+		lblcolaboradores = new JLabel("Colaboradores:");
+		lblcolaboradores.setBounds(26, 94, 161, 13);
+		getContentPane().add(lblcolaboradores);
 
-		JLabel lblNewLabel_2 = new JLabel("Última modificación:");
-		lblNewLabel_2.setBounds(26, 148, 177, 13);
-		getContentPane().add(lblNewLabel_2);
+		lblultimamodi = new JLabel("Última modificación:");
+		lblultimamodi.setBounds(26, 148, 177, 13);
+		getContentPane().add(lblultimamodi);
 
 		textField = new JTextField();
 		textField.setBounds(248, 39, 151, 19);
@@ -56,10 +64,13 @@ public class VentanaEditar extends JFrame implements IVentana {
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
-		JButton btnNewButton = new JButton("Actualizar datos");
-		btnNewButton.setBounds(124, 198, 177, 34);
-
-		getContentPane().add(btnNewButton);	
+		btnactualizar = new JButton("Actualizar datos");
+		btnactualizar.setBounds(250, 198, 177, 34);
+		getContentPane().add(btnactualizar);	
+		
+		btnatras = new JButton("Volver Atras");
+		btnatras.setBounds(48, 198, 177, 34);
+		getContentPane().add(btnatras);	
 		
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -82,6 +93,11 @@ public class VentanaEditar extends JFrame implements IVentana {
 
 	}
 
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
+		btnatras.addActionListener(c);
+
+	}
 	@Override
 	public void setControlador(ControladorPrincipal_Subir c) {
 		// TODO Auto-generated method stub
