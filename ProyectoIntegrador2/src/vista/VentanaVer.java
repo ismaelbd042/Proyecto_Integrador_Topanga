@@ -44,10 +44,11 @@ public class VentanaVer extends JFrame implements IVentana {
 		//mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
 		//mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
 		proyectos.setModel(mod);
-		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(158, 101, 181, 116);
-		getContentPane().add(panelScroll2);
-		panelScroll2.setViewportView(proyectos);
+		
+		JScrollPane barradesplazamiento = new JScrollPane();
+		barradesplazamiento.setBounds(152, 101, 181, 116);
+		getContentPane().add(barradesplazamiento);
+		barradesplazamiento.setViewportView(proyectos);
 		
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
