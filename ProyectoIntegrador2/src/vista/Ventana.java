@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.*;
 
@@ -13,8 +14,6 @@ import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
-import java.awt.Font;
-
 
 public class Ventana extends JFrame implements IVentana {
 
