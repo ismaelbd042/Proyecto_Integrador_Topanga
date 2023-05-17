@@ -1,15 +1,7 @@
 package vista;
 
-import controlador.ControladorContraseña_Modificar;
-import controlador.ControladorModificar_Editar;
-import controlador.ControladorModificar_Principal;
-import controlador.ControladorPrincipal_Modificar;
-import controlador.ControladorPrincipal_Subir;
-import controlador.ControladorPrincipal_Ver;
-import controlador.ControladorSubir_Principal;
-import controlador.ControladorVer_Principal;
+import controlador.*;
 import modelo.ProyectosIntegradores;
-
 import javax.swing.*;
 
 public class VentanaVer extends JFrame implements IVentana {
@@ -53,13 +45,14 @@ public class VentanaVer extends JFrame implements IVentana {
 		//mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
 		proyectos.setModel(mod);
 		JScrollPane panelScroll2 = new JScrollPane();
-		panelScroll2.setBounds(152, 101, 181, 116);
+		panelScroll2.setBounds(158, 101, 181, 116);
 		getContentPane().add(panelScroll2);
 		panelScroll2.setViewportView(proyectos);
 		
 		btnLupa = new JButton();
-		//btnLupa.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonLUPA.png")));
+		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
 		btnLupa.setBounds(230, 37, 37, 37);
+		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
 
 		setSize(512, 384);
