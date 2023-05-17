@@ -20,10 +20,11 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
 	private JButton btnverContrasena;
-	private JPasswordField contraseña;
+	public JPasswordField contraseña;
 	private JButton verContraseña;
 	private boolean seVe;
 	private char echoChar;
+	public JLabel incorrecto;
 
 	public VentanaContraseña2() {
 		super("Verificar Contraseña");
@@ -45,15 +46,18 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		contraseña = new JPasswordField();
 		contraseña.setBounds(33, 66, 162, 20);
 		getContentPane().add(contraseña);
+		
+		incorrecto = new JLabel();
+		incorrecto.setBounds(39, 143, 168, 20);
+		getContentPane().add(incorrecto);
 
-		echoChar = contraseña.getEchoChar();
-    
+		seVe = false;
+		echoChar = contraseña.getEchoChar();    
 		JButton verContraseña = new JButton();
 		verContraseña.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				seVe = false;
 				if (!seVe) {
 					contraseña.setEchoChar((char) 0);
 					seVe = true;

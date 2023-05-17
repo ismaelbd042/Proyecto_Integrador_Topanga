@@ -28,8 +28,10 @@ public class ControladorContraseña_Subir implements ActionListener {
 			vc1.dispose();
 			v.dispose();
 			vs.hacerVisible();
+			vc1.incorrecto.setText("");
+			vc1.contraseña.setText(null);
 		} else {
-			
+			vc1.incorrecto.setText("Contraseña incorrecta");
 		}
 	}
 
