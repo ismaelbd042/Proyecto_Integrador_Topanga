@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 
+import conexionBBDD.AccesoBBDD;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
@@ -13,6 +14,7 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
+import modelo.ProyectosIntegradores;
 import modelo.Áreas;
 
 import java.awt.event.ActionListener;
@@ -21,25 +23,25 @@ import java.awt.event.ActionEvent;
 public class VentanaSubir extends JFrame implements IVentana {
 	private JTextField nombre;
 	private JButton colaboradores;
-	private JTextField año;
-	private JTextField nota;
+	private JTextField txtano;
+	private JTextField txtnota;
 	private JRadioButton rbtn1;
 	private JRadioButton rbtn2;
-	private JTextField grupo;
-	private JTextField url;
+	private JTextField txtgrupo;
+	private JTextField txturl;
 	private JList<Alumnos> listaAlu;
-	
+
 	private JLabel lblarea;
 	private JLabel lblnota;
 	private JLabel lblano;
 	private JLabel lblcurso;
 	private JLabel lblgrupo;
 	private JLabel lblurl;
-	
+
 	private JLabel lblintroducir;
 	private JLabel lblnombreGrupo;
 	private JLabel lblcolaboradores;
-	
+
 	private JButton btnatras;
 	private JButton btnsubir;
 
@@ -68,11 +70,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		lblcolaboradores = new JLabel("Colaboradores:");
 		lblcolaboradores.setBounds(38, 192, 112, 18);
 		getContentPane().add(lblcolaboradores);
-		
+
 		colaboradores = new JButton("Añadir Alumno");
 		colaboradores.setBounds(137, 191, 123, 19);
 		getContentPane().add(colaboradores);
-		
+
 		listaAlu = new JList<>();
 		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
@@ -89,10 +91,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
 		// listAlumnos.addListSelectionListener(escuchadorLista);
 
-		año = new JTextField();
-		año.setBounds(164, 98, 96, 19);
-		getContentPane().add(año);
-		año.setColumns(10);
+		txtano = new JTextField();
+		txtano.setBounds(164, 98, 96, 19);
+		getContentPane().add(txtano);
+		txtano.setColumns(10);
 
 		lblurl = new JLabel("URL:");
 		lblurl.setBounds(38, 148, 45, 13);
@@ -114,26 +116,26 @@ public class VentanaSubir extends JFrame implements IVentana {
 		lblgrupo.setBounds(295, 148, 45, 13);
 		getContentPane().add(lblgrupo);
 
-		nota = new JTextField();
-		nota.setColumns(10);
-		nota.setBounds(352, 51, 96, 19);
-		getContentPane().add(nota);
-		
+		txtnota = new JTextField();
+		txtnota.setColumns(10);
+		txtnota.setBounds(352, 51, 96, 19);
+		getContentPane().add(txtnota);
+
 		ButtonGroup curso = new ButtonGroup();
 		rbtn1 = new JRadioButton("1º");
 		rbtn1.setBounds(352, 98, 58, 20);
 		curso.add(rbtn1);
 		getContentPane().add(rbtn1);
-		
+
 		rbtn2 = new JRadioButton("2º");
 		rbtn2.setBounds(412, 98, 55, 20);
 		curso.add(rbtn2);
 		getContentPane().add(rbtn2);
 
-		grupo = new JTextField();
-		grupo.setColumns(10);
-		grupo.setBounds(352, 144, 96, 19);
-		getContentPane().add(grupo);
+		txtgrupo = new JTextField();
+		txtgrupo.setColumns(10);
+		txtgrupo.setBounds(352, 144, 96, 19);
+		getContentPane().add(txtgrupo);
 
 		lblnota = new JLabel("Nota:");
 		lblnota.setBounds(297, 55, 45, 13);
@@ -146,6 +148,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		btnsubir = new JButton("Subir proyecto");
 		btnsubir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				subirProyecto();
 			}
 		});
 		btnsubir.setBounds(271, 285, 122, 36);
@@ -159,10 +162,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 //		comboBox.addItem(new Área ("Karina", "Garcia", "465489421Z", 53));
 		getContentPane().add(areas);
 
-		url = new JTextField();
-		url.setBounds(106, 144, 154, 19);
-		getContentPane().add(url);
-		url.setColumns(10);
+		txturl = new JTextField();
+		txturl.setBounds(106, 144, 154, 19);
+		getContentPane().add(txturl);
+		txturl.setColumns(10);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -182,55 +185,77 @@ public class VentanaSubir extends JFrame implements IVentana {
 	@Override
 	public void setControlador(ControladorContraseña_Subir c) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void setControlador(ControladorSubir_Principal c) {
 		btnatras.addActionListener(c);
-		
-	}
 
+	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorVer_Principal c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorModificar_Principal c) {
-    // TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub
+
 	}
-  
-  @Override
+
+	@Override
 	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-@Override
-public void setControlador(ControladorEditar_Modificar c) {
-	// TODO Auto-generated method stub
-	
-}
+	@Override
+	public void setControlador(ControladorEditar_Modificar c) {
+		// TODO Auto-generated method stub
 
-@Override
-public void setControlador(ControladorPrincipal_Subir_Contra c) {
-	// TODO Auto-generated method stub
-	
-}
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Subir_Contra c) {
+		// TODO Auto-generated method stub
+
+	}
+	public void subirProyecto() {
+		String nombre_proyecto = nombre.getText().toString();
+		int año = Integer.parseInt(txtano.getText().toString());
+		String url = txturl.getText().toString();
+		int nota = Integer.parseInt(txtnota.getText().toString());
+		String grupo = txtgrupo.getText().toString();
+		
+//		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores();
+//		proyectosintegradores.setNombre_proyecto(nombre_proyecto);
+//		proyectosintegradores.setAño(año);
+//		proyectosintegradores.setURL(url);
+//		proyectosintegradores.setNota(nota);
+//		proyectosintegradores.setGrupo(grupo);
+//		
+//		AccesoBBDD accesobbdd = new AccesoBBDD();
+//		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
+//		
+//		if (estado > 0) {
+//			JOptionPane.showMessageDialog(getContentPane(), "Producto Registrado");
+//		} else {
+//			JOptionPane.showMessageDialog(getContentPane(), "No se registró el producto", "Aviso", JOptionPane.WARNING_MESSAGE);
+//		}
+	}
 }

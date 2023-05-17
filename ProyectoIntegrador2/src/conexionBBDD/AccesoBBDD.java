@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import modelo.ProyectosIntegradores;
+
 public class AccesoBBDD {
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
@@ -59,4 +61,25 @@ public class AccesoBBDD {
 			e.printStackTrace();
 		}
 	}
+	
+//	public int registrar(ProyectosIntegradores proyectos, AccesoBBDD accesoBBDD) {
+//		int rs = 0;
+//		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?)";
+//		
+//		try (java.sql.PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)){
+//			ps.setString(1, proyectos.getNombre_proyecto());
+//			ps.setInt(2, proyectos.getAño());
+//			ps.setString(3, proyectos.getURL());
+//			ps.setInt(4, proyectos.getNota());
+//			ps.setString(5, proyectos.getGrupo());
+//			
+//			
+//			rs = ps.executeUpdate();
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//		return rs;
+//	}
 }
