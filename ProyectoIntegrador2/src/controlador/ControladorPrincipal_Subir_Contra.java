@@ -5,25 +5,25 @@ import java.awt.event.ActionListener;
 
 import vista.*;
 
-public class ControladorPrincipal_Subir implements ActionListener {
+public class ControladorPrincipal_Subir_Contra implements ActionListener {
 
 	private Ventana v;
 //	private VentanaVer vv;
 //	private VentanaEditar ve;
 //	private VentanaInfo vi;
-	private VentanaSubir vs;
+//	private VentanaSubir vs;
 //	private VentanaModificar vm;
-//	private VentanaContraseña vc;
+	private VentanaContraseña1 vc1;
+	private VentanaContraseña2 vc2;
 
-	public ControladorPrincipal_Subir(Ventana v, VentanaSubir vs) {
+	public ControladorPrincipal_Subir_Contra(Ventana v, VentanaContraseña1 vc) {
 		this.v = v;
-		this.vs = vs;
+		this.vc1 = vc;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		v.dispose();
-		vs.hacerVisible();
+		vc1.hacerVisible();
 	}
 
 }

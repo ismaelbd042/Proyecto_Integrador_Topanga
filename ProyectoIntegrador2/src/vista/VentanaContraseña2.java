@@ -8,13 +8,14 @@ import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
-import controlador.ControladorPrincipal_Modificar;
-import controlador.ControladorPrincipal_Subir;
+import controlador.ControladorPrincipal_Modificar_Contra;
+import controlador.ControladorContraseña_Subir;
+import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
-public class VentanaContraseña extends JFrame implements IVentana {
+public class VentanaContraseña2 extends JFrame implements IVentana {
 
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
@@ -24,7 +25,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 	private boolean seVe;
 	private char echoChar;
 
-	public VentanaContraseña() {
+	public VentanaContraseña2() {
 		super("Verificar Contraseña");
 		inicializarComponentes();
 	}
@@ -45,7 +46,6 @@ public class VentanaContraseña extends JFrame implements IVentana {
 		contraseña.setBounds(33, 66, 162, 20);
 		getContentPane().add(contraseña);
 
-		seVe = false;
 		echoChar = contraseña.getEchoChar();
     
 		JButton verContraseña = new JButton();
@@ -53,6 +53,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				seVe = false;
 				if (!seVe) {
 					contraseña.setEchoChar((char) 0);
 					seVe = true;
@@ -64,7 +65,7 @@ public class VentanaContraseña extends JFrame implements IVentana {
 			}
 		});
 
-		verContraseña.setIcon(new ImageIcon(VentanaContraseña.class.getResource("/img/botonOJO.png")));
+		verContraseña.setIcon(new ImageIcon(VentanaContraseña2.class.getResource("/img/botonOJO.png")));
 		verContraseña.setBounds(222, 60, 30, 30);
 		getContentPane().add(verContraseña);
 
@@ -98,13 +99,13 @@ public class VentanaContraseña extends JFrame implements IVentana {
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Subir c) {
+	public void setControlador(ControladorContraseña_Subir c) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Modificar c) {
+	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		// TODO Auto-generated method stub
 
 	}
@@ -134,6 +135,12 @@ public class VentanaContraseña extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorEditar_Modificar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Subir_Contra c) {
 		// TODO Auto-generated method stub
 		
 	}

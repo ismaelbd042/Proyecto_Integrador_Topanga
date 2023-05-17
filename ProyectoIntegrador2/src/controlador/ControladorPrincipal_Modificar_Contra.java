@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.*;
 
-public class ControladorPrincipal_Modificar implements ActionListener {
+public class ControladorPrincipal_Modificar_Contra implements ActionListener {
 
 	private Ventana v;
 	private VentanaVer vv;
@@ -13,16 +13,17 @@ public class ControladorPrincipal_Modificar implements ActionListener {
 //	private VentanaInfo vi;
 //	private VentanaSubir vs;
 	private VentanaModificar vm;
-	private VentanaContraseña vc;
+	private VentanaContraseña1 vc1;
+	private VentanaContraseña2 vc2;
 
-	public ControladorPrincipal_Modificar(Ventana v, VentanaContraseña vc) {
+	public ControladorPrincipal_Modificar_Contra(Ventana v, VentanaContraseña2 vc) {
 		this.v = v;
-		this.vc = vc;
+		this.vc2 = vc;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		vc.hacerVisible();
+		vc2.hacerVisible();
 	}
 
 }
