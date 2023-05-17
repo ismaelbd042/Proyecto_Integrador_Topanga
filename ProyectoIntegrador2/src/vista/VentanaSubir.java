@@ -35,7 +35,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JLabel lblintroducir;
 	private JLabel lblnombreGrupo;
 	private JLabel lblcolaboradores;
-	private JLabel lblultimaModi;
 	
 	private JButton btnatras;
 	private JButton btnsubir;
@@ -63,12 +62,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(lblnombreGrupo);
 
 		lblcolaboradores = new JLabel("Nº de colaboradores:");
-		lblcolaboradores.setBounds(10, 99, 112, 18);
+		lblcolaboradores.setBounds(10, 99, 131, 18);
 		getContentPane().add(lblcolaboradores);
-
-		lblultimaModi = new JLabel("Última modificación:");
-		lblultimaModi.setBounds(10, 148, 131, 13);
-		getContentPane().add(lblultimaModi);
 
 		colaboradores = new JTextField();
 		colaboradores.setBounds(151, 98, 96, 19);
