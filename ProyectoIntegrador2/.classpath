@@ -6,8 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="C:/Users/Juan Jose/Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
+=======
 
 	<classpathentry kind="lib" path="C:/Users/ismae/OneDrive/Escritorio/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar"/>
 
+>>>>>>> branch 'main' of https://github.com/ismaelbd042/Proyecto_Integrador_Topanga
 	<classpathentry kind="output" path="bin"/>
 </classpath>
