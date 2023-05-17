@@ -11,6 +11,7 @@ import controlador.ControladorPrincipal_Subir;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import java.awt.Color;
 
 public class Ventana extends JFrame implements IVentana {
 
@@ -21,6 +22,8 @@ public class Ventana extends JFrame implements IVentana {
 
 	public Ventana() {
 		super("Administrador de Proyectos");
+		getContentPane().setBackground(new Color(255, 255, 255));
+		setBackground(new Color(255, 255, 255));
 		inicializarComponentes();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
