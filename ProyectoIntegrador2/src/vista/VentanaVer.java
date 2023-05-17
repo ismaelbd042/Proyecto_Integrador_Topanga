@@ -52,6 +52,7 @@ public class VentanaVer extends JFrame implements IVentana {
 		
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
+		
 		btnLupa.setBounds(230, 37, 37, 37);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
