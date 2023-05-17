@@ -80,13 +80,13 @@ public class VentanaVer extends JFrame implements IVentana {
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Subir c) {
+	public void setControlador(ControladorContraseña_Subir c) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Modificar c) {
+	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		// TODO Auto-generated method stub
 
 	}
@@ -117,6 +117,12 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorEditar_Modificar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorPrincipal_Subir_Contra c) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -6,8 +6,9 @@ import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
-import controlador.ControladorPrincipal_Modificar;
-import controlador.ControladorPrincipal_Subir;
+import controlador.ControladorPrincipal_Modificar_Contra;
+import controlador.ControladorContraseña_Subir;
+import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
@@ -155,7 +156,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 
 	@Override
-	public void setControlador(ControladorPrincipal_Subir c) {
+	public void setControlador(ControladorContraseña_Subir c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -168,7 +169,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 
 	@Override
-	public void setControlador(ControladorPrincipal_Modificar c) {
+	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -199,6 +200,12 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 @Override
 public void setControlador(ControladorEditar_Modificar c) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void setControlador(ControladorPrincipal_Subir_Contra c) {
 	// TODO Auto-generated method stub
 	
 }

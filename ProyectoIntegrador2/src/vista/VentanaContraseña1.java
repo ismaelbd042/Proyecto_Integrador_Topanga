@@ -1,10 +1,8 @@
 package vista;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import java.awt.event.*;
+
+import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
@@ -17,88 +15,103 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
-public class VentanaAlumno extends JFrame implements IVentana {
+public class VentanaContraseña1 extends JFrame implements IVentana {
 
-	private JLabel lblNombre;
-	private JLabel lblApellidos;
-	private JLabel lblExpediente;
-	private JTextField txtNombre;
-	private JTextField txtApellidos;
-	private JTextField txtExpediente;
-	private JButton btnAñadir;
-	
-	public VentanaAlumno() {
-		super("Nuevo Alumno");
+	private JLabel lblIntroduzca;
+	private JButton btnVerificar;
+	private JButton btnverContrasena;
+	private JPasswordField contraseña;
+	private JButton verContraseña;
+	private boolean seVe;
+	private char echoChar;
+
+	public VentanaContraseña1() {
+		super("Verificar Contraseña");
 		inicializarComponentes();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	@Override
 	public void inicializarComponentes() {
-		
 		getContentPane().setLayout(null);
 
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(48, 41, 93, 27);
-		getContentPane().add(lblNombre);
+		lblIntroduzca = new JLabel("Introduzca la contraseña:");
+		lblIntroduzca.setBounds(39, 35, 168, 20);
+		getContentPane().add(lblIntroduzca);
 
-		btnAñadir = new JButton("Crear nuevo alumno");
-		btnAñadir.setBounds(48, 185, 196, 50);
-		getContentPane().add(btnAñadir);
-		
-		lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(48, 88, 93, 27);
-		getContentPane().add(lblApellidos);
-		
-		lblExpediente = new JLabel("Expediente");
-		lblExpediente.setBounds(48, 132, 93, 27);
-		getContentPane().add(lblExpediente);
-		
-		txtNombre = new JTextField();
-		txtNombre.setBounds(151, 38, 93, 33);
-		getContentPane().add(txtNombre);
-		
-		txtApellidos = new JTextField();
-		txtApellidos.setBounds(151, 82, 93, 33);
-		getContentPane().add(txtApellidos);
-		
-		txtExpediente = new JTextField();
-		txtExpediente.setBounds(151, 129, 93, 33);
-		getContentPane().add(txtExpediente);
+		btnVerificar = new JButton("Verificar Contraseña");
+		btnVerificar.setBounds(33, 104, 219, 29);
+		getContentPane().add(btnVerificar);
 
-		setSize(302, 306);
+		contraseña = new JPasswordField();
+		contraseña.setBounds(33, 66, 162, 20);
+		getContentPane().add(contraseña);
+
+		echoChar = contraseña.getEchoChar();
+    
+		JButton verContraseña = new JButton();
+		verContraseña.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				seVe = false;
+				if (!seVe) {
+					contraseña.setEchoChar((char) 0);
+					seVe = true;
+				} else {
+					contraseña.setEchoChar(echoChar);
+					seVe = false;
+				}
+
+			}
+		});
+
+		verContraseña.setIcon(new ImageIcon(VentanaContraseña1.class.getResource("/img/botonOJO.png")));
+		verContraseña.setBounds(222, 60, 30, 30);
+		getContentPane().add(verContraseña);
+
+		setSize(300, 217);
 		setLocationRelativeTo(null);
+
+	}
+	
+	public String getPassword() {
+		char[] PwrdChar = contraseña.getPassword();
+		String pwrd = new String(PwrdChar);
 		
+		return pwrd;
 	}
 
 	@Override
 	public void hacerVisible() {
-		// TODO Auto-generated method stub
-		
+		setVisible(true);
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Ver c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-		
+		btnVerificar.addActionListener(c);
+
 	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		// TODO Auto-generated method stub
-		
+
+	}
+	
+	@Override
+	public void setControlador(ControladorContraseña_Modificar c) {
 	}
 
 	@Override
@@ -115,10 +128,6 @@ public class VentanaAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorModificar_Principal c) {
-    // TODO Auto-generated method stub
-		
-	}
-	public void setControlador(ControladorContraseña_Modificar c) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -134,5 +143,4 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
