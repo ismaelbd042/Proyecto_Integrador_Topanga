@@ -21,6 +21,7 @@ public class Ventana extends JFrame implements IVentana {
 	private JButton btnSubir;
 	private JButton btnVer;
 	private JButton btnBorrar;
+	private JLabel lblFondo;
 
 	public Ventana() {
 		super("Administrador de Proyectos");
@@ -31,6 +32,8 @@ public class Ventana extends JFrame implements IVentana {
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
+		
+		
 
 		lblLogo = new JLabel();
 		lblLogo.setIcon(new ImageIcon(Ventana.class.getResource("/img/logo1.png")));
@@ -63,6 +66,11 @@ public class Ventana extends JFrame implements IVentana {
 		btnBorrar.setBackground(new Color(0,58,102));
 		btnBorrar.setFocusable(false);
 		getContentPane().add(btnBorrar);
+		
+		lblFondo = new JLabel();
+        lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
+        lblFondo.setBounds(0, 0, 512, 384);
+        getContentPane().add(lblFondo);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
