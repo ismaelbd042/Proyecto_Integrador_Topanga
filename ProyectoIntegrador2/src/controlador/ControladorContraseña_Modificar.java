@@ -31,6 +31,7 @@ public class ControladorContraseña_Modificar implements ActionListener {
 		if (vc2.getPassword().equals("Profesor")) {
 			vc2.dispose();
 			v.dispose();
+			vm.hacerVisible();
 			vc2.incorrecto.setText("");
 			vc2.contraseña.setText(null);
 		} else {
