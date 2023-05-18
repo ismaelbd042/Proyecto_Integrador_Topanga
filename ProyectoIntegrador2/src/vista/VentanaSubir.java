@@ -11,6 +11,7 @@ import controlador.ControladorPrincipal_Modificar_Contra;
 import controlador.ControladorContraseña_Subir;
 import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
+import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
@@ -228,6 +229,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void setControlador(ControladorEditar_Modificar c) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void setControlador(ControladorSubir_BuscarAlumno c) {
+		colaboradores.addActionListener(c);
+		
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package main;
 
+import controlador.ControladorAlumno_BuscarAlumno;
+import controlador.ControladorBuscarAlumno_Alumno;
+import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorModificar_Editar;
@@ -9,7 +12,9 @@ import controlador.ControladorPrincipal_Modificar_Contra;
 import controlador.ControladorContraseña_Subir;
 import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
+import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
+import controlador.ControladorVer_Info;
 import controlador.ControladorVer_Principal;
 import vista.*;
 
@@ -28,8 +33,10 @@ public class Main {
 				VentanaContraseña2 vc2 = new VentanaContraseña2();
 				VentanaSubir vs = new VentanaSubir();
 				VentanaModificar vm = new VentanaModificar();
-//				VentanaInfo vi = new VentanaInfo();
+				VentanaInfo vi = new VentanaInfo();
 				VentanaEditar ve = new VentanaEditar();
+				VentanaAlumno va = new VentanaAlumno();
+				VentanaBuscarAlumno vba = new VentanaBuscarAlumno();
 
 				// Controladores Principal -> Algo
 				ControladorPrincipal_Ver controladorP_V = new ControladorPrincipal_Ver(v, vv);
@@ -46,6 +53,11 @@ public class Main {
 				ControladorSubir_Principal controladorS_P = new ControladorSubir_Principal(v, vs);
 				ControladorVer_Principal controladorV_P = new ControladorVer_Principal(v, vv);
 				ControladorModificar_Principal controladorM_P = new ControladorModificar_Principal(vm, v);
+				ControladorSubir_BuscarAlumno controladorS_BA = new ControladorSubir_BuscarAlumno(vs, vba);
+				ControladorBuscarAlumno_Subir controladorBA_S = new ControladorBuscarAlumno_Subir(vba, vs);
+				ControladorBuscarAlumno_Alumno controladorBA_A = new ControladorBuscarAlumno_Alumno(vba, va);
+				ControladorAlumno_BuscarAlumno controladorA_BA = new ControladorAlumno_BuscarAlumno(va, vba);
+				ControladorVer_Info controladorV_I = new ControladorVer_Info(vv, vi);
 
 
 
@@ -61,10 +73,16 @@ public class Main {
 				vc2.setControlador(controladorC_M);
 
 				vv.setControlador(controladorV_P);
+				vv.setControlador(controladorV_I);
 
 				vs.setControlador(controladorS_P);
+				vs.setControlador(controladorS_BA);
 				
 				ve.setControlador(controladorE_M);
+				
+				vba.setControlador(controladorBA_A);
+				vba.setControlador(controladorBA_S);
+				va.setControlador(controladorA_BA);
 
 			}
 		});

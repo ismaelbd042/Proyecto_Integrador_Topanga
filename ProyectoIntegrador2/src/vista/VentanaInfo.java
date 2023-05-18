@@ -12,26 +12,28 @@ import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import modelo.Alumnos;
 
 public class VentanaInfo extends JFrame implements IVentana {
 
-	JLabel lblNombre;
-	JLabel lblColaboradores;
-	JLabel lblUltimaModi;
-	JLabel lblAno;
-	JLabel lblCurso;
-	JLabel lblGrupo;
-	JLabel lblNota;
-	JLabel lblArea;
+	private JLabel lblColaboradores;
+	private JLabel lblUltimaModi;
+	private JLabel lblAno;
+	private JLabel lblCurso;
+	private JLabel lblGrupo;
+	private JLabel lblNota;
+	private JLabel lblArea;
+	private JLabel lblurl;
 
-	JLabel lblNombre2;
-	JLabel lblColaboradores2;
-	JLabel lblUltimaModi2;
-	JLabel lblAno2;
-	JLabel lblCurso2;
-	JLabel lblGrupo2;
-	JLabel lblNota2;
-	JLabel lblArea2;
+	private JLabel lblNombre2;
+	private JList<Alumnos> listColaboradores2;
+	private JLabel lblUltimaModi2;
+	private JLabel lblAno2;
+	private JLabel lblCurso2;
+	private JLabel lblGrupo2;
+	private JLabel lblNota2;
+	private JLabel lblArea2;
+	private JLabel lblurl2;
 
 	public VentanaInfo() {
 		super("Información Proyecto");
@@ -44,69 +46,82 @@ public class VentanaInfo extends JFrame implements IVentana {
 
 		getContentPane().setLayout(null);
 
-		lblNombre = new JLabel("Nombre :");
-		lblNombre.setBounds(30, 28, 104, 20);
-		getContentPane().add(lblNombre);
-
 		lblColaboradores = new JLabel("Colaboradores :");
-		lblColaboradores.setBounds(30, 59, 123, 20);
+		lblColaboradores.setBounds(55, 124, 123, 20);
 		getContentPane().add(lblColaboradores);
 
-		lblUltimaModi = new JLabel("Ultima Modificación :");
-		lblUltimaModi.setBounds(30, 90, 133, 20);
+		lblUltimaModi = new JLabel("Ultima modificación:");
+		lblUltimaModi.setBounds(55, 82, 123, 20);
 		getContentPane().add(lblUltimaModi);
 
-		lblAno = new JLabel("Año :");
-		lblAno.setBounds(30, 121, 133, 20);
+		lblAno = new JLabel("Año de entrega:");
+		lblAno.setBounds(55, 42, 104, 20);
 		getContentPane().add(lblAno);
 
-		lblCurso = new JLabel("Curso :");
-		lblCurso.setBounds(30, 152, 123, 20);
+		lblCurso = new JLabel("Curso:");
+		lblCurso.setBounds(279, 82, 52, 20);
 		getContentPane().add(lblCurso);
 
-		lblGrupo = new JLabel("Grupo :");
-		lblGrupo.setBounds(30, 183, 133, 20);
+		lblGrupo = new JLabel("Grupo:");
+		lblGrupo.setBounds(279, 124, 52, 20);
 		getContentPane().add(lblGrupo);
 
-		lblNota = new JLabel("Nota :");
-		lblNota.setBounds(30, 214, 104, 20);
+		lblNota = new JLabel("Nota:");
+		lblNota.setBounds(279, 42, 52, 20);
 		getContentPane().add(lblNota);
 
-		lblArea = new JLabel("Área :");
-		lblArea.setBounds(30, 245, 104, 20);
+		lblArea = new JLabel("Área:");
+		lblArea.setBounds(279, 168, 52, 20);
 		getContentPane().add(lblArea);
 
 		lblNombre2 = new JLabel("-- TOPANGA --");
-		lblNombre2.setBounds(163, 28, 230, 20);
+		lblNombre2.setBounds(10, 11, 230, 20);
 		getContentPane().add(lblNombre2);
-
-		lblColaboradores2 = new JLabel("-- Ismael Bodas, Álvaro Serrano, Lucca Mnafredotti --");
-		lblColaboradores2.setBounds(163, 59, 280, 20);
-		getContentPane().add(lblColaboradores2);
+		
+		listColaboradores2 = new JList<>();
+		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		//mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
+		//mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
+		//mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
+		//mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+		listColaboradores2.setModel(mod);
+		
+		JScrollPane barradesplazamientoAlu = new JScrollPane();
+		barradesplazamientoAlu.setBounds(55, 155, 181, 43);
+		getContentPane().add(barradesplazamientoAlu);
+		barradesplazamientoAlu.setViewportView(listColaboradores2);
 
 		lblUltimaModi2 = new JLabel("-- 08/05/2023 --");
-		lblUltimaModi2.setBounds(163, 90, 230, 20);
+		lblUltimaModi2.setBounds(163, 82, 105, 20);
 		getContentPane().add(lblUltimaModi2);
 
 		lblAno2 = new JLabel("-- 2023 --");
-		lblAno2.setBounds(163, 121, 230, 20);
+		lblAno2.setBounds(170, 42, 70, 20);
 		getContentPane().add(lblAno2);
 
 		lblCurso2 = new JLabel("-- 1º --");
-		lblCurso2.setBounds(163, 152, 230, 20);
+		lblCurso2.setBounds(341, 82, 52, 20);
 		getContentPane().add(lblCurso2);
 
 		lblGrupo2 = new JLabel("-- T1 --");
-		lblGrupo2.setBounds(163, 183, 230, 20);
+		lblGrupo2.setBounds(341, 124, 53, 20);
 		getContentPane().add(lblGrupo2);
 
 		lblNota2 = new JLabel("-- 10 --");
-		lblNota2.setBounds(163, 214, 230, 20);
+		lblNota2.setBounds(341, 42, 52, 20);
 		getContentPane().add(lblNota2);
 
-		lblArea2 = new JLabel("-- DAW, DESAROLLO DE APLICACIONES WEB --");
-		lblArea2.setBounds(163, 245, 230, 20);
+		lblArea2 = new JLabel("-- DAW --");
+		lblArea2.setBounds(341, 168, 70, 20);
 		getContentPane().add(lblArea2);
+		
+		lblurl = new JLabel("URL:");
+		lblurl.setBounds(55, 209, 52, 20);
+		getContentPane().add(lblurl);
+		
+		lblurl2 = new JLabel("https://github.com/ismaelbd042/Proyecto_Integrador_Topanga");
+		lblurl2.setBounds(90, 209, 363, 20);
+		getContentPane().add(lblurl2);
 
 		setSize(469, 315);
 		setLocationRelativeTo(null);
@@ -115,7 +130,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		setVisible(false);
+		setVisible(true);
 	}
 
 	@Override
