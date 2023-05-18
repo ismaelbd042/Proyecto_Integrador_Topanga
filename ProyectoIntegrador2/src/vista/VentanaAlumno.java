@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import controlador.ControladorAlumno_BuscarAlumno;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -138,6 +139,12 @@ public class VentanaAlumno extends JFrame implements IVentana {
 	
 	public void setControlador(ControladorAlumno_BuscarAlumno c) {
 		btnAñadir.addActionListener(c);
+		
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
+		// TODO Auto-generated method stub
 		
 	}
 

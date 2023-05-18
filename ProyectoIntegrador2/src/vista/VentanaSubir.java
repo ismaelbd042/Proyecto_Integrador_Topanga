@@ -5,6 +5,7 @@ import javax.swing.*;
 import conexionBBDD.AccesoBBDD;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -274,5 +275,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		} else {
 			JOptionPane.showMessageDialog(getContentPane(), "No se registró el producto", "Aviso", JOptionPane.WARNING_MESSAGE);
 		}
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
+		// TODO Auto-generated method stub
+		
 	}
 }

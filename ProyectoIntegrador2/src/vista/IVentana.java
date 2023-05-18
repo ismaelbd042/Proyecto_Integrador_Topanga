@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -36,6 +37,8 @@ public interface IVentana {
 	public void setControlador(ControladorEditar_Modificar c);
 	
 	public void setControlador(ControladorPrincipal_Subir_Contra c);
+
+	public void setControlador(ControladorInfo_Ver c);
 	
 //	public void setControlador(ControladorContraseña_Subir c);
 }
