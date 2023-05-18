@@ -13,6 +13,7 @@ import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import controlador.ListenerComboBoxAREAS;
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import modelo.Áreas;
@@ -155,6 +156,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(btnsubir);
 
 		JComboBox<Áreas> areas = new JComboBox();
+		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
+		areas.addItemListener(listenerCbAreas);
 		areas.setBounds(352, 191, 96, 21);
 //		comboBox.addItem(new Área ("DAW", "Manfredotti", "465484156B", 19));
 //		comboBox.addItem(new Área ("Mateo", "Manfredotti", "789987898Z", 16));
@@ -241,21 +244,29 @@ public class VentanaSubir extends JFrame implements IVentana {
 		String url = txturl.getText().toString();
 		int nota = Integer.parseInt(txtnota.getText().toString());
 		String grupo = txtgrupo.getText().toString();
+		String cursodato = null;
+		int componentes = 0;
+		Áreas cod_area = null;
+		int[][] alumnoRealiza = null;
 		
-//		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores();
+		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo, nota, cod_area, alumnoRealiza);
 //		proyectosintegradores.setNombre_proyecto(nombre_proyecto);
 //		proyectosintegradores.setAño(año);
 //		proyectosintegradores.setURL(url);
 //		proyectosintegradores.setNota(nota);
 //		proyectosintegradores.setGrupo(grupo);
-//		
-//		AccesoBBDD accesobbdd = new AccesoBBDD();
-//		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
-//		
-//		if (estado > 0) {
-//			JOptionPane.showMessageDialog(getContentPane(), "Producto Registrado");
-//		} else {
-//			JOptionPane.showMessageDialog(getContentPane(), "No se registró el producto", "Aviso", JOptionPane.WARNING_MESSAGE);
-//		}
+//		proyectosintegradores.setComponentes(componentes);
+//		proyectosintegradores.setCurso(cursodato);
+//		proyectosintegradores.setCod_area(cod_area);
+//		proyectosintegradores.setAlumnoRealizaProyecto(alumnoRealiza);
+		
+		AccesoBBDD accesobbdd = new AccesoBBDD();
+		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
+		
+		if (estado > 0) {
+			JOptionPane.showMessageDialog(getContentPane(), "Producto Registrado");
+		} else {
+			JOptionPane.showMessageDialog(getContentPane(), "No se registró el producto", "Aviso", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 }
