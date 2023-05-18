@@ -131,4 +131,10 @@ public class VentanaVer extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
+		// TODO Auto-generated method stub
+		
+	}
 }

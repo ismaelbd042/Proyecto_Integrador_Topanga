@@ -5,6 +5,7 @@ import controlador.ControladorBuscarAlumno_Alumno;
 import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import conexionBBDD.AccesoBBDD;
@@ -58,6 +59,9 @@ public class Main {
 				ControladorBuscarAlumno_Alumno controladorBA_A = new ControladorBuscarAlumno_Alumno(vba, va);
 				ControladorAlumno_BuscarAlumno controladorA_BA = new ControladorAlumno_BuscarAlumno(va, vba);
 				ControladorVer_Info controladorV_I = new ControladorVer_Info(vv, vi);
+				
+				
+				ControladorInfo_Ver controladorI_V = new ControladorInfo_Ver(vv,vi);
 
 
 
@@ -83,6 +87,8 @@ public class Main {
 				vba.setControlador(controladorBA_A);
 				vba.setControlador(controladorBA_S);
 				va.setControlador(controladorA_BA);
+				
+				vi.setControlador(controladorI_V);
 
 			}
 		});

@@ -1,9 +1,12 @@
 package vista;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -13,6 +16,7 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
+import java.awt.Font;
 
 public class VentanaInfo extends JFrame implements IVentana {
 
@@ -34,6 +38,8 @@ public class VentanaInfo extends JFrame implements IVentana {
 	private JLabel lblNota2;
 	private JLabel lblArea2;
 	private JLabel lblurl2;
+	
+	private JButton btnatras;
 
 	public VentanaInfo() {
 		super("Información Proyecto");
@@ -47,34 +53,42 @@ public class VentanaInfo extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		lblColaboradores = new JLabel("Colaboradores :");
-		lblColaboradores.setBounds(55, 124, 123, 20);
+		lblColaboradores.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblColaboradores.setBounds(39, 124, 123, 20);
 		getContentPane().add(lblColaboradores);
 
 		lblUltimaModi = new JLabel("Ultima modificación:");
-		lblUltimaModi.setBounds(55, 82, 123, 20);
+		lblUltimaModi.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblUltimaModi.setBounds(39, 82, 123, 20);
 		getContentPane().add(lblUltimaModi);
 
 		lblAno = new JLabel("Año de entrega:");
-		lblAno.setBounds(55, 42, 104, 20);
+		lblAno.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblAno.setBounds(39, 42, 104, 20);
 		getContentPane().add(lblAno);
 
 		lblCurso = new JLabel("Curso:");
-		lblCurso.setBounds(279, 82, 52, 20);
+		lblCurso.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCurso.setBounds(287, 82, 44, 20);
 		getContentPane().add(lblCurso);
 
 		lblGrupo = new JLabel("Grupo:");
-		lblGrupo.setBounds(279, 124, 52, 20);
+		lblGrupo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblGrupo.setBounds(287, 124, 52, 20);
 		getContentPane().add(lblGrupo);
 
 		lblNota = new JLabel("Nota:");
-		lblNota.setBounds(279, 42, 52, 20);
+		lblNota.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNota.setBounds(287, 42, 52, 20);
 		getContentPane().add(lblNota);
 
 		lblArea = new JLabel("Área:");
-		lblArea.setBounds(279, 168, 52, 20);
+		lblArea.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblArea.setBounds(287, 168, 52, 20);
 		getContentPane().add(lblArea);
 
 		lblNombre2 = new JLabel("-- TOPANGA --");
+		lblNombre2.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblNombre2.setBounds(10, 11, 230, 20);
 		getContentPane().add(lblNombre2);
 		
@@ -89,7 +103,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 		JScrollPane barradesplazamientoAlu = new JScrollPane();
 		barradesplazamientoAlu.setBounds(55, 155, 181, 43);
 		getContentPane().add(barradesplazamientoAlu);
-		barradesplazamientoAlu.setViewportView(listColaboradores2);
+		barradesplazamientoAlu.setRowHeaderView(listColaboradores2);
 
 		lblUltimaModi2 = new JLabel("-- 08/05/2023 --");
 		lblUltimaModi2.setBounds(163, 82, 105, 20);
@@ -100,28 +114,33 @@ public class VentanaInfo extends JFrame implements IVentana {
 		getContentPane().add(lblAno2);
 
 		lblCurso2 = new JLabel("-- 1º --");
-		lblCurso2.setBounds(341, 82, 52, 20);
+		lblCurso2.setBounds(350, 82, 44, 20);
 		getContentPane().add(lblCurso2);
 
 		lblGrupo2 = new JLabel("-- T1 --");
-		lblGrupo2.setBounds(341, 124, 53, 20);
+		lblGrupo2.setBounds(350, 124, 44, 20);
 		getContentPane().add(lblGrupo2);
 
 		lblNota2 = new JLabel("-- 10 --");
-		lblNota2.setBounds(341, 42, 52, 20);
+		lblNota2.setBounds(349, 42, 44, 20);
 		getContentPane().add(lblNota2);
 
 		lblArea2 = new JLabel("-- DAW --");
-		lblArea2.setBounds(341, 168, 70, 20);
+		lblArea2.setBounds(352, 168, 64, 20);
 		getContentPane().add(lblArea2);
 		
 		lblurl = new JLabel("URL:");
-		lblurl.setBounds(55, 209, 52, 20);
+		lblurl.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblurl.setBounds(39, 209, 52, 20);
 		getContentPane().add(lblurl);
 		
 		lblurl2 = new JLabel("https://github.com/ismaelbd042/Proyecto_Integrador_Topanga");
-		lblurl2.setBounds(90, 209, 363, 20);
+		lblurl2.setBounds(80, 209, 363, 20);
 		getContentPane().add(lblurl2);
+		
+		btnatras = new JButton("Volver Atras");
+		btnatras.setBounds(163, 240, 125, 25);
+		getContentPane().add(btnatras);
 
 		setSize(469, 315);
 		setLocationRelativeTo(null);
@@ -192,5 +211,13 @@ public class VentanaInfo extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
+		// TODO Auto-generated method stub
+		btnatras.addActionListener(c);
+		
+	}
+	
 
 }
