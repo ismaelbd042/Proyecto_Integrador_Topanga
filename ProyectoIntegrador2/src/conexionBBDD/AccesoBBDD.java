@@ -2,9 +2,11 @@ package conexionBBDD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import modelo.ProyectosIntegradores;
 
@@ -62,24 +64,42 @@ public class AccesoBBDD {
 		}
 	}
 	
-//	public int registrar(ProyectosIntegradores proyectos, AccesoBBDD accesoBBDD) {
-//		int rs = 0;
-//		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?)";
-//		
-//		try (java.sql.PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)){
-//			ps.setString(1, proyectos.getNombre_proyecto());
-//			ps.setInt(2, proyectos.getAño());
-//			ps.setString(3, proyectos.getURL());
-//			ps.setInt(4, proyectos.getNota());
-//			ps.setString(5, proyectos.getGrupo());
-//			
-//			
-//			rs = ps.executeUpdate();
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//		
-//		return rs;
-//	}
+	public int registrar(ProyectosIntegradores proyectos, AccesoBBDD accesoBBDD) {
+		int rs = 0;
+		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?,?,?,?,?)";
+		
+		try (PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)){
+			ps.setString(1, proyectos.getNombre_proyecto());
+			ps.setString(2, proyectos.getURL());
+			ps.setInt(3, proyectos.getComponentes());
+			ps.setInt(4, proyectos.getAño());
+			ps.setString(5, proyectos.getCurso());
+			ps.setString(6, proyectos.getGrupo());
+			ps.setInt(7, proyectos.getNota());
+			ps.setString(8, proyectos.getCod_area().getNombre_area());
+			//ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
+			
+			
+			
+			rs = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return rs;
+	}
+	
+	public void selccionarAreas() {
+		ArrayList <String> nombreAreas;
+		
+		try {
+			Statement statement = con.createStatement();
+			String query = "SELECT nombre_area FROM area";
+			ResultSet resultado = statement.executeQuery(query); 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 }
