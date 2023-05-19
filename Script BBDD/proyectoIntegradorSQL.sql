@@ -45,6 +45,9 @@ insert into area (nombre_area, descripcion) values ('DAW', 'Desarrollo de aplica
 insert into area (nombre_area, descripcion) values ('DAM', 'Desarrollo de aplicaciones multiplataforma');
 insert into area (nombre_area, descripcion) values ('ASIR', 'Administración de sistemas informáticos en red');
 
+insert into area (nombre_area, descripcion) values ('A3D', 'Animación 3D');
+insert into area (nombre_area, descripcion) values ('VDJ', 'Desarrollo de Videojuegos');
+
 insert into alumno (nombre_alumno, apellido_alumno, num_expediente) values ('Lucca', 'Manfredotti', '5643612');
 insert into alumno (nombre_alumno, apellido_alumno, num_expediente) values ('Álvaro', 'Serrano', '761533');
 insert into alumno (nombre_alumno, apellido_alumno, num_expediente) values ('Ismael', 'Bodas', '98641233');
