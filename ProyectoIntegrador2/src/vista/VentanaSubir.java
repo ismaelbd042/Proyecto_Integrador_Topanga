@@ -133,7 +133,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		ButtonGroup cursoGroup = new ButtonGroup();
 		rbtn1 = new JRadioButton("1º");
-		rbtn1.setBounds(352, 98, 58, 20);
+		rbtn1.setBounds(367, 98, 37, 20);
 		cursoGroup.add(rbtn1);
 		getContentPane().add(rbtn1);
 
