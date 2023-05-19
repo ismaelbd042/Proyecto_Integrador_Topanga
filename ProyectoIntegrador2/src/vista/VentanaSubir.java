@@ -5,12 +5,14 @@ import javax.swing.*;
 import conexionBBDD.AccesoBBDD;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
 import controlador.ControladorContraseña_Subir;
 import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
+import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import controlador.ListenerComboBoxAREAS;
@@ -231,6 +233,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void setControlador(ControladorSubir_BuscarAlumno c) {
+		colaboradores.addActionListener(c);
+		
+	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
@@ -278,5 +285,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
+		// TODO Auto-generated method stub
+		
 	}
 }

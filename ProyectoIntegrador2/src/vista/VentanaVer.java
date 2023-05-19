@@ -108,6 +108,11 @@ public class VentanaVer extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setControlador(ControladorVer_Info c) {
+		btninspeccionar.addActionListener(c);
+
+	}
 
 	@Override
 	public void setControlador(ControladorModificar_Principal c) {
@@ -123,6 +128,12 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		
 	}

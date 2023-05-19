@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -136,6 +137,12 @@ public class VentanaEditar extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		
 	}

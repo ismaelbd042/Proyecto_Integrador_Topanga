@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import controlador.ControladorAlumno_BuscarAlumno;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -73,7 +75,7 @@ public class VentanaAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		// TODO Auto-generated method stub
+		setVisible(true);
 		
 	}
 
@@ -131,6 +133,17 @@ public class VentanaAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void setControlador(ControladorAlumno_BuscarAlumno c) {
+		btnAñadir.addActionListener(c);
+		
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		
 	}

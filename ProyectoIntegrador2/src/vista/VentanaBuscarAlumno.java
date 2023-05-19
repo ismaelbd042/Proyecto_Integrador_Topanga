@@ -12,8 +12,11 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import controlador.ControladorBuscarAlumno_Alumno;
+import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
+import controlador.ControladorInfo_Ver;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -32,6 +35,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	private JButton btnAñadir;
 	private JList<Alumnos> listAlumnos;
 	private JButton btnLupa;
+	private JButton btnCancelar;
 
 	public VentanaBuscarAlumno() {
 		super("Buscar Alumno");
@@ -43,13 +47,13 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		getContentPane().setLayout(null);
 
 		btnAñadir = new JButton("Añadir alumno");
-		btnAñadir.setBounds(45, 266, 196, 50);
+		btnAñadir.setBounds(61, 251, 159, 30);
 		getContentPane().add(btnAñadir);
 
 		btnCrear = new JButton("Crear alumno");
 		// btnBuscar.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/logo1.png")));
-		btnCrear.setBounds(251, 266, 196, 50);
+		btnCrear.setBounds(277, 251, 159, 30);
 		getContentPane().add(btnCrear);
 
 		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
@@ -76,10 +80,13 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
-		
 		btnLupa.setBounds(230, 37, 37, 37);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(176, 297, 159, 30);
+		getContentPane().add(btnCancelar);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -88,7 +95,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
 	@Override
 	public void hacerVisible() {
-		// TODO Auto-generated method stub
+		setVisible(true);
 
 	}
 
@@ -145,9 +152,23 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setControlador(ControladorBuscarAlumno_Alumno c) {
+		btnCrear.addActionListener(c);
+	}
+	
+	public void setControlador(ControladorBuscarAlumno_Subir c) {
+		btnCancelar.addActionListener(c);
+	}
 
 	@Override
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		
 	}
