@@ -27,6 +27,12 @@ public class ListenerComboBoxAREAS implements ItemListener {
 			cod = 2;
 		} else if (nombreArea.equals("ASIR")) {
 			cod = 3;
+		} else if (nombreArea.equals("A3D")) {
+			cod = 4;
+		} else if (nombreArea.equals("VDJ")) {
+			cod = 5;
+		} else {
+			
 		}
 		return cod;
 	}
