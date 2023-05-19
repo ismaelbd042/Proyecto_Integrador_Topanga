@@ -21,6 +21,7 @@ import modelo.ProyectosIntegradores;
 import modelo.Áreas;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class VentanaSubir extends JFrame implements IVentana {
@@ -47,6 +48,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	private JButton btnatras;
 	private JButton btnsubir;
+	ArrayList<String> aux;
+	JComboBox<String> areas;
 
 	public VentanaSubir() {
 		super("Subir proyecto");
@@ -157,14 +160,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		btnsubir.setBounds(271, 285, 122, 36);
 		getContentPane().add(btnsubir);
 
-		JComboBox<Áreas> areas = new JComboBox();
+		areas = new JComboBox<String>();
 		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
 		areas.addItemListener(listenerCbAreas);
 		areas.setBounds(352, 191, 96, 21);
-//		comboBox.addItem(new Área ("DAW", "Manfredotti", "465484156B", 19));
-//		comboBox.addItem(new Área ("Mateo", "Manfredotti", "789987898Z", 16));
-//		comboBox.addItem(new Área("Aldo", "Manfredotti", "120654894Z", 64));
-//		comboBox.addItem(new Área ("Karina", "Garcia", "465489421Z", 53));
 		getContentPane().add(areas);
 
 		txturl = new JTextField();
@@ -245,7 +244,16 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 
 	}
+
+	public void rellenarAreas(ArrayList<String> a) {
+		aux = a;
+		for (int i = 0; i < aux.size(); i++) {
+			areas.addItem(aux.get(i));
+		}
+	}
+
 	public void subirProyecto() {
+		
 		String nombre_proyecto = nombre.getText().toString();
 		int año = Integer.parseInt(txtano.getText().toString());
 		String url = txturl.getText().toString();
@@ -253,10 +261,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		String grupo = txtgrupo.getText().toString();
 		String cursodato = null;
 		int componentes = 0;
-		Áreas cod_area = null;
+		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
 		int[][] alumnoRealiza = null;
-		
-		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo, nota, cod_area, alumnoRealiza);
+
+		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año,
+				cursodato, grupo, nota, cod_area, alumnoRealiza);
 //		proyectosintegradores.setNombre_proyecto(nombre_proyecto);
 //		proyectosintegradores.setAño(año);
 //		proyectosintegradores.setURL(url);
@@ -266,14 +275,15 @@ public class VentanaSubir extends JFrame implements IVentana {
 //		proyectosintegradores.setCurso(cursodato);
 //		proyectosintegradores.setCod_area(cod_area);
 //		proyectosintegradores.setAlumnoRealizaProyecto(alumnoRealiza);
-		
+
 		AccesoBBDD accesobbdd = new AccesoBBDD();
 		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
-		
+
 		if (estado > 0) {
-			JOptionPane.showMessageDialog(getContentPane(), "Producto Registrado");
+			JOptionPane.showMessageDialog(getContentPane(), "Proyecto subido");
 		} else {
-			JOptionPane.showMessageDialog(getContentPane(), "No se registró el producto", "Aviso", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
+					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
