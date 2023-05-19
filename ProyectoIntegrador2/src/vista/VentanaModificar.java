@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,7 +16,9 @@ import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import controlador.ListenerComboBoxAREAS;
 import modelo.ProyectosIntegradores;
+import modelo.Áreas;
 
 public class VentanaModificar extends JFrame implements IVentana {
 
@@ -25,6 +28,8 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	private JButton btnatras;
 	private JTextField textField;
+	ArrayList<String> aux;
+	JComboBox<String> areas;
 
 	public VentanaModificar() {
 		super("Administrar Proyectos");
@@ -52,9 +57,11 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnatras.setBounds(161, 229, 184, 29);
 		getContentPane().add(btnatras);
 
-		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
-		comboBox.setBounds(277, 28, 195, 52);
-		getContentPane().add(comboBox);
+		areas = new JComboBox<>();
+		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
+		areas.addItemListener(listenerCbAreas);
+		areas.setBounds(277, 28, 195, 52);
+		getContentPane().add(areas);
 
 		textField = new JTextField();
 		textField.setBounds(25, 32, 195, 45);
@@ -86,5 +93,11 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnatras.addActionListener(c);
 
 	}
-
+  
+	public void rellenarAreas(ArrayList<String> a) {
+		aux = a;
+		for (int i = 0; i < aux.size(); i++) {
+			areas.addItem(aux.get(i));
+		}
+	}
 }
