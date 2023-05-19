@@ -33,10 +33,8 @@ public class ControladorContraseña_Subir implements ActionListener {
 			vs.getTxtgrupo().setText(null);
 			vs.getTxturl().setText(null);;
 			vs.getNombre().setText(null);
-//			vs.getColaboradores().setTe
+			vs.getRbtn1().setSelected(true);
 			vs.getListaAlu().clearSelection();
-			vs.getRbtn1().setSelected(false);
-			vs.getRbtn2().setSelected(false);
 			vs.getAreas().removeAllItems();
 			
 			vs.rellenarAreas(AccesoBBDD.conseguirAreas());

@@ -36,22 +36,22 @@ public class AccesoBBDD {
 		return con;
 	}
 
-	public static void prueba() {
-
-		try {
-			Statement statement = con.createStatement();
-			// Creamos la query
-			String query = "select * from alumno";
-			// Guardamos en un Resultset la ejecución de la query anterior
-			ResultSet resultado = statement.executeQuery(query);
-			while (resultado.next()) {
-				System.out.println(resultado.getString("nombre_alumno"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void prueba() {
+//
+//		try {
+//			Statement statement = con.createStatement();
+//			// Creamos la query
+//			String query = "select * from alumno";
+//			// Guardamos en un Resultset la ejecución de la query anterior
+//			ResultSet resultado = statement.executeQuery(query);
+//			while (resultado.next()) {
+//				System.out.println(resultado.getString("nombre_alumno"));
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * 
@@ -108,7 +108,22 @@ public class AccesoBBDD {
 		}
 		return nombreAreas;
 	}
-	
-//	public ArrayList<String> a;
 
+	public ProyectosIntegradores conseguirInfo(String nombre) {
+		ProyectosIntegradores datosProyecto = new ProyectosIntegradores("", "", 0, 0, "", "", 0, 0, null);
+
+		try {
+			Statement statement = con.createStatement();
+			String query = "select * from proyectos where nombre_proyecto = '" + nombre + "'";
+			ResultSet resultado = statement.executeQuery(query);
+			while (resultado.next()) {
+				System.out.println(resultado.getString("nombre_alumno"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return datosProyecto;
+
+	}
 }
