@@ -22,7 +22,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 	private JButton btnEditar;
 	private JButton btnBorrar;
 	private JButton btnLupa;
-	
+
 	private JButton btnatras;
 	private JTextField textField;
 
@@ -45,7 +45,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
 		btnBorrar.setBounds(288, 181, 184, 29);
 		getContentPane().add(btnBorrar);
-		
+
 		btnatras = new JButton("Volver Atras");
 		// lblLogo.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/carpeta.png")));
@@ -60,7 +60,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		textField.setBounds(25, 32, 195, 45);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
 		btnLupa.setBounds(230, 37, 37, 37);
@@ -77,68 +77,14 @@ public class VentanaModificar extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
-	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
-
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
 
 	}
-	
-	@Override
+
 	public void setControlador(ControladorModificar_Principal c) {
 		btnatras.addActionListener(c);
 
 	}
 
-	@Override
-	public void setControlador(ControladorSubir_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-		
-  }
-
-	@Override
-	public void setControlador(ControladorContraseña_Modificar c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Subir_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorInfo_Ver c) {
-		// TODO Auto-generated method stub
-		
-	}
 }

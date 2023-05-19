@@ -47,13 +47,13 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		contraseña = new JPasswordField();
 		contraseña.setBounds(33, 66, 162, 20);
 		getContentPane().add(contraseña);
-		
+
 		incorrecto = new JLabel();
 		incorrecto.setBounds(39, 143, 168, 20);
 		getContentPane().add(incorrecto);
 
 		seVe = false;
-		echoChar = contraseña.getEchoChar();    
+		echoChar = contraseña.getEchoChar();
 		JButton verContraseña = new JButton();
 		verContraseña.addActionListener(new ActionListener() {
 
@@ -78,11 +78,11 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		setLocationRelativeTo(null);
 
 	}
-	
+
 	public String getPassword() {
 		char[] PwrdChar = contraseña.getPassword();
 		String pwrd = new String(PwrdChar);
-		
+
 		return pwrd;
 	}
 
@@ -91,68 +91,8 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
-	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Editar c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	@Override
 	public void setControlador(ControladorContraseña_Modificar c) {
 		btnVerificar.addActionListener(c);
 	}
 
-	@Override
-	public void setControlador(ControladorSubir_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Subir_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorInfo_Ver c) {
-		// TODO Auto-generated method stub
-		
-	}
 }

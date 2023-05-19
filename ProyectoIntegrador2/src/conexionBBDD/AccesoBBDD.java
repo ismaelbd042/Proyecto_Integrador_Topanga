@@ -89,7 +89,7 @@ public class AccesoBBDD {
 		return rs;
 	}
 
-	public static ArrayList<String> seleccionarAreas() {
+	public static ArrayList<String> conseguirAreas() {
 		getConexion();
 		ArrayList<String> nombreAreas = new ArrayList<>();
 
@@ -108,5 +108,7 @@ public class AccesoBBDD {
 		}
 		return nombreAreas;
 	}
+	
+	public ArrayList<String> a;
 
 }
