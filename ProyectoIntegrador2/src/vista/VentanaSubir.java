@@ -16,6 +16,7 @@ import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import controlador.ListenerComboBoxAREAS;
+import controlador.ListenerRadioButtonCurso;
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import modelo.Áreas;
@@ -50,6 +51,9 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JButton btnsubir;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
+	ProyectosIntegradores proyectosintegradores;
+	ListenerRadioButtonCurso listenerRbtn;
+	ListenerComboBoxAREAS listenerCbAreas;
 
 	public VentanaSubir() {
 		super("Subir proyecto");
@@ -127,16 +131,20 @@ public class VentanaSubir extends JFrame implements IVentana {
 		txtnota.setBounds(352, 51, 96, 19);
 		getContentPane().add(txtnota);
 
-		ButtonGroup curso = new ButtonGroup();
+		ButtonGroup cursoGroup = new ButtonGroup();
 		rbtn1 = new JRadioButton("1º");
 		rbtn1.setBounds(352, 98, 58, 20);
-		curso.add(rbtn1);
+		cursoGroup.add(rbtn1);
 		getContentPane().add(rbtn1);
 
 		rbtn2 = new JRadioButton("2º");
 		rbtn2.setBounds(412, 98, 55, 20);
-		curso.add(rbtn2);
+		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
+
+		listenerRbtn = new ListenerRadioButtonCurso(rbtn1, rbtn2);
+		rbtn1.addItemListener(listenerRbtn);
+		rbtn2.addItemListener(listenerRbtn);
 
 		txtgrupo = new JTextField();
 		txtgrupo.setColumns(10);
@@ -154,6 +162,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		btnsubir = new JButton("Subir proyecto");
 		btnsubir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				subirProyecto();
 			}
 		});
@@ -161,7 +170,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(btnsubir);
 
 		areas = new JComboBox<String>();
-		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
+		listenerCbAreas = new ListenerComboBoxAREAS();
 		areas.addItemListener(listenerCbAreas);
 		areas.setBounds(352, 191, 96, 21);
 		getContentPane().add(areas);
@@ -180,68 +189,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
-	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void setControlador(ControladorSubir_Principal c) {
 		btnatras.addActionListener(c);
 
 	}
 
-	@Override
-	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Editar c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Principal c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Modificar c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public void setControlador(ControladorSubir_BuscarAlumno c) {
 		colaboradores.addActionListener(c);
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Subir_Contra c) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -253,43 +207,214 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 
 	public void subirProyecto() {
-		
+
+		String cursodato = listenerRbtn.getCurso();
+		System.out.println(cursodato);
 		String nombre_proyecto = nombre.getText().toString();
 		int año = Integer.parseInt(txtano.getText().toString());
 		String url = txturl.getText().toString();
 		int nota = Integer.parseInt(txtnota.getText().toString());
 		String grupo = txtgrupo.getText().toString();
-		String cursodato = null;
 		int componentes = 0;
 		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
 		int[][] alumnoRealiza = null;
 
-		ProyectosIntegradores proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año,
-				cursodato, grupo, nota, cod_area, alumnoRealiza);
-//		proyectosintegradores.setNombre_proyecto(nombre_proyecto);
-//		proyectosintegradores.setAño(año);
-//		proyectosintegradores.setURL(url);
-//		proyectosintegradores.setNota(nota);
-//		proyectosintegradores.setGrupo(grupo);
-//		proyectosintegradores.setComponentes(componentes);
-//		proyectosintegradores.setCurso(cursodato);
-//		proyectosintegradores.setCod_area(cod_area);
-//		proyectosintegradores.setAlumnoRealizaProyecto(alumnoRealiza);
+		proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo,
+				nota, cod_area, alumnoRealiza);
 
-		AccesoBBDD accesobbdd = new AccesoBBDD();
-		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
-
-		if (estado > 0) {
-			JOptionPane.showMessageDialog(getContentPane(), "Proyecto subido");
-		} else {
-			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
-					JOptionPane.WARNING_MESSAGE);
-		}
+//		AccesoBBDD accesobbdd = new AccesoBBDD();
+//		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
+//
+//		if (estado > 0) {
+//			JOptionPane.showMessageDialog(getContentPane(), "Proyecto subido");
+//		} else {
+//			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
+//					JOptionPane.WARNING_MESSAGE);
+//		}
 	}
 
-	@Override
-	public void setControlador(ControladorInfo_Ver c) {
-		// TODO Auto-generated method stub
-		
+	public JTextField getNombre() {
+		return nombre;
 	}
+
+	public void setNombre(JTextField nombre) {
+		this.nombre = nombre;
+	}
+
+	public JButton getColaboradores() {
+		return colaboradores;
+	}
+
+	public void setColaboradores(JButton colaboradores) {
+		this.colaboradores = colaboradores;
+	}
+
+	public JTextField getTxtano() {
+		return txtano;
+	}
+
+	public void setTxtano(JTextField txtano) {
+		this.txtano = txtano;
+	}
+
+	public JTextField getTxtnota() {
+		return txtnota;
+	}
+
+	public void setTxtnota(JTextField txtnota) {
+		this.txtnota = txtnota;
+	}
+
+	public JRadioButton getRbtn1() {
+		return rbtn1;
+	}
+
+	public void setRbtn1(JRadioButton rbtn1) {
+		this.rbtn1 = rbtn1;
+	}
+
+	public JRadioButton getRbtn2() {
+		return rbtn2;
+	}
+
+	public void setRbtn2(JRadioButton rbtn2) {
+		this.rbtn2 = rbtn2;
+	}
+
+	public JTextField getTxtgrupo() {
+		return txtgrupo;
+	}
+
+	public void setTxtgrupo(JTextField txtgrupo) {
+		this.txtgrupo = txtgrupo;
+	}
+
+	public JTextField getTxturl() {
+		return txturl;
+	}
+
+	public void setTxturl(JTextField txturl) {
+		this.txturl = txturl;
+	}
+
+	public JList<Alumnos> getListaAlu() {
+		return listaAlu;
+	}
+
+	public void setListaAlu(JList<Alumnos> listaAlu) {
+		this.listaAlu = listaAlu;
+	}
+
+	public JLabel getLblarea() {
+		return lblarea;
+	}
+
+	public void setLblarea(JLabel lblarea) {
+		this.lblarea = lblarea;
+	}
+
+	public JLabel getLblnota() {
+		return lblnota;
+	}
+
+	public void setLblnota(JLabel lblnota) {
+		this.lblnota = lblnota;
+	}
+
+	public JLabel getLblano() {
+		return lblano;
+	}
+
+	public void setLblano(JLabel lblano) {
+		this.lblano = lblano;
+	}
+
+	public JLabel getLblcurso() {
+		return lblcurso;
+	}
+
+	public void setLblcurso(JLabel lblcurso) {
+		this.lblcurso = lblcurso;
+	}
+
+	public JLabel getLblgrupo() {
+		return lblgrupo;
+	}
+
+	public void setLblgrupo(JLabel lblgrupo) {
+		this.lblgrupo = lblgrupo;
+	}
+
+	public JLabel getLblurl() {
+		return lblurl;
+	}
+
+	public void setLblurl(JLabel lblurl) {
+		this.lblurl = lblurl;
+	}
+
+	public JLabel getLblintroducir() {
+		return lblintroducir;
+	}
+
+	public void setLblintroducir(JLabel lblintroducir) {
+		this.lblintroducir = lblintroducir;
+	}
+
+	public JLabel getLblnombreGrupo() {
+		return lblnombreGrupo;
+	}
+
+	public void setLblnombreGrupo(JLabel lblnombreGrupo) {
+		this.lblnombreGrupo = lblnombreGrupo;
+	}
+
+	public JLabel getLblcolaboradores() {
+		return lblcolaboradores;
+	}
+
+	public void setLblcolaboradores(JLabel lblcolaboradores) {
+		this.lblcolaboradores = lblcolaboradores;
+	}
+
+	public JButton getBtnatras() {
+		return btnatras;
+	}
+
+	public void setBtnatras(JButton btnatras) {
+		this.btnatras = btnatras;
+	}
+
+	public JButton getBtnsubir() {
+		return btnsubir;
+	}
+
+	public void setBtnsubir(JButton btnsubir) {
+		this.btnsubir = btnsubir;
+	}
+
+	public ArrayList<String> getAux() {
+		return aux;
+	}
+
+	public void setAux(ArrayList<String> aux) {
+		this.aux = aux;
+	}
+
+	public JComboBox<String> getAreas() {
+		return areas;
+	}
+
+	public void setAreas(JComboBox<String> areas) {
+		this.areas = areas;
+	}
+
+	public ProyectosIntegradores getProyectosintegradores() {
+		return proyectosintegradores;
+	}
+
+	public void setProyectosintegradores(ProyectosIntegradores proyectosintegradores) {
+		this.proyectosintegradores = proyectosintegradores;
+	}
+
 }

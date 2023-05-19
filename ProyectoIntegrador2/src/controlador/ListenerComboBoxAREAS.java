@@ -8,12 +8,13 @@ import javax.swing.JComboBox;
 import modelo.Áreas;
 
 public class ListenerComboBoxAREAS implements ItemListener {
+	JComboBox<Áreas> areas;
 	static String nombreArea;
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
-		JComboBox<Áreas> areas = (JComboBox<Áreas>) e.getSource();
+		areas = (JComboBox<Áreas>) e.getSource();
 
 		nombreArea = (String) areas.getSelectedItem();
 
