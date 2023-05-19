@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -25,8 +26,10 @@ import controlador.ControladorPrincipal_Subir_Contra;
 import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
+import controlador.ListenerComboBoxAREAS;
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
+import modelo.Áreas;
 
 public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
@@ -55,10 +58,6 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		// ImageIcon(Ventana.class.getResource("/img/logo1.png")));
 		btnCrear.setBounds(277, 251, 159, 30);
 		getContentPane().add(btnCrear);
-
-		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
-		comboBox.setBounds(277, 28, 195, 52);
-		getContentPane().add(comboBox);
 
 		txtBuscador = new JTextField();
 		txtBuscador.setBounds(25, 32, 195, 45);
@@ -172,6 +171,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 
 }

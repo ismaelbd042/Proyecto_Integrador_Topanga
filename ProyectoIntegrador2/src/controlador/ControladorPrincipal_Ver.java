@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import conexionBBDD.AccesoBBDD;
 import vista.*;
 
 public class ControladorPrincipal_Ver implements ActionListener {
@@ -23,6 +24,7 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
+		vv.rellenarAreas(AccesoBBDD.seleccionarAreas());
 		vv.hacerVisible();
 
 	}

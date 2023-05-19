@@ -2,6 +2,9 @@ package vista;
 
 import controlador.*;
 import modelo.ProyectosIntegradores;
+
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class VentanaVer extends JFrame implements IVentana {
@@ -10,6 +13,8 @@ public class VentanaVer extends JFrame implements IVentana {
 	private JButton btnatras;
 	private JList<ProyectosIntegradores> proyectos;
 	private JButton btnLupa;
+	ArrayList<String> aux;
+	JComboBox<String> areas;
 
 	public VentanaVer() {
 		super("Ver proyectos");
@@ -28,9 +33,11 @@ public class VentanaVer extends JFrame implements IVentana {
 		btnatras.setBounds(25, 239, 195, 45);
 		getContentPane().add(btnatras);
 
-		JComboBox<ProyectosIntegradores> comboBox = new JComboBox();
-		comboBox.setBounds(277, 28, 195, 52);
-		getContentPane().add(comboBox);
+		areas = new JComboBox();
+		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
+		areas.addItemListener(listenerCbAreas);
+		areas.setBounds(277, 28, 195, 52);
+		getContentPane().add(areas);
 
 		textField = new JTextField();
 		textField.setBounds(25, 32, 195, 45);
@@ -136,5 +143,12 @@ public class VentanaVer extends JFrame implements IVentana {
 	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void rellenarAreas(ArrayList<String> a) {
+		aux = a;
+		for (int i = 0; i < aux.size(); i++) {
+			areas.addItem(aux.get(i));
+		}
 	}
 }
