@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import conexionBBDD.AccesoBBDD;
 import vista.Ventana;
 import vista.VentanaContraseña1;
 import vista.VentanaContraseña2;
@@ -31,6 +32,7 @@ public class ControladorContraseña_Modificar implements ActionListener {
 		if (vc2.getPassword().equals("Profesor")) {
 			vc2.dispose();
 			v.dispose();
+			vm.rellenarAreas(AccesoBBDD.seleccionarAreas());
 			vm.hacerVisible();
 			vc2.incorrecto.setText("");
 			vc2.contraseña.setText(null);
