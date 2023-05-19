@@ -9,11 +9,11 @@ public class ProyectosIntegradores {
 	private String curso;
 	private String grupo;
 	private int nota;
-	private Áreas cod_area;
+	private int cod_area;
 	private int[][] alumnoRealizaProyecto;
 	
 	public ProyectosIntegradores(String nombre_proyecto, String URL, int componentes, int año, String curso,
-			String grupo, int nota, Áreas cod_area, int[][] alumnoRealizaProyecto) {
+			String grupo, int nota, int cod_area, int[][] alumnoRealizaProyecto) {
 		this.nombre_proyecto = nombre_proyecto;
 		this.URL = URL;
 		this.componentes = componentes;
@@ -81,11 +81,11 @@ public class ProyectosIntegradores {
 		this.nota = nota;
 	}
 
-	public Áreas getCod_area() {
+	public int getCod_area() {
 		return cod_area;
 	}
 
-	public void setCod_area(Áreas cod_area) {
+	public void setCod_area(int cod_area) {
 		this.cod_area = cod_area;
 	}
 

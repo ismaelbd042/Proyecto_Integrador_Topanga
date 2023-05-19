@@ -7,22 +7,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import modelo.ProyectosIntegradores;
 
 public class AccesoBBDD {
-	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost/proyectointegrador";
-	private String usuario = "root";
-	private String pwd = "rootroot";
-	private Connection con = null;
+	static String driver = "com.mysql.cj.jdbc.Driver";
+	static String url = "jdbc:mysql://localhost/proyectointegrador";
+	static String usuario = "root";
+	static String pwd = "rootroot";
+	private static Connection con = null;
 
 	/**
 	 * Método getConexion() que se encarga de crear la conexión con la base de datos
 	 * 
 	 * @return objeto de tipo Connection
 	 */
-	public Connection getConexion() {
+	public static Connection getConexion() {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, usuario, pwd);
@@ -35,8 +36,8 @@ public class AccesoBBDD {
 		return con;
 	}
 
-	public void prueba() {
-		
+	public static void prueba() {
+
 		try {
 			Statement statement = con.createStatement();
 			// Creamos la query
@@ -55,7 +56,7 @@ public class AccesoBBDD {
 	/**
 	 * 
 	 */
-	public void cerrarConexion() {
+	public static void cerrarConexion() {
 		try {
 			con.close();
 		} catch (SQLException e) {
@@ -63,12 +64,12 @@ public class AccesoBBDD {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int registrar(ProyectosIntegradores proyectos, AccesoBBDD accesoBBDD) {
 		int rs = 0;
 		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?,?,?,?,?)";
-		
-		try (PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)){
+
+		try (PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)) {
 			ps.setString(1, proyectos.getNombre_proyecto());
 			ps.setString(2, proyectos.getURL());
 			ps.setInt(3, proyectos.getComponentes());
@@ -76,30 +77,36 @@ public class AccesoBBDD {
 			ps.setString(5, proyectos.getCurso());
 			ps.setString(6, proyectos.getGrupo());
 			ps.setInt(7, proyectos.getNota());
-			ps.setString(8, proyectos.getCod_area().getNombre_area());
-			//ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
-			
-			
-			
+			ps.setInt(8, proyectos.getCod_area());
+			// ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
+
 			rs = ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return rs;
 	}
-	
-	public void selccionarAreas() {
-		ArrayList <String> nombreAreas;
-		
+
+	public static ArrayList<String> seleccionarAreas() {
+		getConexion();
+		ArrayList<String> nombreAreas = new ArrayList<>();
+
 		try {
 			Statement statement = con.createStatement();
 			String query = "SELECT nombre_area FROM area";
-			ResultSet resultado = statement.executeQuery(query); 
+			ResultSet resultado = statement.executeQuery(query);
+
+			while (resultado.next()) {
+				nombreAreas.add(resultado.getString(1));
+			}
+			cerrarConexion();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
+		return nombreAreas;
 	}
-	
+
 }
