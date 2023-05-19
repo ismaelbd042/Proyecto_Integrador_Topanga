@@ -42,7 +42,8 @@ public class Main {
 				// Controladores Principal -> Algo
 				ControladorPrincipal_Ver controladorP_V = new ControladorPrincipal_Ver(v, vv);
 				ControladorPrincipal_Subir_Contra controladorP_S_C = new ControladorPrincipal_Subir_Contra(v, vc1);
-				ControladorPrincipal_Modificar_Contra controladorP_M = new ControladorPrincipal_Modificar_Contra(v, vc2);
+				ControladorPrincipal_Modificar_Contra controladorP_M = new ControladorPrincipal_Modificar_Contra(v,
+						vc2);
 
 				// Controladores Contraseña -> Algo
 				ControladorContraseña_Subir controladorC_S = new ControladorContraseña_Subir(vc1, vs, v);
@@ -50,7 +51,7 @@ public class Main {
 
 				ControladorModificar_Editar controladorM_E = new ControladorModificar_Editar(vm, ve);
 				ControladorEditar_Modificar controladorE_M = new ControladorEditar_Modificar(vm, ve);
-				
+
 				ControladorSubir_Principal controladorS_P = new ControladorSubir_Principal(v, vs);
 				ControladorVer_Principal controladorV_P = new ControladorVer_Principal(v, vv);
 				ControladorModificar_Principal controladorM_P = new ControladorModificar_Principal(vm, v);
@@ -63,16 +64,14 @@ public class Main {
 				
 				ControladorInfo_Ver controladorI_V = new ControladorInfo_Ver(vv,vi);
 
-
-
 				v.setControlador(controladorP_V);
 				v.setControlador(controladorP_S_C);
 				v.setControlador(controladorP_M);
 				v.hacerVisible();
-				
+
 				vm.setControlador(controladorM_E);
-				vm.setControlador(controladorM_P);		
-				
+				vm.setControlador(controladorM_P);
+
 				vc1.setControlador(controladorC_S);
 				vc2.setControlador(controladorC_M);
 
@@ -93,8 +92,8 @@ public class Main {
 			}
 		});
 //		Prueba para imprimir los nombres de los alumnos
-//		prueba.getConexion();
-//		prueba.prueba();
+//		AccesoBBDD.getConexion();
+//		AccesoBBDD.prueba();
 	}
 
 }
