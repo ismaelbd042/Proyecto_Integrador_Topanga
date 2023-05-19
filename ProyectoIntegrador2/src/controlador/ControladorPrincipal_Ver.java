@@ -24,7 +24,7 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
-		vv.rellenarAreas(AccesoBBDD.seleccionarAreas());
+		vv.rellenarAreas(AccesoBBDD.conseguirAreas());
 		vv.hacerVisible();
 
 	}

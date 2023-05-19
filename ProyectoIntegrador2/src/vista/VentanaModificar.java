@@ -101,4 +101,3 @@ public class VentanaModificar extends JFrame implements IVentana {
 		}
 	}
 }
-}
