@@ -2,25 +2,12 @@ package vista;
 
 import javax.swing.*;
 
-import conexionBBDD.AccesoBBDD;
-import controlador.ControladorContraseña_Modificar;
-import controlador.ControladorEditar_Modificar;
-import controlador.ControladorInfo_Ver;
-import controlador.ControladorModificar_Editar;
-import controlador.ControladorModificar_Principal;
-import controlador.ControladorPrincipal_Modificar_Contra;
-import controlador.ControladorContraseña_Subir;
-import controlador.ControladorPrincipal_Subir_Contra;
-import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
-import controlador.ControladorVer_Principal;
 import controlador.ListenerComboBoxAREAS;
 import controlador.ListenerRadioButtonCurso;
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
-import modelo.Áreas;
-
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -51,7 +38,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JButton btnsubir;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
-	ProyectosIntegradores proyectosintegradores;
+	ProyectosIntegradores proyectointegrador;
 	ListenerRadioButtonCurso listenerRbtn;
 	ListenerComboBoxAREAS listenerCbAreas;
 
@@ -210,17 +197,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		String cursodato = listenerRbtn.getCurso();
 		System.out.println(cursodato);
+		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
+		System.out.println(cod_area);
 		String nombre_proyecto = nombre.getText().toString();
 		int año = Integer.parseInt(txtano.getText().toString());
 		String url = txturl.getText().toString();
 		int nota = Integer.parseInt(txtnota.getText().toString());
 		String grupo = txtgrupo.getText().toString();
 		int componentes = 0;
-		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
 		int[][] alumnoRealiza = null;
 
-		proyectosintegradores = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo,
-				nota, cod_area, alumnoRealiza);
+		proyectointegrador = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo, nota,
+				cod_area, alumnoRealiza);
 
 //		AccesoBBDD accesobbdd = new AccesoBBDD();
 //		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
@@ -410,11 +398,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 
 	public ProyectosIntegradores getProyectosintegradores() {
-		return proyectosintegradores;
+		return proyectointegrador;
 	}
 
 	public void setProyectosintegradores(ProyectosIntegradores proyectosintegradores) {
-		this.proyectosintegradores = proyectosintegradores;
+		this.proyectointegrador = proyectosintegradores;
 	}
 
 }
