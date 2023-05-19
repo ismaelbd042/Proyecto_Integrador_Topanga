@@ -8,12 +8,13 @@ import javax.swing.JComboBox;
 import modelo.Áreas;
 
 public class ListenerComboBoxAREAS implements ItemListener {
+	JComboBox<Áreas> areas;
 	static String nombreArea;
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
-		JComboBox<Áreas> areas = (JComboBox<Áreas>) e.getSource();
+		areas = (JComboBox<Áreas>) e.getSource();
 
 		nombreArea = (String) areas.getSelectedItem();
 
@@ -27,6 +28,12 @@ public class ListenerComboBoxAREAS implements ItemListener {
 			cod = 2;
 		} else if (nombreArea.equals("ASIR")) {
 			cod = 3;
+		} else if (nombreArea.equals("A3D")) {
+			cod = 4;
+		} else if (nombreArea.equals("VDJ")) {
+			cod = 5;
+		} else {
+			
 		}
 		return cod;
 	}

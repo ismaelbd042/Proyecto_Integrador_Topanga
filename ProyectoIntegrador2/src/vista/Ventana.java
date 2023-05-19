@@ -51,7 +51,7 @@ public class Ventana extends JFrame implements IVentana {
 		btnSubir.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
 		btnSubir.setBorderPainted(false);
 		btnSubir.setForeground(new Color(255, 255, 255));
-		btnSubir.setBackground(new Color(59,79,123));
+		btnSubir.setBackground(new Color(59, 79, 123));
 		btnSubir.setFocusable(false);
 		getContentPane().add(btnSubir);
 
@@ -69,7 +69,7 @@ public class Ventana extends JFrame implements IVentana {
 		btnBorrar.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
 		btnBorrar.setBorderPainted(false);
 		btnBorrar.setForeground(new Color(255, 255, 255));
-		btnBorrar.setBackground(new Color(0,58,102));
+		btnBorrar.setBackground(new Color(0, 58, 102));
 		btnBorrar.setFocusable(false);
 		getContentPane().add(btnBorrar);
 
@@ -78,11 +78,11 @@ public class Ventana extends JFrame implements IVentana {
 		lblCopy.setFont(new Font("Calibri", Font.BOLD, 13));
 		lblCopy.setBounds(103, 297, 340, 23);
 		getContentPane().add(lblCopy);
-		
+
 		lblFondo = new JLabel();
-        lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
-        lblFondo.setBounds(0, 0, 496, 345);
-        getContentPane().add(lblFondo);
+		lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
+		lblFondo.setBounds(0, 0, 496, 345);
+		getContentPane().add(lblFondo);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -93,60 +93,19 @@ public class Ventana extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
-	@Override
 	public void setControlador(ControladorPrincipal_Ver c) {
 		btnVer.addActionListener(c);
 	}
 
 	public void setControlador(ControladorContraseña_Subir c) {
 	}
-	
+
 	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		btnBorrar.addActionListener(c);
 	}
-	
+
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
 		btnSubir.addActionListener(c);
 	}
-	
-	public void setControlador(ControladorModificar_Editar c) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void setControlador(ControladorSubir_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Principal c) {
-  		// TODO Auto-generated method stub
-
-  }
-  
-	@Override
-  public void setControlador(ControladorContraseña_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorInfo_Ver c) {
-		// TODO Auto-generated method stub
-		
-	}
 }

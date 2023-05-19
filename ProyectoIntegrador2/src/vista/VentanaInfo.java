@@ -38,7 +38,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 	private JLabel lblNota2;
 	private JLabel lblArea2;
 	private JLabel lblurl2;
-	
+
 	private JButton btnatras;
 
 	public VentanaInfo() {
@@ -91,15 +91,15 @@ public class VentanaInfo extends JFrame implements IVentana {
 		lblNombre2.setFont(new Font("Times New Roman", Font.BOLD, 11));
 		lblNombre2.setBounds(10, 11, 230, 20);
 		getContentPane().add(lblNombre2);
-		
+
 		listColaboradores2 = new JList<>();
 		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
-		//mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
-		//mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
-		//mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
-		//mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
+		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
+		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
+		// mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
 		listColaboradores2.setModel(mod);
-		
+
 		JScrollPane barradesplazamientoAlu = new JScrollPane();
 		barradesplazamientoAlu.setBounds(55, 155, 181, 43);
 		getContentPane().add(barradesplazamientoAlu);
@@ -128,16 +128,16 @@ public class VentanaInfo extends JFrame implements IVentana {
 		lblArea2 = new JLabel("-- DAW --");
 		lblArea2.setBounds(352, 168, 64, 20);
 		getContentPane().add(lblArea2);
-		
+
 		lblurl = new JLabel("URL:");
 		lblurl.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblurl.setBounds(39, 209, 52, 20);
 		getContentPane().add(lblurl);
-		
+
 		lblurl2 = new JLabel("https://github.com/ismaelbd042/Proyecto_Integrador_Topanga");
 		lblurl2.setBounds(80, 209, 363, 20);
 		getContentPane().add(lblurl2);
-		
+
 		btnatras = new JButton("Volver Atras");
 		btnatras.setBounds(163, 240, 125, 25);
 		getContentPane().add(btnatras);
@@ -152,72 +152,10 @@ public class VentanaInfo extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
-	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Editar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorSubir_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Subir_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
 	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		btnatras.addActionListener(c);
-		
+
 	}
-	
 
 }

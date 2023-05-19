@@ -78,73 +78,9 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		setVisible(true);
 		
 	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Ver c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Editar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorContraseña_Subir c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorSubir_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorVer_Principal c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorModificar_Principal c) {
-    // TODO Auto-generated method stub
-		
-	}
-	public void setControlador(ControladorContraseña_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorEditar_Modificar c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setControlador(ControladorPrincipal_Subir_Contra c) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void setControlador(ControladorAlumno_BuscarAlumno c) {
 		btnAñadir.addActionListener(c);
-		
-	}
-
-	@Override
-	public void setControlador(ControladorInfo_Ver c) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -28,14 +28,9 @@ public class ControladorContraseña_Subir implements ActionListener {
 		if (vc1.getPassword().equals("Profesor")) {
 			vc1.dispose();
 			v.dispose();
-			
-			//rellenas las áreas
-			//crear accesoBD si quieres
-			//obtener ArrayList de la bd
-			//llamar a vs.rellenarAreas(arraylist)
-			
-			vs.rellenarAreas(AccesoBBDD.seleccionarAreas());
-			
+
+			vs.rellenarAreas(AccesoBBDD.conseguirAreas());
+
 			vs.hacerVisible();
 			vc1.incorrecto.setText("");
 			vc1.contraseña.setText(null);
