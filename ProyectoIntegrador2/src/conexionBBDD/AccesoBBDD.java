@@ -109,6 +109,6 @@ public class AccesoBBDD {
 		return nombreAreas;
 	}
 	
-	public ArrayList<String> a;
+//	public ArrayList<String> a;
 
 }
