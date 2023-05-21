@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import controlador.ControladorBuscarAlumno_Alumno;
 import controlador.ControladorBuscarAlumno_Subir;
@@ -39,6 +41,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	private JList<Alumnos> listAlumnos;
 	private JButton btnLupa;
 	private JButton btnCancelar;
+	private JLabel lblBusca;
 
 	public VentanaBuscarAlumno() {
 		super("Buscar Alumno");
@@ -48,6 +51,12 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
+		
+		lblBusca = new JLabel("¡¡Busca a tu alumno!!");
+		lblBusca.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 15));
+		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBusca.setBounds(114, 26, 259, 30);
+		getContentPane().add(lblBusca);
 
 		btnAñadir = new JButton("Añadir alumno");
 		btnAñadir.setBounds(61, 251, 159, 30);
@@ -60,7 +69,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		getContentPane().add(btnCrear);
 
 		txtBuscador = new JTextField();
-		txtBuscador.setBounds(25, 32, 195, 45);
+		txtBuscador.setBounds(149, 74, 196, 20);
 		getContentPane().add(txtBuscador);
 		txtBuscador.setColumns(10);
 
@@ -73,13 +82,13 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		listAlumnos.setModel(mod);
 
 		JScrollPane barradesplazamientoAlu = new JScrollPane();
-		barradesplazamientoAlu.setBounds(157, 101, 181, 116);
+		barradesplazamientoAlu.setBounds(149, 124, 196, 98);
 		getContentPane().add(barradesplazamientoAlu);
 		barradesplazamientoAlu.setViewportView(listAlumnos);
 
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
-		btnLupa.setBounds(230, 37, 37, 37);
+		btnLupa.setBounds(355, 66, 37, 38);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
 
