@@ -36,6 +36,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	private JButton btnatras;
 	private JButton btnsubir;
+	private ButtonGroup cursoGroup;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 	ProyectosIntegradores proyectointegrador;
@@ -118,7 +119,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 		txtnota.setBounds(352, 51, 96, 19);
 		getContentPane().add(txtnota);
 
-		ButtonGroup cursoGroup = new ButtonGroup();
+		cursoGroup = new ButtonGroup();
+
 		rbtn1 = new JRadioButton("1º");
 		rbtn1.setBounds(367, 98, 37, 20);
 		cursoGroup.add(rbtn1);
@@ -403,6 +405,22 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	public void setProyectosintegradores(ProyectosIntegradores proyectosintegradores) {
 		this.proyectointegrador = proyectosintegradores;
+	}
+
+	public ButtonGroup getCursoGroup() {
+		return cursoGroup;
+	}
+
+	public void setCursoGroup(ButtonGroup cursoGroup) {
+		this.cursoGroup = cursoGroup;
+	}
+
+	public ProyectosIntegradores getProyectointegrador() {
+		return proyectointegrador;
+	}
+
+	public void setProyectointegrador(ProyectosIntegradores proyectointegrador) {
+		this.proyectointegrador = proyectointegrador;
 	}
 
 }
