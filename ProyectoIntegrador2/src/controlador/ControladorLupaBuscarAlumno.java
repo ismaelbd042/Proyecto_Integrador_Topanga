@@ -5,31 +5,22 @@ import java.awt.event.ActionListener;
 
 import conexionBBDD.AccesoBBDD;
 import vista.VentanaBuscarAlumno;
-import vista.VentanaSubir;
+import vista.VentanaModificar;
 
-public class ControladorSubir_BuscarAlumno implements ActionListener {
+public class ControladorLupaBuscarAlumno implements ActionListener{
 
-//	private Ventana v;
-//	private VentanaVer vv;
-//	private VentanaEditar ve;
-//	private VentanaInfo vi;
-	private VentanaSubir vs;
-//	private VentanaModificar vm;
-//	private VentanaContraseña vc;
 	private VentanaBuscarAlumno vba;
-
-	public ControladorSubir_BuscarAlumno(VentanaSubir vs, VentanaBuscarAlumno vba) {
-		this.vs = vs;
+	
+	public ControladorLupaBuscarAlumno(VentanaBuscarAlumno vba) {
 		this.vba = vba;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		vs.dispose();
 		String nombreApellido = vba.getTxtBuscador().getText();
 		vba.getListAlumnos().clearSelection();
 		vba.rellenarJlistAlumno(AccesoBBDD.conseguirNombresyApellidos(nombreApellido));
-		vba.hacerVisible();
+		
 	}
 
 }

@@ -7,6 +7,7 @@ import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorInfo_Ver;
+import controlador.ControladorLupaBuscarAlumno;
 import controlador.ControladorLupaModificar;
 import controlador.ControladorLupaVer;
 import controlador.ControladorModificar_Editar;
@@ -65,6 +66,7 @@ public class Main {
 				ControladorLupaVer controladorLV = new ControladorLupaVer(vv);
 				ControladorLupaModificar controladorLM = new ControladorLupaModificar(vm);
 				ControladorBorrarProyecto controladorB = new ControladorBorrarProyecto(vm);
+				ControladorLupaBuscarAlumno controladorLBA = new ControladorLupaBuscarAlumno(vba);
 				
 				ControladorInfo_Ver controladorI_V = new ControladorInfo_Ver(vv,vi);
 
@@ -92,6 +94,7 @@ public class Main {
 				
 				vba.setControlador(controladorBA_A);
 				vba.setControlador(controladorBA_S);
+				vba.setControlador(controladorLBA);
 				va.setControlador(controladorA_BA);
 				
 				vi.setControlador(controladorI_V);
