@@ -134,6 +134,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		rbtn2.setBounds(412, 98, 55, 20);
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
+
 		
 		rbtnDefault = new JRadioButton("");
 		rbtnDefault.setSelected(true);
@@ -202,33 +203,20 @@ public class VentanaSubir extends JFrame implements IVentana {
 		}
 	}
 
-	public void cogerDatosProyecto() {
+	public ProyectosIntegradores getDatosProyecto() {
 
-//		hacer lo del if btn esta selecionado deafult que no funcione
-		String cursodato = listenerRbtn.getCurso();
-		System.out.println(cursodato);
-		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
-		System.out.println(cod_area);
-		String nombre_proyecto = nombre.getText().toString();
-		int año = Integer.parseInt(txtano.getText().toString());
-		String url = txturl.getText().toString();
-		int nota = Integer.parseInt(txtnota.getText().toString());
-		String grupo = txtgrupo.getText().toString();
-		int componentes = 0;
-		int[][] alumnoRealiza = null;
+		ProyectosIntegradores proyecto = new ProyectosIntegradores(null, null, 0, 0, null, null, 0, 0);
 
-		proyectointegrador = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo, nota,
-				cod_area, alumnoRealiza);
+		proyecto.setNombre_proyecto(nombre.getText());
+		proyecto.setURL(txturl.getText());
+		proyecto.setComponentes(listaAlu.getModel().getSize());
+		proyecto.setAño(Integer.parseInt(txtano.getText()));
+		proyecto.setCurso(listenerRbtn.getCurso());
+		proyecto.setGrupo(txtgrupo.getText());
+		proyecto.setNota(Integer.parseInt(txtnota.getText()));
+		proyecto.setCod_area(listenerCbAreas.cambioArea_CodArea());
 
-//		AccesoBBDD accesobbdd = new AccesoBBDD();
-//		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
-//
-//		if (estado > 0) {
-//			JOptionPane.showMessageDialog(getContentPane(), "Proyecto subido");
-//		} else {
-//			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
-//					JOptionPane.WARNING_MESSAGE);
-//		}
+		return proyecto;
 	}
 
 	public JTextField getNombre() {
@@ -407,7 +395,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.areas = areas;
 	}
 
-
 	public ButtonGroup getCursoGroup() {
 		return cursoGroup;
 	}
@@ -415,6 +402,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void setCursoGroup(ButtonGroup cursoGroup) {
 		this.cursoGroup = cursoGroup;
 	}
+
 
 	public ProyectosIntegradores getProyectointegrador() {
 		return proyectointegrador;
@@ -432,6 +420,4 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.rbtnDefault = rbtnDefault;
 	}
 	
-	
-
 }
