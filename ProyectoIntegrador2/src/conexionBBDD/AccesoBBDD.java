@@ -116,110 +116,90 @@ public class AccesoBBDD {
 	}
 
 	public static ProyectosIntegradores conseguirInfo(String nombre) {
-		ProyectosIntegradores datosProyecto = new ProyectosIntegradores("", "", 0, 0, "", "", 0, 0, null);
+		getConexion();
+		ProyectosIntegradores datosProyecto = null;
 
 		try {
 			Statement statement = con.createStatement();
-			String query = "select url from proyectos where nombre_proyecto = '" + nombre + "'";
-			ResultSet resultado = statement.executeQuery(query);
-			datosProyecto.setURL(resultado.toString());
-//			ventana.setLblurl2((JLabel) resultado);
+			String query = "SELECT * FROM proyectos WHERE nombre_proyecto = ?";
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, nombre);
+			ResultSet resultado = pstmt.executeQuery();
 
-//			query = "select componentes from proyectos where nombre_proyecto = '" + nombre + "'";
-//			resultado = statement.executeQuery(query);
-//			ventana.setlbl((JLabel) resultado);
+			if (resultado.next()) {
+				datosProyecto = new ProyectosIntegradores(resultado.getString("nombre_proyecto"),
+						resultado.getString("URL"), resultado.getInt("componentes"), resultado.getInt("año"),
+						resultado.getString("curso"), resultado.getString("grupo"), resultado.getInt("nota"),
+						
+						resultado.getInt("cod_area"),
+						null);
 
-			query = "select ultima_modificacion from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setUltima_modificacion(resultado.toString());
-//			ventana.setLblUltimaModi2((JLabel) resultado);
-
-			query = "select año from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setAño(Integer.parseInt(resultado.toString()));
-//			ventana.setLblAno2((JLabel) resultado);
-
-			query = "select curso from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setCurso(resultado.toString());
-//			ventana.setLblCurso2((JLabel) resultado);
-
-			query = "select grupo from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setGrupo(resultado.toString());
-//			ventana.setLblGrupo2((JLabel) resultado);
-
-			query = "select nota from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setNota(Integer.parseInt(resultado.toString()));
-//			ventana.setLblNota2((JLabel) resultado);
-
-			query = "select cod_area from proyectos where nombre_proyecto = '" + nombre + "'";
-			resultado = statement.executeQuery(query);
-			datosProyecto.setCod_area(Integer.parseInt(resultado.toString()));
-//			ventana.setLblurl2((JLabel) resultado);
-
+				datosProyecto.setUltima_modificacion(resultado.getString("ultima_modificacion"));
+			}
+			
+			cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return datosProyecto;
-
 	}
-	
+
 	public static ArrayList<String> conseguirNombresProyectos() {
-	    getConexion();
-	    ArrayList<String> nombresProyectos = new ArrayList<>();
+		getConexion();
+		ArrayList<String> nombresProyectos = new ArrayList<>();
 
-	    try {
-	        Statement statement = con.createStatement();
-	        String query = "SELECT nombre_proyecto FROM proyectos";
-	        ResultSet resultado = statement.executeQuery(query);
+		try {
+			Statement statement = con.createStatement();
+			String query = "SELECT nombre_proyecto FROM proyectos";
+			ResultSet resultado = statement.executeQuery(query);
 
-	        while (resultado.next()) {
-	            String nombre_proyecto = resultado.getString("nombre_proyecto");
-	            nombresProyectos.add(nombre_proyecto);
-	        }
+			while (resultado.next()) {
+				String nombre_proyecto = resultado.getString("nombre_proyecto");
+				nombresProyectos.add(nombre_proyecto);
+			}
 
-	        cerrarConexion();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			cerrarConexion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    return nombresProyectos;
+		return nombresProyectos;
 	}
 
 	public static ArrayList<String> conseguirNombresProyectosLupa(String nombreBuscado, int area) {
-	    getConexion();
-	    ArrayList<String> nombresProyectos = new ArrayList<>();
+		getConexion();
+		ArrayList<String> nombresProyectos = new ArrayList<>();
 
-	    try {
-	    	String query = "SELECT nombre_proyecto FROM proyectos where nombre_proyecto like '%" + nombreBuscado + "%' and cod_area = " + area;
-	        Statement statement = con.createStatement();
-	        ResultSet resultado = statement.executeQuery(query);
+		try {
+			String query = "SELECT nombre_proyecto FROM proyectos where nombre_proyecto like '%" + nombreBuscado
+					+ "%' and cod_area = " + area;
+			Statement statement = con.createStatement();
+			ResultSet resultado = statement.executeQuery(query);
 
-	        while (resultado.next()) {
-	            String nombre_proyecto = resultado.getString("nombre_proyecto");
-	            nombresProyectos.add(nombre_proyecto);
-	        }
+			while (resultado.next()) {
+				String nombre_proyecto = resultado.getString("nombre_proyecto");
+				nombresProyectos.add(nombre_proyecto);
+			}
 
-	        cerrarConexion();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			cerrarConexion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    return nombresProyectos;
+		return nombresProyectos;
 	}
 
-	public ArrayList<String> conseguirColaboradores(ProyectosIntegradores proyecto) {
-		int idProyecto = 0;
-		ArrayList<String> lista = new ArrayList<>();
-		try {
-			String query = "SELECT alumno.nombre_alumno, alumno.apellido_alumno " + "FROM alumno "
-					+ "JOIN realiza ON alumno.id_alumno = realiza.id_alumno " + "WHERE realiza.id_proyecto = ?";
 
-			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, idProyecto);
+	public static ArrayList<String> conseguirColaboradores(String proyecto) {
+		getConexion();
+		ArrayList<String> lista = new ArrayList<>();
+		String query = "SELECT alumno.nombre_alumno, alumno.apellido_alumno " + "FROM alumno "
+				+ "JOIN realiza ON alumno.id_alumno = realiza.id_alumno "
+				+ "JOIN proyectos ON realiza.id_proyecto = proyectos.id_proyecto "
+				+ "WHERE proyectos.nombre_proyecto = ?";
+		try (PreparedStatement pstmt = con.prepareStatement(query)) {
+			pstmt.setString(1, proyecto);
 
 			ResultSet rs = pstmt.executeQuery();
 
@@ -227,8 +207,8 @@ public class AccesoBBDD {
 				String nombreAlumno = rs.getString("nombre_alumno");
 				String apellidoAlumno = rs.getString("apellido_alumno");
 				lista.add(nombreAlumno + " " + apellidoAlumno);
-				System.out.println("Nombre: " + nombreAlumno + " " + apellidoAlumno);
 			}
+			cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -236,16 +216,17 @@ public class AccesoBBDD {
 		return lista;
 
 	}
-	
+
 	public static boolean borrarProyecto(String nombreProyecto) {
 		getConexion();
 		try {
-            // Preparar la sentencia SQL DELETE
-            String query = "DELETE FROM proyectos WHERE nombre_proyecto = ?";
-            PreparedStatement statement = con.prepareStatement(query);
+			// Preparar la sentencia SQL DELETE
+			String query = "DELETE FROM proyectos WHERE nombre_proyecto = ?";
+			PreparedStatement statement = con.prepareStatement(query);
 
-            // Establecer el valor del parámetro en la sentencia SQL
-            statement.setString(1, nombreProyecto);
+			// Establecer el valor del parámetro en la sentencia SQL
+			statement.setString(1, nombreProyecto);
+
 
             // Ejecutar la sentencia SQL DELETE
             int filasAfectadas = statement.executeUpdate();
@@ -256,6 +237,7 @@ public class AccesoBBDD {
             e.printStackTrace();
             return false; // Error al ejecutar la sentencia SQL
         }
+
 	}
 	
 	public static ArrayList<String> conseguirNombresyApellidos(String nombreAlumno) {
