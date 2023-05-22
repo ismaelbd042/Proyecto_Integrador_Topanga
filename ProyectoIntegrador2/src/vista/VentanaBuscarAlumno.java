@@ -20,6 +20,8 @@ import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorInfo_Ver;
+import controlador.ControladorLupaBuscarAlumno;
+import controlador.ControladorLupaModificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -38,10 +40,11 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	private JTextField txtBuscador;
 	private JButton btnCrear;
 	private JButton btnAñadir;
-	private JList<Alumnos> listAlumnos;
+	public JList<String> listAlumnos;
 	private JButton btnLupa;
 	private JButton btnCancelar;
 	private JLabel lblBusca;
+	ArrayList<String> aux;
 
 	public VentanaBuscarAlumno() {
 		super("Buscar Alumno");
@@ -74,7 +77,7 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		txtBuscador.setColumns(10);
 
 		listAlumnos = new JList<>();
-		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -107,11 +110,41 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
 	}
 
+	public JTextField getTxtBuscador() {
+		return txtBuscador;
+	}
+
+	public void setTxtBuscador(JTextField txtBuscador) {
+		this.txtBuscador = txtBuscador;
+	}
+
+	public JList<String> getListAlumnos() {
+		return listAlumnos;
+	}
+
+	public void setListAlumnos(JList<String> listAlumnos) {
+		this.listAlumnos = listAlumnos;
+	}
+
+	public void setControlador(ControladorLupaBuscarAlumno c) {
+		btnLupa.addActionListener(c);
+	}
+	
 	public void setControlador(ControladorBuscarAlumno_Alumno c) {
 		btnCrear.addActionListener(c);
 	}
 
 	public void setControlador(ControladorBuscarAlumno_Subir c) {
 		btnCancelar.addActionListener(c);
+	}
+	
+	public void rellenarJlistAlumno(ArrayList<String> a) {
+		aux = a;
+		DefaultListModel<String> mod = (DefaultListModel<String>) listAlumnos.getModel(); // Obtener el modelo de la JList
+		mod.clear(); // Limpiar el modelo
+
+		for (int i = 0; i < aux.size(); i++) {
+			mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		}
 	}
 }

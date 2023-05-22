@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import conexionBBDD.AccesoBBDD;
 import vista.VentanaAlumno;
 import vista.VentanaBuscarAlumno;
 
@@ -26,6 +27,20 @@ public class ControladorAlumno_BuscarAlumno implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		va.dispose();
+		String nombre = va.txtNombre.getText();
+        String apellidos = va.txtApellidos.getText();
+        String expediente = va.txtExpediente.getText();
+
+        // Llamar al método para crear el alumno y agregarlo a la base de datos
+        AccesoBBDD.crearAlumno(nombre, apellidos, expediente);
+
+        // Limpiar los campos de texto después de crear el alumno
+        va.txtNombre.setText("");
+        va.txtApellidos.setText("");
+        va.txtExpediente.setText("");
+        String nombreApellido = vba.getTxtBuscador().getText();
+        vba.getListAlumnos().clearSelection();
+		vba.rellenarJlistAlumno(AccesoBBDD.conseguirNombresyApellidos(nombreApellido));
 	}
 
 }

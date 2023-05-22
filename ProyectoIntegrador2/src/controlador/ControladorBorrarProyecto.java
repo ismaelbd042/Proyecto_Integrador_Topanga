@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import conexionBBDD.AccesoBBDD;
 import vista.VentanaAlumno;
 import vista.VentanaBuscarAlumno;
@@ -34,10 +36,10 @@ public class ControladorBorrarProyecto implements ActionListener {
                 // Proyecto eliminado correctamente
                 // Actualizar la lista o mostrar un mensaje de éxito
             	vm.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
-            } else {
-                // Error al eliminar el proyecto
-                // Mostrar un mensaje de error o realizar alguna acción adecuada
-            }
+            	JOptionPane.showMessageDialog(vm.getContentPane(), "Proyecto eliminado", "Aviso", JOptionPane.ERROR_MESSAGE);
+            } 
+        } else {
+            JOptionPane.showMessageDialog(vm.getContentPane(), "No hay ningún proyecto seleccionado", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 	}
 	

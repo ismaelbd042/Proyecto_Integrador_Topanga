@@ -213,7 +213,7 @@ public class AccesoBBDD {
 
 	public ArrayList<String> conseguirColaboradores(ProyectosIntegradores proyecto) {
 		int idProyecto = 0;
-		ArrayList<String> lista = null;
+		ArrayList<String> lista = new ArrayList<>();
 		try {
 			String query = "SELECT alumno.nombre_alumno, alumno.apellido_alumno " + "FROM alumno "
 					+ "JOIN realiza ON alumno.id_alumno = realiza.id_alumno " + "WHERE realiza.id_proyecto = ?";
@@ -249,12 +249,66 @@ public class AccesoBBDD {
 
             // Ejecutar la sentencia SQL DELETE
             int filasAfectadas = statement.executeUpdate();
-
+            cerrarConexion();
             return filasAfectadas > 0; // Verificar si se eliminó alguna fila
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return false; // Error al ejecutar la sentencia SQL
         }
 	}
+	
+	public static ArrayList<String> conseguirNombresyApellidos(String nombreAlumno) {
+	    getConexion();
+	    ArrayList<String> nombresAlumnos = new ArrayList<>();
+
+	    try {
+	        Statement statement = con.createStatement();
+	        String query = "SELECT nombre_alumno, apellido_alumno FROM alumno";
+	        ResultSet resultado = statement.executeQuery(query);
+
+	        while (resultado.next()) {
+	            String nombreApellido = resultado.getString("nombre_alumno") + " " + resultado.getString("apellido_alumno");
+	            nombresAlumnos.add(nombreApellido);
+	        }
+
+	        cerrarConexion();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return nombresAlumnos;
+	}
+	
+	public static void crearAlumno(String nombre_alumno, String apellido_alumno, String num_expediente) {
+	    try {
+	        // Establecer conexión con la base de datos
+	    	getConexion();
+
+	        // Crear sentencia SQL INSERT
+	        String sql = "INSERT INTO alumno (nombre_alumno, apellido_alumno, num_expediente) VALUES (?, ?, ?)";
+
+	        // Preparar la sentencia SQL
+	        PreparedStatement statement = con.prepareStatement(sql);
+	        statement.setString(1, nombre_alumno);
+	        statement.setString(2, apellido_alumno);
+	        statement.setString(3, num_expediente);
+
+	        // Ejecutar la sentencia SQL
+	        int filasInsertadas = statement.executeUpdate();
+
+	        if (filasInsertadas > 0) {
+	            System.out.println("Alumno creado correctamente");
+	        } else {
+	            System.out.println("No se pudo crear el alumno");
+	        }
+
+	        // Cerrar la conexión
+	        con.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
 
 }

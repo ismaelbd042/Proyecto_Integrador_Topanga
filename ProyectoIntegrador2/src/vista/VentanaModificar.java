@@ -44,7 +44,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
-		
+
 		lblBusca = new JLabel("¡¡Busca tu proyecto!!");
 		lblBusca.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 15));
 		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
@@ -85,7 +85,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnLupa.setBounds(227, 65, 37, 46);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
-		
+
 		proyectos = new JList<>();
 		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
@@ -128,7 +128,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
 	}
-	
+
 	public void setControlador(ControladorBorrarProyecto c) {
 		btnBorrar.addActionListener(c);
 	}
@@ -137,25 +137,25 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnatras.addActionListener(c);
 
 	}
-	
+
 	public void setControlador(ControladorLupaModificar c) {
 		btnLupa.addActionListener(c);
 	}
-  
+
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
 		for (int i = 0; i < aux.size(); i++) {
 			areas.addItem(aux.get(i));
 		}
 	}
-	
+
 	public void rellenarJlist(ArrayList<String> a) {
-	 	aux = a;
-	    DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
-	    mod.clear(); // Limpiar el modelo
-	    
-	    for (int i = 0; i < aux.size(); i++) {
-	        mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
-	    }
-}
+		aux = a;
+		DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
+		mod.clear(); // Limpiar el modelo
+
+		for (int i = 0; i < aux.size(); i++) {
+			mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		}
+	}
 }
