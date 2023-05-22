@@ -54,7 +54,7 @@ public class AccesoBBDD {
 //	}
 
 	/**
-	 * 
+	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de datos
 	 */
 	public static void cerrarConexion() {
 		try {

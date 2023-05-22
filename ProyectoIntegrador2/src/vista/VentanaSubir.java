@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 
+import controlador.ControladorSubirProyecto;
 import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
 import controlador.ListenerComboBoxAREAS;
@@ -37,9 +38,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JButton btnatras;
 	private JButton btnsubir;
 	private ButtonGroup cursoGroup;
+	
+	private JRadioButton rbtnDefault;
+	
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 	ListenerRadioButtonCurso listenerRbtn;
+	ProyectosIntegradores proyectointegrador;
 	ListenerComboBoxAREAS listenerCbAreas;
 
 	public VentanaSubir() {
@@ -130,7 +135,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
 
-		JRadioButton rbtnDefault = new JRadioButton("");
+		
+		rbtnDefault = new JRadioButton("");
 		rbtnDefault.setSelected(true);
 		cursoGroup.add(rbtnDefault);
 
@@ -152,7 +158,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(lblarea);
 
 		btnsubir = new JButton("Subir proyecto");
-//		btnsubir.addActionListener(new ActionListener()
 		btnsubir.setBounds(271, 285, 122, 36);
 		getContentPane().add(btnsubir);
 
@@ -185,6 +190,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		colaboradores.addActionListener(c);
 
 	}
+	
+	public void setControlador(ControladorSubirProyecto c) {
+		btnsubir.addActionListener(c);
+	}
+	
 
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
@@ -207,7 +217,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 		proyecto.setCod_area(listenerCbAreas.cambioArea_CodArea());
 
 		return proyecto;
-
 	}
 
 	public JTextField getNombre() {
@@ -394,4 +403,21 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.cursoGroup = cursoGroup;
 	}
 
+
+	public ProyectosIntegradores getProyectointegrador() {
+		return proyectointegrador;
+	}
+
+	public void setProyectointegrador(ProyectosIntegradores proyectointegrador) {
+		this.proyectointegrador = proyectointegrador;
+	}
+
+	public JRadioButton getRbtnDefault() {
+		return rbtnDefault;
+	}
+
+	public void setRbtnDefault(JRadioButton rbtnDefault) {
+		this.rbtnDefault = rbtnDefault;
+	}
+	
 }
