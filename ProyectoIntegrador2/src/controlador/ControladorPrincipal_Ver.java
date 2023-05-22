@@ -25,13 +25,9 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
 		vv.rellenarAreas(AccesoBBDD.conseguirAreas());
+		vv.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
 		vv.hacerVisible();
 
 	}
 
 }
-
-// Hasta aqui funciona y pasa de la ventana principal a la de ver.
-// Es posible que haya que hacer una IVentana para cada vista
-// Meter el "public void setControlador(ControladorPrincipal_Ver c);" 
-// cambiando el ControladorPrincipal_Ver por el controlador que corresponda

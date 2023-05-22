@@ -33,6 +33,7 @@ public class ControladorContraseña_Modificar implements ActionListener {
 			vc2.dispose();
 			v.dispose();
 			vm.rellenarAreas(AccesoBBDD.conseguirAreas());
+			vm.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
 			vm.hacerVisible();
 			vc2.incorrecto.setText("");
 			vc2.contraseña.setText(null);

@@ -3,15 +3,18 @@ package vista;
 import controlador.*;
 import modelo.ProyectosIntegradores;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 public class VentanaVer extends JFrame implements IVentana {
-	private JTextField textField;
+	
+	private JLabel lblBusca;
+	private JTextField txtBuscarNombre;
 	private JButton btninspeccionar;
 	private JButton btnatras;
-	private JList<ProyectosIntegradores> proyectos;
+	private JList<String> proyectos;
 	private JButton btnLupa;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
@@ -24,28 +27,40 @@ public class VentanaVer extends JFrame implements IVentana {
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
+		
+		lblBusca = new JLabel("¡¡Busca tu proyecto!!");
+		lblBusca.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 15));
+		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBusca.setBounds(114, 36, 259, 30);
+		getContentPane().add(lblBusca);
 
 		btninspeccionar = new JButton("Inspeccionar");
-		btninspeccionar.setBounds(264, 239, 195, 45);
+		btninspeccionar.setBounds(276, 258, 182, 45);
 		getContentPane().add(btninspeccionar);
 
 		btnatras = new JButton("Volver Atras");
-		btnatras.setBounds(25, 239, 195, 45);
+		btnatras.setBounds(33, 258, 184, 45);
 		getContentPane().add(btnatras);
 
-		areas = new JComboBox();
+		areas = new JComboBox<>();
 		ListenerComboBoxAREAS listenerCbAreas = new ListenerComboBoxAREAS();
 		areas.addItemListener(listenerCbAreas);
-		areas.setBounds(277, 28, 195, 52);
+		areas.setBounds(274, 99, 184, 24);
 		getContentPane().add(areas);
 
-		textField = new JTextField();
-		textField.setBounds(25, 32, 195, 45);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtBuscarNombre = new JTextField();
+		txtBuscarNombre.setBounds(33, 99, 184, 24);
+		getContentPane().add(txtBuscarNombre);
+		txtBuscarNombre.setColumns(10);
+
+		btnLupa = new JButton();
+		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
+		btnLupa.setBounds(227, 90, 37, 39);
+		btnLupa.setBorderPainted(false);
+		getContentPane().add(btnLupa);
 
 		proyectos = new JList<>();
-		DefaultListModel<ProyectosIntegradores> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -53,16 +68,9 @@ public class VentanaVer extends JFrame implements IVentana {
 		proyectos.setModel(mod);
 
 		JScrollPane barradesplazamiento = new JScrollPane();
-		barradesplazamiento.setBounds(152, 101, 181, 116);
+		barradesplazamiento.setBounds(152, 144, 181, 87);
 		getContentPane().add(barradesplazamiento);
 		barradesplazamiento.setViewportView(proyectos);
-
-		btnLupa = new JButton();
-		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
-
-		btnLupa.setBounds(230, 37, 37, 37);
-		btnLupa.setBorderPainted(false);
-		getContentPane().add(btnLupa);
 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
@@ -73,6 +81,23 @@ public class VentanaVer extends JFrame implements IVentana {
 	public void hacerVisible() {
 		setVisible(true);
 	}
+	
+
+	public JTextField getTxtBuscarNombre() {
+		return txtBuscarNombre;
+	}
+
+	public void setTxtBuscarNombre(JTextField txtBuscarNombre) {
+		this.txtBuscarNombre = txtBuscarNombre;
+	}
+
+	public JList<String> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(JList<String> proyectos) {
+		this.proyectos = proyectos;
+	}
 
 	public void setControlador(ControladorVer_Principal c) {
 		btnatras.addActionListener(c);
@@ -81,7 +106,10 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	public void setControlador(ControladorVer_Info c) {
 		btninspeccionar.addActionListener(c);
-
+	}
+	
+	public void setControlador(ControladorLupaVer c) {
+		btnLupa.addActionListener(c);
 	}
   
 	public void rellenarAreas(ArrayList<String> a) {
@@ -89,5 +117,15 @@ public class VentanaVer extends JFrame implements IVentana {
 		for (int i = 0; i < aux.size(); i++) {
 			areas.addItem(aux.get(i));
 		}
+	}
+	
+	public void rellenarJlist(ArrayList<String> a) {
+		 	aux = a;
+		    DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
+		    mod.clear(); // Limpiar el modelo
+		    
+		    for (int i = 0; i < aux.size(); i++) {
+		        mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		    }
 	}
 }

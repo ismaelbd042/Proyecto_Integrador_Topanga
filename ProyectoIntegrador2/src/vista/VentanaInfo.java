@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -16,6 +17,8 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
+import modelo.ProyectosIntegradores;
+
 import java.awt.Font;
 
 public class VentanaInfo extends JFrame implements IVentana {
@@ -30,7 +33,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 	private JLabel lblurl;
 
 	private JLabel lblNombre2;
-	private JList<Alumnos> listColaboradores2;
+	private JList<String> listColaboradores2;
 	private JLabel lblUltimaModi2;
 	private JLabel lblAno2;
 	private JLabel lblCurso2;
@@ -93,11 +96,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 		getContentPane().add(lblNombre2);
 
 		listColaboradores2 = new JList<>();
-		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
-		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
-		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
-		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
-		// mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		listColaboradores2.setModel(mod);
 
 		JScrollPane barradesplazamientoAlu = new JScrollPane();
@@ -155,7 +154,94 @@ public class VentanaInfo extends JFrame implements IVentana {
 	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		btnatras.addActionListener(c);
+	}
 
+	public JLabel getLblNombre2() {
+		return lblNombre2;
+	}
+
+	public void setLblNombre2(JLabel lblNombre2) {
+		this.lblNombre2 = lblNombre2;
+	}
+
+	public JList<String> getListColaboradores2() {
+		return listColaboradores2;
+	}
+
+	public void setListColaboradores2(JList<String> listColaboradores2) {
+		this.listColaboradores2 = listColaboradores2;
+	}
+
+	public JLabel getLblUltimaModi2() {
+		return lblUltimaModi2;
+	}
+
+	public void setLblUltimaModi2(JLabel lblUltimaModi2) {
+		this.lblUltimaModi2 = lblUltimaModi2;
+	}
+
+	public JLabel getLblAno2() {
+		return lblAno2;
+	}
+
+	public void setLblAno2(JLabel lblAno2) {
+		this.lblAno2 = lblAno2;
+	}
+
+	public JLabel getLblCurso2() {
+		return lblCurso2;
+	}
+
+	public void setLblCurso2(JLabel lblCurso2) {
+		this.lblCurso2 = lblCurso2;
+	}
+
+	public JLabel getLblGrupo2() {
+		return lblGrupo2;
+	}
+
+	public void setLblGrupo2(JLabel lblGrupo2) {
+		this.lblGrupo2 = lblGrupo2;
+	}
+
+	public JLabel getLblNota2() {
+		return lblNota2;
+	}
+
+	public void setLblNota2(JLabel lblNota2) {
+		this.lblNota2 = lblNota2;
+	}
+
+	public JLabel getLblArea2() {
+		return lblArea2;
+	}
+
+	public void setLblArea2(JLabel lblArea2) {
+		this.lblArea2 = lblArea2;
+	}
+
+	public JLabel getLblurl2() {
+		return lblurl2;
+	}
+
+	public void setLblurl2(JLabel lblurl2) {
+		this.lblurl2 = lblurl2;
+	}
+
+	public void rellenarInfo(ProyectosIntegradores proyecto, ArrayList<String> a) {
+		lblNombre2.setText(proyecto.getNombre_proyecto());
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+		for (int i = 0; i < a.size(); i++) {
+			listModel.addElement(a.get(i));
+		}
+		listColaboradores2.setModel(listModel);
+		lblUltimaModi2.setText(proyecto.getUltima_modificacion());
+		lblAno2.setText(String.valueOf(proyecto.getAño()));
+		lblCurso2.setText(proyecto.getCurso());
+		lblGrupo2.setText(proyecto.getGrupo());
+		lblNota2.setText(String.valueOf(proyecto.getNota()));
+		lblArea2.setText(String.valueOf(proyecto.getCod_area()));
+		lblurl2.setText(proyecto.getURL());
 	}
 
 }
