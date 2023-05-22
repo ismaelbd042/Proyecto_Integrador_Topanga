@@ -20,6 +20,5 @@ public class ControladorLupaModificar implements ActionListener{
 		int area = ListenerComboBoxAREAS.cambioArea_CodArea();
 		vm.getProyectos().clearSelection();
 		vm.rellenarJlist(AccesoBBDD.conseguirNombresProyectosLupa(nombreBuscado, area));
-		
 	}
 }

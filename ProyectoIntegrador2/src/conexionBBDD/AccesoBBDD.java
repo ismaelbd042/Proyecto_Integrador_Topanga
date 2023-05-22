@@ -36,25 +36,9 @@ public class AccesoBBDD {
 		return con;
 	}
 
-//	public static void prueba() {
-//
-//		try {
-//			Statement statement = con.createStatement();
-//			// Creamos la query
-//			String query = "select * from alumno";
-//			// Guardamos en un Resultset la ejecución de la query anterior
-//			ResultSet resultado = statement.executeQuery(query);
-//			while (resultado.next()) {
-//				System.out.println(resultado.getString("nombre_alumno"));
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
 	/**
-	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de datos
+	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de
+	 * datos
 	 */
 	public static void cerrarConexion() {
 		try {
@@ -65,28 +49,29 @@ public class AccesoBBDD {
 		}
 	}
 
-	public int registrar(ProyectosIntegradores proyectos) {
-		int rs = 0;
-		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?,?,?,?,?)";
+	public static void registrar(ProyectosIntegradores proyecto) {
+		getConexion();
+		try {
+			String query = "INSERT INTO proyectos (nombre_proyecto, URL, componentes, ultima_modificacion, año, curso, grupo, nota, cod_area) "
+					+ "VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)";
 
-		try (PreparedStatement ps = getConexion().prepareStatement(sql)) {
-			ps.setString(1, proyectos.getNombre_proyecto());
-			ps.setString(2, proyectos.getURL());
-			ps.setInt(3, proyectos.getComponentes());
-			ps.setInt(4, proyectos.getAño());
-			ps.setString(5, proyectos.getCurso());
-			ps.setString(6, proyectos.getGrupo());
-			ps.setInt(7, proyectos.getNota());
-			ps.setInt(8, proyectos.getCod_area());
-			// ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, proyecto.getNombre_proyecto());
+			statement.setString(2, proyecto.getURL());
+			statement.setInt(3, proyecto.getComponentes());
+			statement.setInt(4, proyecto.getAño());
+			statement.setString(5, proyecto.getCurso());
+			statement.setString(6, proyecto.getGrupo());
+			statement.setInt(7, proyecto.getNota());
+			statement.setInt(8, proyecto.getCod_area());
 
-			rs = ps.executeUpdate();
-
-		} catch (Exception e) {
-			// TODO: handle exception
+			statement.executeUpdate();
+			System.out.println("Proyecto insertado correctamente en la base de datos.");
+			cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		return rs;
 	}
 
 	public static ArrayList<String> conseguirAreas() {
