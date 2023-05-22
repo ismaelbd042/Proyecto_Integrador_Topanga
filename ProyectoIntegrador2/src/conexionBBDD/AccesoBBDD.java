@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
@@ -264,11 +265,12 @@ public class AccesoBBDD {
 
 	    try {
 	        Statement statement = con.createStatement();
-	        String query = "SELECT nombre_alumno, apellido_alumno FROM alumno";
+	        String query = "SELECT nombre_alumno, apellido_alumno, num_expediente FROM alumno WHERE CONCAT(nombre_alumno, ' ', apellido_alumno) LIKE '%" + nombreAlumno + "%' OR num_expediente LIKE '" + nombreAlumno + "%'";
+
 	        ResultSet resultado = statement.executeQuery(query);
 
 	        while (resultado.next()) {
-	            String nombreApellido = resultado.getString("nombre_alumno") + " " + resultado.getString("apellido_alumno");
+	        	String nombreApellido = resultado.getString("nombre_alumno") + " " + resultado.getString("apellido_alumno") + " (" + resultado.getString("num_expediente") + ")";
 	            nombresAlumnos.add(nombreApellido);
 	        }
 
@@ -284,6 +286,11 @@ public class AccesoBBDD {
 	    try {
 	        // Establecer conexión con la base de datos
 	    	getConexion();
+	    	
+	    	if (nombre_alumno.isEmpty() || apellido_alumno.isEmpty() || num_expediente.isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "No se consiguió subir", "Aviso", JOptionPane.WARNING_MESSAGE);
+	            return; // Salir del método sin ejecutar la inserción
+	        }
 
 	        // Crear sentencia SQL INSERT
 	        String sql = "INSERT INTO alumno (nombre_alumno, apellido_alumno, num_expediente) VALUES (?, ?, ?)";
