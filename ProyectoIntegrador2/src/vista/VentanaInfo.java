@@ -16,6 +16,8 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
+import modelo.ProyectosIntegradores;
+
 import java.awt.Font;
 
 public class VentanaInfo extends JFrame implements IVentana {
@@ -155,7 +157,83 @@ public class VentanaInfo extends JFrame implements IVentana {
 	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		btnatras.addActionListener(c);
+	}
 
+	public JLabel getLblNombre2() {
+		return lblNombre2;
+	}
+
+	public void setLblNombre2(JLabel lblNombre2) {
+		this.lblNombre2 = lblNombre2;
+	}
+
+	public JList<Alumnos> getListColaboradores2() {
+		return listColaboradores2;
+	}
+
+	public void setListColaboradores2(JList<Alumnos> listColaboradores2) {
+		this.listColaboradores2 = listColaboradores2;
+	}
+
+	public JLabel getLblUltimaModi2() {
+		return lblUltimaModi2;
+	}
+
+	public void setLblUltimaModi2(JLabel lblUltimaModi2) {
+		this.lblUltimaModi2 = lblUltimaModi2;
+	}
+
+	public JLabel getLblAno2() {
+		return lblAno2;
+	}
+
+	public void setLblAno2(JLabel lblAno2) {
+		this.lblAno2 = lblAno2;
+	}
+
+	public JLabel getLblCurso2() {
+		return lblCurso2;
+	}
+
+	public void setLblCurso2(JLabel lblCurso2) {
+		this.lblCurso2 = lblCurso2;
+	}
+
+	public JLabel getLblGrupo2() {
+		return lblGrupo2;
+	}
+
+	public void setLblGrupo2(JLabel lblGrupo2) {
+		this.lblGrupo2 = lblGrupo2;
+	}
+
+	public JLabel getLblNota2() {
+		return lblNota2;
+	}
+
+	public void setLblNota2(JLabel lblNota2) {
+		this.lblNota2 = lblNota2;
+	}
+
+	public JLabel getLblArea2() {
+		return lblArea2;
+	}
+
+	public void setLblArea2(JLabel lblArea2) {
+		this.lblArea2 = lblArea2;
+	}
+
+	public JLabel getLblurl2() {
+		return lblurl2;
+	}
+
+	public void setLblurl2(JLabel lblurl2) {
+		this.lblurl2 = lblurl2;
+	}
+	
+	public void rellenarInfo(ProyectosIntegradores proyecto) {
+		setLblAno2((JLabel) proyecto.getAño());
+		//no puedo pasar int a JLabel		
 	}
 
 }
