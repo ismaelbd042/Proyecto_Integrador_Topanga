@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import controlador.ControladorBorrarProyecto;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorInfo_Ver;
@@ -29,7 +30,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 	private JButton btnBorrar;
 	private JButton btnLupa;
 	private JLabel lblBusca;
-	private JList<String> proyectos;
+	public JList<String> proyectos;
 
 	private JButton btnatras;
 	private JTextField txtBuscarNombre;
@@ -126,7 +127,10 @@ public class VentanaModificar extends JFrame implements IVentana {
 
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
-
+	}
+	
+	public void setControlador(ControladorBorrarProyecto c) {
+		btnBorrar.addActionListener(c);
 	}
 
 	public void setControlador(ControladorModificar_Principal c) {

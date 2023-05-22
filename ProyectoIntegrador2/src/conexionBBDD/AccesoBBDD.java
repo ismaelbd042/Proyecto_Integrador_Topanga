@@ -236,5 +236,25 @@ public class AccesoBBDD {
 		return lista;
 
 	}
+	
+	public static boolean borrarProyecto(String nombreProyecto) {
+		getConexion();
+		try {
+            // Preparar la sentencia SQL DELETE
+            String query = "DELETE FROM proyectos WHERE nombre_proyecto = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+
+            // Establecer el valor del parámetro en la sentencia SQL
+            statement.setString(1, nombreProyecto);
+
+            // Ejecutar la sentencia SQL DELETE
+            int filasAfectadas = statement.executeUpdate();
+
+            return filasAfectadas > 0; // Verificar si se eliminó alguna fila
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // Error al ejecutar la sentencia SQL
+        }
+	}
 
 }
