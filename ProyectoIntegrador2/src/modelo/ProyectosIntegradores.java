@@ -1,7 +1,7 @@
 package modelo;
 
 public class ProyectosIntegradores {
-	
+
 	private String nombre_proyecto;
 	private String URL;
 	private int componentes;
@@ -10,11 +10,10 @@ public class ProyectosIntegradores {
 	private String grupo;
 	private int nota;
 	private int cod_area;
-	private int[][] alumnoRealizaProyecto;
 	private String ultima_modificacion;
-	
+
 	public ProyectosIntegradores(String nombre_proyecto, String URL, int componentes, int año, String curso,
-			String grupo, int nota, int cod_area, int[][] alumnoRealizaProyecto) {
+			String grupo, int nota, int cod_area) {
 		this.nombre_proyecto = nombre_proyecto;
 		this.URL = URL;
 		this.componentes = componentes;
@@ -23,7 +22,6 @@ public class ProyectosIntegradores {
 		this.grupo = grupo;
 		this.nota = nota;
 		this.cod_area = cod_area;
-		this.alumnoRealizaProyecto = alumnoRealizaProyecto;
 	}
 
 	public String getNombre_proyecto() {
@@ -90,14 +88,6 @@ public class ProyectosIntegradores {
 		this.cod_area = cod_area;
 	}
 
-	public int[][] getAlumnoRealizaProyecto() {
-		return alumnoRealizaProyecto;
-	}
-
-	public void setAlumnoRealizaProyecto(int[][] alumnoRealizaProyecto) {
-		this.alumnoRealizaProyecto = alumnoRealizaProyecto;
-	}
-
 	public String getUltima_modificacion() {
 		return ultima_modificacion;
 	}
@@ -105,7 +95,5 @@ public class ProyectosIntegradores {
 	public void setUltima_modificacion(String ultima_modificacion) {
 		this.ultima_modificacion = ultima_modificacion;
 	}
-	
-	
 
 }
