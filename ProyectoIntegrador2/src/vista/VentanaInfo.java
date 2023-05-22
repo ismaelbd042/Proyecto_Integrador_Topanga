@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -32,7 +33,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 	private JLabel lblurl;
 
 	private JLabel lblNombre2;
-	private JList<Alumnos> listColaboradores2;
+	private JList<String> listColaboradores2;
 	private JLabel lblUltimaModi2;
 	private JLabel lblAno2;
 	private JLabel lblCurso2;
@@ -95,7 +96,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 		getContentPane().add(lblNombre2);
 
 		listColaboradores2 = new JList<>();
-		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -167,11 +168,11 @@ public class VentanaInfo extends JFrame implements IVentana {
 		this.lblNombre2 = lblNombre2;
 	}
 
-	public JList<Alumnos> getListColaboradores2() {
+	public JList<String> getListColaboradores2() {
 		return listColaboradores2;
 	}
 
-	public void setListColaboradores2(JList<Alumnos> listColaboradores2) {
+	public void setListColaboradores2(JList<String> listColaboradores2) {
 		this.listColaboradores2 = listColaboradores2;
 	}
 
@@ -230,10 +231,21 @@ public class VentanaInfo extends JFrame implements IVentana {
 	public void setLblurl2(JLabel lblurl2) {
 		this.lblurl2 = lblurl2;
 	}
-	
-	public void rellenarInfo(ProyectosIntegradores proyecto) {
-		setLblAno2((JLabel) proyecto.getAño());
-		//no puedo pasar int a JLabel		
+
+	public void rellenarInfo(ProyectosIntegradores proyecto, ArrayList<String> a) {
+		lblNombre2.setText(proyecto.getNombre_proyecto());
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+		for (int i = 0; i < a.size(); i++) {
+			listModel.addElement(a.get(i));
+		}
+		listColaboradores2.setModel(listModel);
+		lblUltimaModi2.setText(proyecto.getUltima_modificacion());
+		lblAno2.setText(String.valueOf(proyecto.getAño()));
+		lblCurso2.setText(proyecto.getCurso());
+		lblGrupo2.setText(proyecto.getGrupo());
+		lblNota2.setText(String.valueOf(proyecto.getNota()));
+		lblArea2.setText(String.valueOf(proyecto.getCod_area()));
+		lblurl2.setText(proyecto.getURL());
 	}
 
 }
