@@ -52,7 +52,7 @@ public class Main {
 				//Controladores Principal -> Algo
 				ControladorPrincipal_Ver controladorP_V = new ControladorPrincipal_Ver(v, vv);
 				ControladorPrincipal_Subir_Contra controladorP_S_C = new ControladorPrincipal_Subir_Contra(v, vc1);
-				ControladorPrincipal_Modificar_Contra controladorP_M = new ControladorPrincipal_Modificar_Contra(v,vc2);
+				ControladorPrincipal_Modificar_Contra controladorP_M = new ControladorPrincipal_Modificar_Contra(vc2);
 
 				// Controladores Contraseña -> Algo
 				ControladorContraseña_Subir controladorC_S = new ControladorContraseña_Subir(vc1, vs, v);
