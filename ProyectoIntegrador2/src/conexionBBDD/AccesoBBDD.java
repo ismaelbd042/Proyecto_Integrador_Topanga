@@ -166,6 +166,50 @@ public class AccesoBBDD {
 		return datosProyecto;
 
 	}
+	
+	public static ArrayList<String> conseguirNombresProyectos() {
+	    getConexion();
+	    ArrayList<String> nombresProyectos = new ArrayList<>();
+
+	    try {
+	        Statement statement = con.createStatement();
+	        String query = "SELECT nombre_proyecto FROM proyectos";
+	        ResultSet resultado = statement.executeQuery(query);
+
+	        while (resultado.next()) {
+	            String nombre_proyecto = resultado.getString("nombre_proyecto");
+	            nombresProyectos.add(nombre_proyecto);
+	        }
+
+	        cerrarConexion();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return nombresProyectos;
+	}
+
+	public static ArrayList<String> conseguirNombresProyectosLupa(String nombreBuscado, int area) {
+	    getConexion();
+	    ArrayList<String> nombresProyectos = new ArrayList<>();
+
+	    try {
+	    	String query = "SELECT nombre_proyecto FROM proyectos where nombre_proyecto like '%" + nombreBuscado + "%' and cod_area = " + area;
+	        Statement statement = con.createStatement();
+	        ResultSet resultado = statement.executeQuery(query);
+
+	        while (resultado.next()) {
+	            String nombre_proyecto = resultado.getString("nombre_proyecto");
+	            nombresProyectos.add(nombre_proyecto);
+	        }
+
+	        cerrarConexion();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return nombresProyectos;
+	}
 
 	public ArrayList<String> conseguirColaboradores(ProyectosIntegradores proyecto) {
 		int idProyecto = 0;
@@ -192,4 +236,5 @@ public class AccesoBBDD {
 		return lista;
 
 	}
+
 }

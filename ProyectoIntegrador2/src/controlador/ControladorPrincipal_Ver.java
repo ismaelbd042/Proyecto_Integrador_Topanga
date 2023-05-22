@@ -25,6 +25,7 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		v.dispose();
 		vv.rellenarAreas(AccesoBBDD.conseguirAreas());
+		vv.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
 		vv.hacerVisible();
 
 	}
