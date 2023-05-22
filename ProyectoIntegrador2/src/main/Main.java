@@ -1,6 +1,7 @@
 package main;
 
 import controlador.ControladorAlumno_BuscarAlumno;
+import controlador.ControladorBorrarProyecto;
 import controlador.ControladorBuscarAlumno_Alumno;
 import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
@@ -63,6 +64,7 @@ public class Main {
 				ControladorVer_Info controladorV_I = new ControladorVer_Info(vv, vi);
 				ControladorLupaVer controladorLV = new ControladorLupaVer(vv);
 				ControladorLupaModificar controladorLM = new ControladorLupaModificar(vm);
+				ControladorBorrarProyecto controladorB = new ControladorBorrarProyecto(vm);
 				
 				ControladorInfo_Ver controladorI_V = new ControladorInfo_Ver(vv,vi);
 
@@ -74,6 +76,7 @@ public class Main {
 				vm.setControlador(controladorM_E);
 				vm.setControlador(controladorM_P);
 				vm.setControlador(controladorLM);
+				vm.setControlador(controladorB);
 				
 				vc1.setControlador(controladorC_S);
 				vc2.setControlador(controladorC_M);
