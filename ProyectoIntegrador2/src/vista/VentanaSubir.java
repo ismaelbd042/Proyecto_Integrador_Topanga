@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.*;
 
+import controlador.ControladorSubirProyecto;
 import controlador.ControladorSubir_BuscarAlumno;
 import controlador.ControladorSubir_Principal;
 import controlador.ListenerComboBoxAREAS;
@@ -37,10 +38,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JButton btnatras;
 	private JButton btnsubir;
 	private ButtonGroup cursoGroup;
+	
+	private JRadioButton rbtnDefault;
+	
 	ArrayList<String> aux;
 	JComboBox<String> areas;
-	ProyectosIntegradores proyectointegrador;
 	ListenerRadioButtonCurso listenerRbtn;
+	ProyectosIntegradores proyectointegrador;
 	ListenerComboBoxAREAS listenerCbAreas;
 
 	public VentanaSubir() {
@@ -131,7 +135,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
 		
-		JRadioButton rbtnDefault = new JRadioButton("");
+		rbtnDefault = new JRadioButton("");
 		rbtnDefault.setSelected(true);
 		cursoGroup.add(rbtnDefault);
 
@@ -153,12 +157,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(lblarea);
 
 		btnsubir = new JButton("Subir proyecto");
-		btnsubir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				subirProyecto();
-			}
-		});
 		btnsubir.setBounds(271, 285, 122, 36);
 		getContentPane().add(btnsubir);
 
@@ -191,6 +189,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		colaboradores.addActionListener(c);
 
 	}
+	
+	public void setControlador(ControladorSubirProyecto c) {
+		btnsubir.addActionListener(c);
+	}
+	
 
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
@@ -199,13 +202,9 @@ public class VentanaSubir extends JFrame implements IVentana {
 		}
 	}
 
-	public void subirProyecto() {
+	public void cogerDatosProyecto() {
 
 //		hacer lo del if btn esta selecionado deafult que no funcione
-		
-		
-		
-		
 		String cursodato = listenerRbtn.getCurso();
 		System.out.println(cursodato);
 		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
@@ -408,13 +407,6 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.areas = areas;
 	}
 
-	public ProyectosIntegradores getProyectosintegradores() {
-		return proyectointegrador;
-	}
-
-	public void setProyectosintegradores(ProyectosIntegradores proyectosintegradores) {
-		this.proyectointegrador = proyectosintegradores;
-	}
 
 	public ButtonGroup getCursoGroup() {
 		return cursoGroup;
@@ -431,5 +423,15 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void setProyectointegrador(ProyectosIntegradores proyectointegrador) {
 		this.proyectointegrador = proyectointegrador;
 	}
+
+	public JRadioButton getRbtnDefault() {
+		return rbtnDefault;
+	}
+
+	public void setRbtnDefault(JRadioButton rbtnDefault) {
+		this.rbtnDefault = rbtnDefault;
+	}
+	
+	
 
 }
