@@ -47,7 +47,7 @@ public class ControladorContraseña_Subir implements ActionListener {
 			vs.getTxtgrupo().setText(null);
 			vs.getTxturl().setText(null);;
 			vs.getNombre().setText(null);
-			vs.getRbtn1().setSelected(true);
+			vs.getRbtnDefault().setSelected(true);
 			vs.getListaAlu().clearSelection();
 			vs.getAreas().removeAllItems();
 			

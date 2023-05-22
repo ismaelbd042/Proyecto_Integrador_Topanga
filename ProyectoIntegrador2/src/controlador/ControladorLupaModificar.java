@@ -36,6 +36,5 @@ public class ControladorLupaModificar implements ActionListener{
 		vm.getProyectos().clearSelection();
 		// la rellanamos otra vez
 		vm.rellenarJlist(AccesoBBDD.conseguirNombresProyectosLupa(nombreBuscado, area));
-		
 	}
 }

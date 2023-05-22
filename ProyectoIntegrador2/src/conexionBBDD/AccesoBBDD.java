@@ -7,16 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
-import vista.VentanaInfo;
 
 public class AccesoBBDD {
 	static String driver = "com.mysql.cj.jdbc.Driver";
@@ -43,25 +36,9 @@ public class AccesoBBDD {
 		return con;
 	}
 
-//	public static void prueba() {
-//
-//		try {
-//			Statement statement = con.createStatement();
-//			// Creamos la query
-//			String query = "select * from alumno";
-//			// Guardamos en un Resultset la ejecución de la query anterior
-//			ResultSet resultado = statement.executeQuery(query);
-//			while (resultado.next()) {
-//				System.out.println(resultado.getString("nombre_alumno"));
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
 	/**
-	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de datos
+	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de
+	 * datos
 	 */
 	public static void cerrarConexion() {
 		try {
@@ -72,28 +49,29 @@ public class AccesoBBDD {
 		}
 	}
 
-	public int registrar(ProyectosIntegradores proyectos, AccesoBBDD accesoBBDD) {
-		int rs = 0;
-		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?,?,?,?,?)";
+	public static void registrar(ProyectosIntegradores proyecto) {
+		getConexion();
+		try {
+			String query = "INSERT INTO proyectos (nombre_proyecto, URL, componentes, ultima_modificacion, año, curso, grupo, nota, cod_area) "
+					+ "VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)";
 
-		try (PreparedStatement ps = accesoBBDD.getConexion().prepareStatement(sql)) {
-			ps.setString(1, proyectos.getNombre_proyecto());
-			ps.setString(2, proyectos.getURL());
-			ps.setInt(3, proyectos.getComponentes());
-			ps.setInt(4, proyectos.getAño());
-			ps.setString(5, proyectos.getCurso());
-			ps.setString(6, proyectos.getGrupo());
-			ps.setInt(7, proyectos.getNota());
-			ps.setInt(8, proyectos.getCod_area());
-			// ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, proyecto.getNombre_proyecto());
+			statement.setString(2, proyecto.getURL());
+			statement.setInt(3, proyecto.getComponentes());
+			statement.setInt(4, proyecto.getAño());
+			statement.setString(5, proyecto.getCurso());
+			statement.setString(6, proyecto.getGrupo());
+			statement.setInt(7, proyecto.getNota());
+			statement.setInt(8, proyecto.getCod_area());
 
-			rs = ps.executeUpdate();
-
-		} catch (Exception e) {
-			// TODO: handle exception
+			statement.executeUpdate();
+			System.out.println("Proyecto insertado correctamente en la base de datos.");
+			cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		return rs;
 	}
 
 	public static ArrayList<String> conseguirAreas() {
@@ -131,13 +109,11 @@ public class AccesoBBDD {
 				datosProyecto = new ProyectosIntegradores(resultado.getString("nombre_proyecto"),
 						resultado.getString("URL"), resultado.getInt("componentes"), resultado.getInt("año"),
 						resultado.getString("curso"), resultado.getString("grupo"), resultado.getInt("nota"),
-						
-						resultado.getInt("cod_area"),
-						null);
+						resultado.getInt("cod_area"));
 
 				datosProyecto.setUltima_modificacion(resultado.getString("ultima_modificacion"));
 			}
-			
+
 			cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -191,7 +167,6 @@ public class AccesoBBDD {
 		return nombresProyectos;
 	}
 
-
 	public static ArrayList<String> conseguirColaboradores(String proyecto) {
 		getConexion();
 		ArrayList<String> lista = new ArrayList<>();
@@ -228,76 +203,108 @@ public class AccesoBBDD {
 			// Establecer el valor del parámetro en la sentencia SQL
 			statement.setString(1, nombreProyecto);
 
+			// Ejecutar la sentencia SQL DELETE
+			int filasAfectadas = statement.executeUpdate();
+			cerrarConexion();
+			return filasAfectadas > 0; // Verificar si se eliminó alguna fila
 
-            // Ejecutar la sentencia SQL DELETE
-            int filasAfectadas = statement.executeUpdate();
-            cerrarConexion();
-            return filasAfectadas > 0; // Verificar si se eliminó alguna fila
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // Error al ejecutar la sentencia SQL
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false; // Error al ejecutar la sentencia SQL
+		}
 
 	}
-	
+
 	public static ArrayList<String> conseguirNombresyApellidos(String nombreAlumno) {
-	    getConexion();
-	    ArrayList<String> nombresAlumnos = new ArrayList<>();
+		getConexion();
+		ArrayList<String> nombresAlumnos = new ArrayList<>();
 
-	    try {
-	        Statement statement = con.createStatement();
-	        String query = "SELECT nombre_alumno, apellido_alumno, num_expediente FROM alumno WHERE CONCAT(nombre_alumno, ' ', apellido_alumno) LIKE '%" + nombreAlumno + "%' OR num_expediente LIKE '" + nombreAlumno + "%'";
+		try {
+			Statement statement = con.createStatement();
+			String query = "SELECT nombre_alumno, apellido_alumno, num_expediente FROM alumno WHERE CONCAT(nombre_alumno, ' ', apellido_alumno) LIKE '%"
+					+ nombreAlumno + "%' OR num_expediente LIKE '" + nombreAlumno + "%'";
 
-	        ResultSet resultado = statement.executeQuery(query);
+			ResultSet resultado = statement.executeQuery(query);
 
-	        while (resultado.next()) {
-	        	String nombreApellido = resultado.getString("nombre_alumno") + " " + resultado.getString("apellido_alumno") + " (" + resultado.getString("num_expediente") + ")";
-	            nombresAlumnos.add(nombreApellido);
-	        }
+			while (resultado.next()) {
+				String nombreApellido = resultado.getString("nombre_alumno") + " "
+						+ resultado.getString("apellido_alumno") + " (" + resultado.getString("num_expediente") + ")";
+				nombresAlumnos.add(nombreApellido);
+			}
 
-	        cerrarConexion();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			cerrarConexion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    return nombresAlumnos;
+		return nombresAlumnos;
 	}
-	
+
 	public static void crearAlumno(String nombre_alumno, String apellido_alumno, String num_expediente) {
-	    try {
-	        // Establecer conexión con la base de datos
-	    	getConexion();
-	    	
-	    	if (nombre_alumno.isEmpty() || apellido_alumno.isEmpty() || num_expediente.isEmpty()) {
-	    		JOptionPane.showMessageDialog(null, "No se consiguió subir", "Aviso", JOptionPane.WARNING_MESSAGE);
-	            return; // Salir del método sin ejecutar la inserción
-	        }
+		try {
+			// Establecer conexión con la base de datos
+			getConexion();
 
-	        // Crear sentencia SQL INSERT
-	        String sql = "INSERT INTO alumno (nombre_alumno, apellido_alumno, num_expediente) VALUES (?, ?, ?)";
+			if (nombre_alumno.isEmpty() || apellido_alumno.isEmpty() || num_expediente.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "No se consiguió subir", "Aviso", JOptionPane.WARNING_MESSAGE);
+				return; // Salir del método sin ejecutar la inserción
+			}
 
-	        // Preparar la sentencia SQL
-	        PreparedStatement statement = con.prepareStatement(sql);
-	        statement.setString(1, nombre_alumno);
-	        statement.setString(2, apellido_alumno);
-	        statement.setString(3, num_expediente);
+			// Crear sentencia SQL INSERT
+			String sql = "INSERT INTO alumno (nombre_alumno, apellido_alumno, num_expediente) VALUES (?, ?, ?)";
 
-	        // Ejecutar la sentencia SQL
-	        int filasInsertadas = statement.executeUpdate();
+			// Preparar la sentencia SQL
+			PreparedStatement statement = con.prepareStatement(sql);
+			statement.setString(1, nombre_alumno);
+			statement.setString(2, apellido_alumno);
+			statement.setString(3, num_expediente);
 
-	        if (filasInsertadas > 0) {
-	            System.out.println("Alumno creado correctamente");
-	        } else {
-	            System.out.println("No se pudo crear el alumno");
-	        }
+			// Ejecutar la sentencia SQL
+			int filasInsertadas = statement.executeUpdate();
 
-	        // Cerrar la conexión
-	        con.close();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+			if (filasInsertadas > 0) {
+				System.out.println("Alumno creado correctamente");
+			} else {
+				System.out.println("No se pudo crear el alumno");
+			}
+
+			// Cerrar la conexión
+			cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
+	public static void relacionarProyectoAlumno(String nombreProyecto, ArrayList<String> nombresAlumnos) {
+		getConexion();
+		try {
+			String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
+
+			for (int i = 0; i < nombresAlumnos.size(); i++) {
+				query += "?";
+				if (i < nombresAlumnos.size() - 1) {
+					query += ",";
+				}
+			}
+
+			query += ") AND p.nombre_proyecto = ?";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			for (int i = 0; i < nombresAlumnos.size(); i++) {
+				pstmt.setString(i + 1, nombresAlumnos.get(i));
+			}
+
+			pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
+
+			int rowsAffected = pstmt.executeUpdate();
+			if (rowsAffected > 0) {
+				System.out.println("Relación creada correctamente.");
+			} else {
+				System.out.println("No se encontró el proyecto o los alumnos especificados.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

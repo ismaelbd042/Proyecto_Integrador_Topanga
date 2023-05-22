@@ -22,7 +22,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JRadioButton rbtn2;
 	private JTextField txtgrupo;
 	private JTextField txturl;
-	private JList<Alumnos> listaAlu;
+	
+	private JList<String> listaAlu;
 
 	private JLabel lblarea;
 	private JLabel lblnota;
@@ -44,8 +45,9 @@ public class VentanaSubir extends JFrame implements IVentana {
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 	ListenerRadioButtonCurso listenerRbtn;
-	ProyectosIntegradores proyectointegrador;
 	ListenerComboBoxAREAS listenerCbAreas;
+	
+	DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos;
 
 	public VentanaSubir() {
 		super("Subir proyecto");
@@ -78,21 +80,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(colaboradores);
 
 		listaAlu = new JList<>();
-		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
 		// mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
 		listaAlu.setModel(mod);
-		// listadoAlumnos.setBounds(300, 45, 20, 20);
-		// getContentPane().add(listadoAlumnos);
+		
 		JScrollPane panelScrollAlumnos = new JScrollPane();
 		panelScrollAlumnos.setBounds(38, 221, 222, 53);
 		getContentPane().add(panelScrollAlumnos);
 		panelScrollAlumnos.setViewportView(listaAlu);
-		// ListenerListadoAlumnos escuchadorLista = new ListenerListadoAlumnos();
-		// listAlumnos.addListSelectionListener(escuchadorLista);
-
+		
 		txtano = new JTextField();
 		txtano.setBounds(164, 98, 96, 19);
 		getContentPane().add(txtano);
@@ -134,6 +133,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		rbtn2.setBounds(412, 98, 55, 20);
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
+
 		
 		rbtnDefault = new JRadioButton("");
 		rbtnDefault.setSelected(true);
@@ -201,35 +201,37 @@ public class VentanaSubir extends JFrame implements IVentana {
 			areas.addItem(aux.get(i));
 		}
 	}
+	
+	public void rellenarJlist(ArrayList<String> a) {
+		aux = a;
+		DefaultListModel<String> mod = (DefaultListModel<String>) listaAlu.getModel(); // Obtener el modelo de la JList
+		mod.clear(); // Limpiar el modelo
 
-	public void cogerDatosProyecto() {
-
-//		hacer lo del if btn esta selecionado deafult que no funcione
-		String cursodato = listenerRbtn.getCurso();
-		System.out.println(cursodato);
-		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();
-		System.out.println(cod_area);
-		String nombre_proyecto = nombre.getText().toString();
-		int año = Integer.parseInt(txtano.getText().toString());
-		String url = txturl.getText().toString();
-		int nota = Integer.parseInt(txtnota.getText().toString());
-		String grupo = txtgrupo.getText().toString();
-		int componentes = 0;
-		int[][] alumnoRealiza = null;
-
-		proyectointegrador = new ProyectosIntegradores(nombre_proyecto, url, componentes, año, cursodato, grupo, nota,
-				cod_area, alumnoRealiza);
-
-//		AccesoBBDD accesobbdd = new AccesoBBDD();
-//		int estado = accesobbdd.registrar(proyectosintegradores, accesobbdd);
-//
-//		if (estado > 0) {
-//			JOptionPane.showMessageDialog(getContentPane(), "Proyecto subido");
-//		} else {
-//			JOptionPane.showMessageDialog(getContentPane(), "No se consiguió subir", "Aviso",
-//					JOptionPane.WARNING_MESSAGE);
-//		}
+		for (int i = 0; i < aux.size(); i++) {
+			mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		}
 	}
+
+	public ProyectosIntegradores getDatosProyecto() {
+
+		ProyectosIntegradores proyecto = new ProyectosIntegradores(null, null, 0, 0, null, null, 0, 0);
+
+		proyecto.setNombre_proyecto(nombre.getText());
+		proyecto.setURL(txturl.getText());
+		proyecto.setComponentes(listaAlu.getModel().getSize());
+		proyecto.setAño(Integer.parseInt(txtano.getText()));
+		proyecto.setCurso(listenerRbtn.getCurso());
+		proyecto.setGrupo(txtgrupo.getText());
+		proyecto.setNota(Integer.parseInt(txtnota.getText()));
+		proyecto.setCod_area(ListenerComboBoxAREAS.cambioArea_CodArea());
+
+		return proyecto;
+	}
+	
+	public void agregarAlumno(VentanaBuscarAlumno alumno) {
+	    modeloAlumnosAñadidos.addElement(alumno);
+	}
+	
 
 	public JTextField getNombre() {
 		return nombre;
@@ -295,11 +297,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.txturl = txturl;
 	}
 
-	public JList<Alumnos> getListaAlu() {
+	public JList<String> getListaAlu() {
 		return listaAlu;
 	}
 
-	public void setListaAlu(JList<Alumnos> listaAlu) {
+	public void setListaAlu(JList<String> listaAlu) {
 		this.listaAlu = listaAlu;
 	}
 
@@ -407,21 +409,12 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.areas = areas;
 	}
 
-
 	public ButtonGroup getCursoGroup() {
 		return cursoGroup;
 	}
 
 	public void setCursoGroup(ButtonGroup cursoGroup) {
 		this.cursoGroup = cursoGroup;
-	}
-
-	public ProyectosIntegradores getProyectointegrador() {
-		return proyectointegrador;
-	}
-
-	public void setProyectointegrador(ProyectosIntegradores proyectointegrador) {
-		this.proyectointegrador = proyectointegrador;
 	}
 
 	public JRadioButton getRbtnDefault() {
@@ -432,6 +425,4 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.rbtnDefault = rbtnDefault;
 	}
 	
-	
-
 }
