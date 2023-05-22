@@ -25,7 +25,9 @@ public class ControladorVer_Info implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		vv.dispose();
+//		vi.
 		vi.hacerVisible();
+		
 	}
 
 }

@@ -9,7 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.JLabel;
+
 import modelo.ProyectosIntegradores;
+import vista.VentanaInfo;
 
 public class AccesoBBDD {
 	static String driver = "com.mysql.cj.jdbc.Driver";
@@ -109,16 +112,50 @@ public class AccesoBBDD {
 		return nombreAreas;
 	}
 
-	public ProyectosIntegradores conseguirInfo(String nombre) {
+	public ProyectosIntegradores conseguirInfo(String nombre, VentanaInfo ventana) {
 		ProyectosIntegradores datosProyecto = new ProyectosIntegradores("", "", 0, 0, "", "", 0, 0, null);
 
 		try {
 			Statement statement = con.createStatement();
-			String query = "select * from proyectos where nombre_proyecto = '" + nombre + "'";
+			String query = "select url from proyectos where nombre_proyecto = '" + nombre + "'";
 			ResultSet resultado = statement.executeQuery(query);
-			while (resultado.next()) {
-				System.out.println(resultado.getString("nombre_alumno"));
-			}
+			datosProyecto.setURL(resultado.toString());
+//			ventana.setLblurl2((JLabel) resultado);
+			
+//			query = "select componentes from proyectos where nombre_proyecto = '" + nombre + "'";
+//			resultado = statement.executeQuery(query);
+//			ventana.setlbl((JLabel) resultado);
+			
+			query = "select ultima_modificacion from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setUltima_modificacion(resultado.toString());
+//			ventana.setLblUltimaModi2((JLabel) resultado);
+			
+			query = "select año from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setAño(Integer.parseInt(resultado.toString()));
+//			ventana.setLblAno2((JLabel) resultado);
+			
+			query = "select curso from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setCurso(resultado.toString());
+//			ventana.setLblCurso2((JLabel) resultado);
+			
+			query = "select grupo from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setGrupo(resultado.toString());
+			ventana.setLblGrupo2((JLabel) resultado);
+			
+			query = "select nota from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setNota(Integer.parseInt(resultado.toString()));
+//			ventana.setLblNota2((JLabel) resultado);
+			
+			query = "select cod_area from proyectos where nombre_proyecto = '" + nombre + "'";
+			resultado = statement.executeQuery(query);
+			datosProyecto.setCod_area(Integer.parseInt(resultado.toString()));
+//			ventana.setLblurl2((JLabel) resultado);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

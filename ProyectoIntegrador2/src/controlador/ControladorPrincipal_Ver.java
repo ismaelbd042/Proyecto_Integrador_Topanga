@@ -30,8 +30,3 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	}
 
 }
-
-// Hasta aqui funciona y pasa de la ventana principal a la de ver.
-// Es posible que haya que hacer una IVentana para cada vista
-// Meter el "public void setControlador(ControladorPrincipal_Ver c);" 
-// cambiando el ControladorPrincipal_Ver por el controlador que corresponda

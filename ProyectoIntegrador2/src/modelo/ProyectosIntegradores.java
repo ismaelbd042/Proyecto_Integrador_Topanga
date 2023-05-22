@@ -11,6 +11,7 @@ public class ProyectosIntegradores {
 	private int nota;
 	private int cod_area;
 	private int[][] alumnoRealizaProyecto;
+	private String ultima_modificacion;
 	
 	public ProyectosIntegradores(String nombre_proyecto, String URL, int componentes, int año, String curso,
 			String grupo, int nota, int cod_area, int[][] alumnoRealizaProyecto) {
@@ -95,6 +96,14 @@ public class ProyectosIntegradores {
 
 	public void setAlumnoRealizaProyecto(int[][] alumnoRealizaProyecto) {
 		this.alumnoRealizaProyecto = alumnoRealizaProyecto;
+	}
+
+	public String getUltima_modificacion() {
+		return ultima_modificacion;
+	}
+
+	public void setUltima_modificacion(String ultima_modificacion) {
+		this.ultima_modificacion = ultima_modificacion;
 	}
 	
 	
