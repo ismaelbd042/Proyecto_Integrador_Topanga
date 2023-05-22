@@ -130,6 +130,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		rbtn2.setBounds(412, 98, 55, 20);
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
+		
+		JRadioButton rbtnDefault = new JRadioButton("");
+		rbtnDefault.setSelected(true);
+		cursoGroup.add(rbtnDefault);
 
 		listenerRbtn = new ListenerRadioButtonCurso(rbtn1, rbtn2);
 		rbtn1.addItemListener(listenerRbtn);
@@ -197,6 +201,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	public void subirProyecto() {
 
+//		hacer lo del if btn esta selecionado deafult que no funcione
+		
+		
+		
+		
 		String cursodato = listenerRbtn.getCurso();
 		System.out.println(cursodato);
 		int cod_area = ListenerComboBoxAREAS.cambioArea_CodArea();

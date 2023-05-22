@@ -8,9 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JList;
 
+import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import vista.VentanaInfo;
 
@@ -112,7 +115,7 @@ public class AccesoBBDD {
 		return nombreAreas;
 	}
 
-	public ProyectosIntegradores conseguirInfo(String nombre, VentanaInfo ventana) {
+	public static ProyectosIntegradores conseguirInfo(String nombre) {
 		ProyectosIntegradores datosProyecto = new ProyectosIntegradores("", "", 0, 0, "", "", 0, 0, null);
 
 		try {
@@ -121,41 +124,41 @@ public class AccesoBBDD {
 			ResultSet resultado = statement.executeQuery(query);
 			datosProyecto.setURL(resultado.toString());
 //			ventana.setLblurl2((JLabel) resultado);
-			
+
 //			query = "select componentes from proyectos where nombre_proyecto = '" + nombre + "'";
 //			resultado = statement.executeQuery(query);
 //			ventana.setlbl((JLabel) resultado);
-			
+
 			query = "select ultima_modificacion from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setUltima_modificacion(resultado.toString());
 //			ventana.setLblUltimaModi2((JLabel) resultado);
-			
+
 			query = "select año from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setAño(Integer.parseInt(resultado.toString()));
 //			ventana.setLblAno2((JLabel) resultado);
-			
+
 			query = "select curso from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setCurso(resultado.toString());
 //			ventana.setLblCurso2((JLabel) resultado);
-			
+
 			query = "select grupo from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setGrupo(resultado.toString());
-			ventana.setLblGrupo2((JLabel) resultado);
-			
+//			ventana.setLblGrupo2((JLabel) resultado);
+
 			query = "select nota from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setNota(Integer.parseInt(resultado.toString()));
 //			ventana.setLblNota2((JLabel) resultado);
-			
+
 			query = "select cod_area from proyectos where nombre_proyecto = '" + nombre + "'";
 			resultado = statement.executeQuery(query);
 			datosProyecto.setCod_area(Integer.parseInt(resultado.toString()));
 //			ventana.setLblurl2((JLabel) resultado);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -206,6 +209,32 @@ public class AccesoBBDD {
 	    }
 
 	    return nombresProyectos;
+	}
+
+	public ArrayList<String> conseguirColaboradores(ProyectosIntegradores proyecto) {
+		int idProyecto = 0;
+		ArrayList<String> lista = null;
+		try {
+			String query = "SELECT alumno.nombre_alumno, alumno.apellido_alumno " + "FROM alumno "
+					+ "JOIN realiza ON alumno.id_alumno = realiza.id_alumno " + "WHERE realiza.id_proyecto = ?";
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, idProyecto);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String nombreAlumno = rs.getString("nombre_alumno");
+				String apellidoAlumno = rs.getString("apellido_alumno");
+				lista.add(nombreAlumno + " " + apellidoAlumno);
+				System.out.println("Nombre: " + nombreAlumno + " " + apellidoAlumno);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+
 	}
 
 }
