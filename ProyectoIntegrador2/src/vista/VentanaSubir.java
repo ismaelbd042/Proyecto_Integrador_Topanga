@@ -22,7 +22,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JRadioButton rbtn2;
 	private JTextField txtgrupo;
 	private JTextField txturl;
-	private JList<Alumnos> listaAlu;
+	
+	private JList<String> listaAlu;
 
 	private JLabel lblarea;
 	private JLabel lblnota;
@@ -46,6 +47,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 	ListenerRadioButtonCurso listenerRbtn;
 	ProyectosIntegradores proyectointegrador;
 	ListenerComboBoxAREAS listenerCbAreas;
+	
+	DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos;
 
 	public VentanaSubir() {
 		super("Subir proyecto");
@@ -78,7 +81,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 		getContentPane().add(colaboradores);
 
 		listaAlu = new JList<>();
-		DefaultListModel<Alumnos> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -202,6 +205,16 @@ public class VentanaSubir extends JFrame implements IVentana {
 			areas.addItem(aux.get(i));
 		}
 	}
+	
+	public void rellenarJlist(ArrayList<String> a) {
+		aux = a;
+		DefaultListModel<String> mod = (DefaultListModel<String>) listaAlu.getModel(); // Obtener el modelo de la JList
+		mod.clear(); // Limpiar el modelo
+
+		for (int i = 0; i < aux.size(); i++) {
+			mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		}
+	}
 
 	public ProyectosIntegradores getDatosProyecto() {
 
@@ -218,6 +231,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		return proyecto;
 	}
+	
+	public void agregarAlumno(VentanaBuscarAlumno alumno) {
+	    modeloAlumnosAñadidos.addElement(alumno);
+	}
+	
 
 	public JTextField getNombre() {
 		return nombre;
@@ -283,11 +301,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		this.txturl = txturl;
 	}
 
-	public JList<Alumnos> getListaAlu() {
+	public JList<String> getListaAlu() {
 		return listaAlu;
 	}
 
-	public void setListaAlu(JList<Alumnos> listaAlu) {
+	public void setListaAlu(JList<String> listaAlu) {
 		this.listaAlu = listaAlu;
 	}
 
