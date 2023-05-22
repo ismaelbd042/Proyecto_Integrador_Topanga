@@ -24,9 +24,9 @@ public class VentanaAlumno extends JFrame implements IVentana {
 	private JLabel lblNombre;
 	private JLabel lblApellidos;
 	private JLabel lblExpediente;
-	private JTextField txtNombre;
-	private JTextField txtApellidos;
-	private JTextField txtExpediente;
+	public JTextField txtNombre;
+	public JTextField txtApellidos;
+	public JTextField txtExpediente;
 	private JButton btnAñadir;
 	
 	public VentanaAlumno() {
@@ -81,7 +81,6 @@ public class VentanaAlumno extends JFrame implements IVentana {
 	
 	public void setControlador(ControladorAlumno_BuscarAlumno c) {
 		btnAñadir.addActionListener(c);
-		
 	}
 
 }
