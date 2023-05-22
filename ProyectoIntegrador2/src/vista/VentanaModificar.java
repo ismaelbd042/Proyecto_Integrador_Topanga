@@ -8,6 +8,8 @@ import javax.swing.*;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorInfo_Ver;
+import controlador.ControladorLupaModificar;
+import controlador.ControladorLupaVer;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -27,10 +29,10 @@ public class VentanaModificar extends JFrame implements IVentana {
 	private JButton btnBorrar;
 	private JButton btnLupa;
 	private JLabel lblBusca;
-	private JList<ProyectosIntegradores> proyectos;
+	private JList<String> proyectos;
 
 	private JButton btnatras;
-	private JTextField textField;
+	private JTextField txtBuscarNombre;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 
@@ -72,10 +74,10 @@ public class VentanaModificar extends JFrame implements IVentana {
 		areas.setBounds(274, 77, 184, 24);
 		getContentPane().add(areas);
 
-		textField = new JTextField();
-		textField.setBounds(33, 77, 184, 24);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtBuscarNombre = new JTextField();
+		txtBuscarNombre.setBounds(33, 77, 184, 24);
+		getContentPane().add(txtBuscarNombre);
+		txtBuscarNombre.setColumns(10);
 
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
@@ -84,7 +86,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		getContentPane().add(btnLupa);
 		
 		proyectos = new JList<>();
-		DefaultListModel<ProyectosIntegradores> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -106,6 +108,22 @@ public class VentanaModificar extends JFrame implements IVentana {
 		setVisible(true);
 	}
 
+	public JList<String> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(JList<String> proyectos) {
+		this.proyectos = proyectos;
+	}
+
+	public JTextField getTxtBuscarNombre() {
+		return txtBuscarNombre;
+	}
+
+	public void setTxtBuscarNombre(JTextField txtBuscarNombre) {
+		this.txtBuscarNombre = txtBuscarNombre;
+	}
+
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
 
@@ -115,6 +133,10 @@ public class VentanaModificar extends JFrame implements IVentana {
 		btnatras.addActionListener(c);
 
 	}
+	
+	public void setControlador(ControladorLupaModificar c) {
+		btnLupa.addActionListener(c);
+	}
   
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
@@ -122,4 +144,14 @@ public class VentanaModificar extends JFrame implements IVentana {
 			areas.addItem(aux.get(i));
 		}
 	}
+	
+	public void rellenarJlist(ArrayList<String> a) {
+	 	aux = a;
+	    DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
+	    mod.clear(); // Limpiar el modelo
+	    
+	    for (int i = 0; i < aux.size(); i++) {
+	        mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+	    }
+}
 }

@@ -11,10 +11,10 @@ import javax.swing.*;
 public class VentanaVer extends JFrame implements IVentana {
 	
 	private JLabel lblBusca;
-	private JTextField textField;
+	private JTextField txtBuscarNombre;
 	private JButton btninspeccionar;
 	private JButton btnatras;
-	private JList<ProyectosIntegradores> proyectos;
+	private JList<String> proyectos;
 	private JButton btnLupa;
 	ArrayList<String> aux;
 	JComboBox<String> areas;
@@ -48,10 +48,10 @@ public class VentanaVer extends JFrame implements IVentana {
 		areas.setBounds(274, 99, 184, 24);
 		getContentPane().add(areas);
 
-		textField = new JTextField();
-		textField.setBounds(33, 99, 184, 24);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		txtBuscarNombre = new JTextField();
+		txtBuscarNombre.setBounds(33, 99, 184, 24);
+		getContentPane().add(txtBuscarNombre);
+		txtBuscarNombre.setColumns(10);
 
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
@@ -60,7 +60,7 @@ public class VentanaVer extends JFrame implements IVentana {
 		getContentPane().add(btnLupa);
 
 		proyectos = new JList<>();
-		DefaultListModel<ProyectosIntegradores> mod = new DefaultListModel<>();
+		DefaultListModel<String> mod = new DefaultListModel<>();
 		// mod.addElement(new Alumno ("Lucca", "Manfredotti", "465484156B", 19));
 		// mod.addElement(new Alumno ("Mateo", "Manfredotti", "789987898Z", 16));
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
@@ -81,6 +81,23 @@ public class VentanaVer extends JFrame implements IVentana {
 	public void hacerVisible() {
 		setVisible(true);
 	}
+	
+
+	public JTextField getTxtBuscarNombre() {
+		return txtBuscarNombre;
+	}
+
+	public void setTxtBuscarNombre(JTextField txtBuscarNombre) {
+		this.txtBuscarNombre = txtBuscarNombre;
+	}
+
+	public JList<String> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(JList<String> proyectos) {
+		this.proyectos = proyectos;
+	}
 
 	public void setControlador(ControladorVer_Principal c) {
 		btnatras.addActionListener(c);
@@ -89,7 +106,10 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	public void setControlador(ControladorVer_Info c) {
 		btninspeccionar.addActionListener(c);
-
+	}
+	
+	public void setControlador(ControladorLupaVer c) {
+		btnLupa.addActionListener(c);
 	}
   
 	public void rellenarAreas(ArrayList<String> a) {
@@ -97,5 +117,15 @@ public class VentanaVer extends JFrame implements IVentana {
 		for (int i = 0; i < aux.size(); i++) {
 			areas.addItem(aux.get(i));
 		}
+	}
+	
+	public void rellenarJlist(ArrayList<String> a) {
+		 	aux = a;
+		    DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
+		    mod.clear(); // Limpiar el modelo
+		    
+		    for (int i = 0; i < aux.size(); i++) {
+		        mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		    }
 	}
 }

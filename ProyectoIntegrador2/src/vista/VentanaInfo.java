@@ -231,9 +231,9 @@ public class VentanaInfo extends JFrame implements IVentana {
 		this.lblurl2 = lblurl2;
 	}
 	
-	public void rellenarInfo(ProyectosIntegradores proyecto) {
-		setLblAno2((JLabel) proyecto.getAño());
-		//no puedo pasar int a JLabel		
-	}
+//	public void rellenarInfo(ProyectosIntegradores proyecto) {
+//		setLblAno2((JLabel) proyecto.g);
+//		//no puedo pasar int a JLabel		
+//	}
 
 }
