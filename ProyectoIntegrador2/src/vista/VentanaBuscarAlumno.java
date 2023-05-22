@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controlador.ControladorAgregarAlumno_BuscarAlumno;
 import controlador.ControladorBuscarAlumno_Alumno;
 import controlador.ControladorBuscarAlumno_Subir;
 import controlador.ControladorContraseña_Modificar;
@@ -136,6 +137,10 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
 	public void setControlador(ControladorBuscarAlumno_Subir c) {
 		btnCancelar.addActionListener(c);
+	}
+	
+	public void setControlador(ControladorAgregarAlumno_BuscarAlumno c) {
+		btnAñadir.addActionListener(c);
 	}
 	
 	public void rellenarJlistAlumno(ArrayList<String> a) {
