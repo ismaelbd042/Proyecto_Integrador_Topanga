@@ -1,5 +1,6 @@
 package main;
 
+import controlador.ControladorAgregarAlumno_BuscarAlumno;
 import controlador.ControladorAlumno_BuscarAlumno;
 import controlador.ControladorBorrarProyecto;
 import controlador.ControladorBuscarAlumno_Alumno;
@@ -71,6 +72,7 @@ public class Main {
 				//Controladores de buscarAlumno
 				ControladorBuscarAlumno_Subir controladorBA_S = new ControladorBuscarAlumno_Subir(vba, vs);
 				ControladorBuscarAlumno_Alumno controladorBA_A = new ControladorBuscarAlumno_Alumno(vba, va);
+				ControladorAgregarAlumno_BuscarAlumno controladorAG_BA = new ControladorAgregarAlumno_BuscarAlumno(vba, vs);
 				
 				//Controladores de ventana ver
 				ControladorVer_Principal controladorV_P = new ControladorVer_Principal(v, vv);
@@ -124,6 +126,7 @@ public class Main {
 				vba.setControlador(controladorBA_A);
 				vba.setControlador(controladorBA_S);
 				vba.setControlador(controladorLBA);
+				vba.setControlador(controladorAG_BA);
 				
 				//Establecemos el controlador para la ventana alumno
 				va.setControlador(controladorA_BA);
