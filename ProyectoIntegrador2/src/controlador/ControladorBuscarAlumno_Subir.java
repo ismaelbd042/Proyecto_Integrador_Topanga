@@ -6,24 +6,33 @@ import java.awt.event.ActionListener;
 import vista.VentanaBuscarAlumno;
 import vista.VentanaSubir;
 
+/**
+ * 
+ * @author Ismael Bodas, Alvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class ControladorBuscarAlumno_Subir implements ActionListener {
 
-//	private Ventana v;
-//	private VentanaVer vv;
-//	private VentanaEditar ve;
-//	private VentanaInfo vi;
+	// Ventanas que vamos a utilizar
 	private VentanaSubir vs;
-//	private VentanaModificar vm;
-//	private VentanaContraseña vc;
 	private VentanaBuscarAlumno vba;
 
+	/**
+	 * Constructor de ControladorBuscarAlumno_Subir
+	 * @param vba Ventana Buscar Alumno
+	 * @param vs Ventana Subir
+	 */
 	public ControladorBuscarAlumno_Subir(VentanaBuscarAlumno vba, VentanaSubir vs) {
 		this.vba = vba;
 		this.vs = vs;
 	}
 
+	/**
+	 * Metodo de actionPerformed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Cerramos la ventana buscar alumno y abrimos la de subir
 		vba.dispose();
 		vs.hacerVisible();
 	}
