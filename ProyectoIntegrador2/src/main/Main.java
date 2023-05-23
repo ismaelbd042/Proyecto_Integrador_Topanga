@@ -1,6 +1,7 @@
 package main;
 
 import controlador.ControladorAgregarAlumno_BuscarAlumno;
+
 import controlador.ControladorAlumno_BuscarAlumno;
 import controlador.ControladorBorrarProyecto;
 import controlador.ControladorBuscarAlumno_Alumno;
@@ -25,6 +26,11 @@ import controlador.ControladorVer_Info;
 import controlador.ControladorVer_Principal;
 import vista.*;
 
+/**
+ * 
+ * @author Ismael Bodas, Lucca Manfredotti y Álvaro Serrano
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
