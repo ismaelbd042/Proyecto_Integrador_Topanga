@@ -21,7 +21,13 @@ import controlador.ControladorVer_Principal;
 import javax.swing.JButton;
 import java.awt.Font;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano, Lucca Manfredotti
+ *
+ */
 public class VentanaEditar extends JFrame implements IVentana {
+	//Creamos las variables de la clase ventana Editar 
 	private JTextField nombre;
 	private JTextField nota;
 	private JTextField url;
@@ -40,11 +46,17 @@ public class VentanaEditar extends JFrame implements IVentana {
 	private JLabel lbldatonotaAntiguo;
 	private JLabel lbldatourlAntiguo;
 
+	/**
+	 * Llamamos a la ventana Editar Proyecto 
+	 */
 	public VentanaEditar() {
 		super("Editar proyecto");
 		inicializarComponentes();
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para ponerle tamaño y ajustar los componenetes a la ventana
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -105,76 +117,138 @@ public class VentanaEditar extends JFrame implements IVentana {
 		getContentPane().add(url);
 		url.setColumns(10);
 
+		//Boton de actualiar 
 		btnactualizar = new JButton("Actualizar datos");
 		btnactualizar.setBounds(253, 287, 177, 34);
 		getContentPane().add(btnactualizar);
 
+		//Boton de volver atras
 		btnatras = new JButton("Volver Atras");
 		btnatras.setBounds(66, 287, 177, 34);
 		getContentPane().add(btnatras);
 
+		//Ponemos tamaño a la ventana
 		setSize(512, 384);
 		setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * SetControlador lo utilizamos para darle funcionalidad al boton de volver atras
+	 * @param c
+	 */
 	public void setControlador(ControladorEditar_Modificar c) {
 		btnatras.addActionListener(c);
 
 	}
 
+	/**
+	 * Getter de la variable nombre
+	 * @return nombre
+	 */
 	public JTextField getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Setter de la variable nombre
+	 * @param nombre
+	 */
 	public void setNombre(JTextField nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Getter de la variable nota
+	 * @return nota
+	 */
 	public JTextField getNota() {
 		return nota;
 	}
 
+	/**
+	 * Setter de la variable nota
+	 * @param nota
+	 */
 	public void setNota(JTextField nota) {
 		this.nota = nota;
 	}
 
+	/**
+	 * Getter de la variable URL
+	 * @return url
+	 */
 	public JTextField getUrl() {
 		return url;
 	}
 
+	/**
+	 * Setter de la variable url
+	 * @param url
+	 */
 	public void setUrl(JTextField url) {
 		this.url = url;
 	}
 
+	/**
+	 * Getter de la variable dato nombre antiguo
+	 * @return lbldatonombreAntiguo
+	 */
 	public JLabel getLbldatonombreAntiguo() {
 		return lbldatonombreAntiguo;
 	}
 
+	/**
+	 * Setter de la variable dato nombre Antiguo
+	 * @param lbldatonombreAntiguo
+	 */
 	public void setLbldatonombreAntiguo(JLabel lbldatonombreAntiguo) {
 		this.lbldatonombreAntiguo = lbldatonombreAntiguo;
 	}
 
+	/**
+	 * Getter de la variable dato Nota Antiguo
+	 * @return dato nota antiguo
+	 */
 	public JLabel getLbldatonotaAntiguo() {
 		return lbldatonotaAntiguo;
 	}
 
+	/**
+	 * Setter de la variable dato nota antiguo
+	 * @param lbldatonotaAntiguo
+	 */
 	public void setLbldatonotaAntiguo(JLabel lbldatonotaAntiguo) {
 		this.lbldatonotaAntiguo = lbldatonotaAntiguo;
 	}
 
+	/**
+	 * Getter de la variable dato url antiguo
+	 * @return dato url antiguo
+	 */
 	public JLabel getLbldatourlAntiguo() {
 		return lbldatourlAntiguo;
 	}
 
+	/**
+	 * Setter de la variable dato url antiguo
+	 * @param lbldatourlAntiguo
+	 */
 	public void setLbldatourlAntiguo(JLabel lbldatourlAntiguo) {
 		this.lbldatourlAntiguo = lbldatourlAntiguo;
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton actualizar 
+	 * @param c
+	 */
 	public void setControlador(ControladorActualizarDatos c) {
 		btnactualizar.addActionListener(c);
 	}

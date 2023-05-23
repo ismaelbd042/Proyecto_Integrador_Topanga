@@ -11,8 +11,14 @@ import controlador.ControladorModificar_Principal;
 import controlador.ListenerComboBoxAREAS;
 import java.awt.Font;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class VentanaModificar extends JFrame implements IVentana {
 
+	//Creamos las variables de la clase ventanaModificar
 	private JButton btnEditar;
 	private JButton btnBorrar;
 	private JButton btnLupa;
@@ -24,11 +30,17 @@ public class VentanaModificar extends JFrame implements IVentana {
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 
+	/**
+	 * Llamamos a esta ventana administra proyectos
+	 */
 	public VentanaModificar() {
 		super("Administrar Proyectos");
 		inicializarComponentes();
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para poner tamaño y ajustar los componentes a la ventana
+	 */
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
@@ -67,6 +79,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		getContentPane().add(txtBuscarNombre);
 		txtBuscarNombre.setColumns(10);
 
+		//Boton lupa
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
 		btnLupa.setBounds(227, 65, 37, 46);
@@ -82,49 +95,89 @@ public class VentanaModificar extends JFrame implements IVentana {
 		getContentPane().add(barradesplazamiento);
 		barradesplazamiento.setViewportView(proyectos);
 
+		//Ponemos tamaño a la ventana
 		setSize(512, 384);
 		setLocationRelativeTo(null);
 
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * Getter de la variable proyectos
+	 * @return proyectos
+	 */
 	public JList<String> getProyectos() {
 		return proyectos;
 	}
 
+	/**
+	 * Setter de la variable proyectos
+	 * @param proyectos
+	 */
 	public void setProyectos(JList<String> proyectos) {
 		this.proyectos = proyectos;
 	}
 
+	/**
+	 * Getter de la variable Buscar Nombre
+	 * @return txtBuscarNombre
+	 */
 	public JTextField getTxtBuscarNombre() {
 		return txtBuscarNombre;
 	}
 
+	/**
+	 * Setter de la variable Buscar Nombre
+	 * @param txtBuscarNombre
+	 */
 	public void setTxtBuscarNombre(JTextField txtBuscarNombre) {
 		this.txtBuscarNombre = txtBuscarNombre;
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de editar
+	 * @param c
+	 */
 	public void setControlador(ControladorModificar_Editar c) {
 		btnEditar.addActionListener(c);
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionamiento al boton de borrar
+	 * @param c
+	 */
 	public void setControlador(ControladorBorrarProyecto c) {
 		btnBorrar.addActionListener(c);
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de volver atras
+	 * @param c
+	 */
 	public void setControlador(ControladorModificar_Principal c) {
 		btnatras.addActionListener(c);
 
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de lupa
+	 * @param c
+	 */
 	public void setControlador(ControladorLupaModificar c) {
 		btnLupa.addActionListener(c);
 	}
 
+	/**
+	 * Metodo rellenarAreas que sirve para rellenar las Areas 
+	 * @param a
+	 */
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
 		for (int i = 0; i < aux.size(); i++) {
@@ -132,6 +185,10 @@ public class VentanaModificar extends JFrame implements IVentana {
 		}
 	}
 
+	/**
+	 * Metodo rellenarJList que sirve para rellenar la JList de proyectos
+	 * @param a
+	 */
 	public void rellenarJlist(ArrayList<String> a) {
 		aux = a;
 		DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
@@ -142,10 +199,18 @@ public class VentanaModificar extends JFrame implements IVentana {
 		}
 	}
 
+	/**
+	 * Getter de la variable Areas
+	 * @return areas
+	 */
 	public JComboBox<String> getAreas() {
 		return areas;
 	}
 
+	/**
+	 * Setter de la variable Areas
+	 * @param areas
+	 */
 	public void setAreas(JComboBox<String> areas) {
 		this.areas = areas;
 	}
