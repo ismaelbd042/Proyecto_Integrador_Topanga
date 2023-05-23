@@ -250,6 +250,17 @@ public class AccesoBBDD {
 				JOptionPane.showMessageDialog(null, "No se consiguió subir", "Aviso", JOptionPane.WARNING_MESSAGE);
 				return; // Salir del método sin ejecutar la inserción
 			}
+			
+			// Verificar si el alumno ya está creado
+	        String consulta = "SELECT * FROM alumno WHERE num_expediente = ?";
+	        PreparedStatement consultaStatement = con.prepareStatement(consulta);
+	        consultaStatement.setString(1, num_expediente);
+	        ResultSet resultado = consultaStatement.executeQuery();
+
+	        if (resultado.next()) {
+	            JOptionPane.showMessageDialog(null, "El alumno ya está creado", "Error", JOptionPane.ERROR_MESSAGE);
+	            return; // Salir del método sin ejecutar la inserción
+	        }
 
 			// Crear sentencia SQL INSERT
 			String sql = "INSERT INTO alumno (nombre_alumno, apellido_alumno, num_expediente) VALUES (?, ?, ?)";
