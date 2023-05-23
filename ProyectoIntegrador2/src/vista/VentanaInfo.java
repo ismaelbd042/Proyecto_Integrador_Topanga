@@ -99,10 +99,10 @@ public class VentanaInfo extends JFrame implements IVentana {
 		DefaultListModel<String> mod = new DefaultListModel<>();
 		listColaboradores2.setModel(mod);
 
-		JScrollPane barradesplazamientoAlu = new JScrollPane();
-		barradesplazamientoAlu.setBounds(55, 155, 181, 43);
-		getContentPane().add(barradesplazamientoAlu);
-		barradesplazamientoAlu.setRowHeaderView(listColaboradores2);
+		JScrollPane panelScrollAlumnos = new JScrollPane();
+		panelScrollAlumnos.setBounds(55, 155, 181, 43);
+		getContentPane().add(panelScrollAlumnos);
+		panelScrollAlumnos.setViewportView(listColaboradores2);
 
 		lblUltimaModi2 = new JLabel("-- 08/05/2023 --");
 		lblUltimaModi2.setBounds(163, 82, 105, 20);

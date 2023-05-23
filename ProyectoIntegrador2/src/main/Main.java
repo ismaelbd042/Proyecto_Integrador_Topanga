@@ -1,5 +1,6 @@
 package main;
 
+import controlador.ControladorActualizarDatos;
 import controlador.ControladorAgregarAlumno_BuscarAlumno;
 
 import controlador.ControladorAlumno_BuscarAlumno;
@@ -97,6 +98,9 @@ public class Main {
 				
 				//Controlador de ventana info
 				ControladorInfo_Ver controladorI_V = new ControladorInfo_Ver(vv,vi);
+				
+				//Controlador de ventana editar
+				ControladorActualizarDatos controladorAD = new ControladorActualizarDatos(ve, vm);
 
 				
 				//Establecemos los controladores para la ventana principal
@@ -127,6 +131,7 @@ public class Main {
 				
 				//Establecemos el controlador para la ventana editar
 				ve.setControlador(controladorE_M);
+				ve.setControlador(controladorAD);
 				
 				//Establecemos los controladores para la ventana buscar alumnos
 				vba.setControlador(controladorBA_A);
