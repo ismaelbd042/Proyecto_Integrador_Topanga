@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -45,11 +46,13 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	private JButton btnLupa;
 	private JButton btnCancelar;
 	private JLabel lblBusca;
+	private JLabel lblFotoAlumno;
 	ArrayList<String> aux;
 
 	public VentanaBuscarAlumno() {
 		super("Buscar Alumno");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	@Override
@@ -61,6 +64,11 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBusca.setBounds(114, 26, 259, 30);
 		getContentPane().add(lblBusca);
+		
+		lblFotoAlumno = new JLabel();
+		lblFotoAlumno.setIcon(new ImageIcon(Ventana.class.getResource("/img/alumn.png")));
+		lblFotoAlumno.setBounds(9, 74, 130, 151);
+		getContentPane().add(lblFotoAlumno);
 
 		btnAñadir = new JButton("Añadir alumno");
 		btnAñadir.setBounds(61, 251, 159, 30);

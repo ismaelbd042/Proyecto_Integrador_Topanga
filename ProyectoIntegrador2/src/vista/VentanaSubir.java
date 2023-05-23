@@ -11,9 +11,12 @@ import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class VentanaSubir extends JFrame implements IVentana {
+	
+	private JLabel lblFotoAlmacen;
 	private JTextField nombre;
 	private JButton colaboradores;
 	private JTextField txtano;
@@ -52,12 +55,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public VentanaSubir() {
 		super("Subir proyecto");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
+		lblFotoAlmacen = new JLabel();
+		lblFotoAlmacen.setIcon(new ImageIcon(Ventana.class.getResource("/img/fotoalmacen.png")));
+		lblFotoAlmacen.setBounds(317, 221, 131, 60);
+		getContentPane().add(lblFotoAlmacen);
+		
 		nombre = new JTextField();
 		nombre.setBounds(164, 51, 96, 19);
 		getContentPane().add(nombre);
@@ -126,11 +135,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		rbtn1 = new JRadioButton("1º");
 		rbtn1.setBounds(367, 98, 37, 20);
+		rbtn1.setBackground(new Color(137,217,194));
 		cursoGroup.add(rbtn1);
 		getContentPane().add(rbtn1);
 
 		rbtn2 = new JRadioButton("2º");
 		rbtn2.setBounds(412, 98, 55, 20);
+		rbtn2.setBackground(new Color(137,217,194));
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
 
@@ -203,13 +214,18 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 	
 	public void rellenarJlist(ArrayList<String> a) {
-		aux = a;
 		DefaultListModel<String> mod = (DefaultListModel<String>) listaAlu.getModel(); // Obtener el modelo de la JList
 		mod.clear(); // Limpiar el modelo
 
-		for (int i = 0; i < aux.size(); i++) {
-			mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
+		for (int i = 0; i < a.size(); i++) {
+			mod.addElement(a.get(i)); // Agregar el nombre del proyecto al modelo
 		}
+	}
+	
+	public JList<String> vaciarJlist(JList<String> vaciarlist) {
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+	    vaciarlist.setModel(listModel);
+	    return vaciarlist;
 	}
 
 	public ProyectosIntegradores getDatosProyecto() {

@@ -50,6 +50,7 @@ public class ControladorContraseña_Subir implements ActionListener {
 			vs.getTxtgrupo().setText(null);
 			vs.getTxturl().setText(null);
 			vs.getNombre().setText(null);
+			ControladorAgregarAlumno_BuscarAlumno.alumnoSeleccionado.clear();
 			vs.getListaAlu().setModel(new DefaultListModel<String>());
 			vs.getAreas().removeAllItems();
 			vs.getRbtnDefault().setSelected(true);

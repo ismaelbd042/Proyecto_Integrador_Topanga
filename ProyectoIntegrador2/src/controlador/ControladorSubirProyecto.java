@@ -44,8 +44,11 @@ public class ControladorSubirProyecto implements ActionListener {
 				Integer.parseInt(vs.getTxtnota().getText());
 				Integer.parseInt(vs.getTxtano().getText());
 				vs.getDatosProyecto();
-				AccesoBBDD.registrar(vs.getDatosProyecto());
+				System.out.println("1");
 				AccesoBBDD.relacionarProyectoAlumno(vs.getDatosProyecto().getNombre_proyecto(), vs.getAux());
+				System.out.println("2");
+				AccesoBBDD.registrar(vs.getDatosProyecto());
+				System.out.println("3");
 				vs.dispose();
 				v.hacerVisible();
 				
