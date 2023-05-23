@@ -32,7 +32,7 @@ public class VentanaAlumno extends JFrame implements IVentana {
 	public VentanaAlumno() {
 		super("Nuevo Alumno");
 		inicializarComponentes();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 	@Override

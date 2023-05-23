@@ -278,33 +278,69 @@ public class AccesoBBDD {
 	public static void relacionarProyectoAlumno(String nombreProyecto, ArrayList<String> nombresAlumnos) {
 		getConexion();
 		try {
-			String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
+			String proyectoQuery = "SELECT id_proyecto FROM proyectos WHERE nombre_proyecto = ?";
+			try (PreparedStatement proyectoStmt = con.prepareStatement(proyectoQuery)) {
+				proyectoStmt.setString(1, nombreProyecto);
+				ResultSet proyectoResult = proyectoStmt.executeQuery();
 
-			for (int i = 0; i < nombresAlumnos.size(); i++) {
-				query += "?";
-				if (i < nombresAlumnos.size() - 1) {
-					query += ",";
+				if (proyectoResult.next()) {
+					int idProyecto = proyectoResult.getInt("id_proyecto");
+					String realizaQuery = "INSERT INTO realiza (id_alumno, id_proyecto) VALUES (?, ?)";
+					try (PreparedStatement realizaStmt = con.prepareStatement(realizaQuery)) {
+						for (String alumno : nombresAlumnos) {
+							String[] nombres = alumno.split(" ");
+							String nombreAlumno = nombres[0];
+							String apellidoAlumno = nombres[1];
+
+							String alumnoQuery = "SELECT id_alumno FROM alumno WHERE nombre_alumno = ? AND apellido_alumno = ?";
+							try (PreparedStatement alumnoStmt = con.prepareStatement(alumnoQuery)) {
+								alumnoStmt.setString(1, nombreAlumno);
+								alumnoStmt.setString(2, apellidoAlumno);
+								ResultSet alumnoResult = alumnoStmt.executeQuery();
+
+								if (alumnoResult.next()) {
+									int idAlumno = alumnoResult.getInt("id_alumno");
+									realizaStmt.setInt(1, idAlumno);
+									realizaStmt.setInt(2, idProyecto);
+									realizaStmt.executeUpdate();
+								} else {
+								}
+							}
+						}
+					}
+				} else {
 				}
-			}
-
-			query += ") AND p.nombre_proyecto = ?";
-
-			PreparedStatement pstmt = con.prepareStatement(query);
-			for (int i = 0; i < nombresAlumnos.size(); i++) {
-				pstmt.setString(i + 1, nombresAlumnos.get(i));
-			}
-
-			pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
-
-			int rowsAffected = pstmt.executeUpdate();
-			if (rowsAffected > 0) {
-				System.out.println("Relación creada correctamente.");
-			} else {
-				System.out.println("No se encontró el proyecto o los alumnos especificados.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
+//	        String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
+//
+//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
+//	            query += "?";
+//	            if (i < nombresAlumnos.size() - 1) {
+//	                query += ",";
+//	            }
+//	        }
+//
+//	        query += ") AND p.nombre_proyecto = ?";
+//
+//	        PreparedStatement pstmt = con.prepareStatement(query);
+//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
+//	            pstmt.setString(i + 1, nombresAlumnos.get(i));
+//	        }
+//
+//	        pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
+//
+//	        int rowsAffected = pstmt.executeUpdate();
+//	        if (rowsAffected > 0) {
+//	            System.out.println("Relación creada correctamente.");
+//	        } else {
+//	            System.out.println("No se encontró el proyecto o los alumnos especificados.");
+//	        }
+//	    } catch (SQLException e) {
+//	        e.printStackTrace();
+//	    }
 }
