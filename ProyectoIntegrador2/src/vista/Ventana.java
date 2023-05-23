@@ -19,8 +19,14 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Mnfredotti
+ *
+ */
 public class Ventana extends JFrame implements IVentana {
 
+	//Creamos las variables de la clase Ventana
 	private JLabel lblLogo;
 	private JButton btnSubir;
 	private JButton btnVer;
@@ -28,6 +34,9 @@ public class Ventana extends JFrame implements IVentana {
 	private JLabel lblFondo;
 	private JLabel lblCopy;
 
+	/**
+	 * 
+	 */
 	public Ventana() {
 		super("Administrador de Proyectos");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana.class.getResource("/img/logo1.png")));
@@ -37,6 +46,10 @@ public class Ventana extends JFrame implements IVentana {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * Metodo iniclaizar componentes en el que ajustamos cada item que hay dentro de la ventana
+	 * con el setBounds y dandole una serie de valores
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -46,6 +59,7 @@ public class Ventana extends JFrame implements IVentana {
 		lblLogo.setBounds(39, 76, 175, 175);
 		getContentPane().add(lblLogo);
 
+		//Boton que sirve para subir Proyecto
 		btnSubir = new JButton("Subir Proyecto");
 		btnSubir.setBounds(250, 138, 200, 50);
 		btnSubir.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
@@ -55,6 +69,7 @@ public class Ventana extends JFrame implements IVentana {
 		btnSubir.setFocusable(false);
 		getContentPane().add(btnSubir);
 
+		//Boton que sirve para ver los proyectos
 		btnVer = new JButton("Ver Proyecto");
 		btnVer.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
 		btnVer.setBounds(250, 54, 200, 50);
@@ -64,6 +79,7 @@ public class Ventana extends JFrame implements IVentana {
 		btnVer.setFocusable(false);
 		getContentPane().add(btnVer);
 
+		//Boton que sirve para borra proyectos
 		btnBorrar = new JButton("Modificar Proyecto");
 		btnBorrar.setBounds(250, 221, 200, 50);
 		btnBorrar.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 13));
@@ -84,26 +100,46 @@ public class Ventana extends JFrame implements IVentana {
 		lblFondo.setBounds(0, 0, 496, 345);
 		getContentPane().add(lblFondo);
 
+		//Le ponemos un tamaño a la ventana 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Metodo hacer visible, que al llamerle se muestra la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * SetControlador para poder ejecutar la funcion del boton de ver proyecto
+	 * @param c
+	 */
 	public void setControlador(ControladorPrincipal_Ver c) {
 		btnVer.addActionListener(c);
 	}
 
+	/**
+	 * SetControlador ControladorContraseña_subir
+	 * @param c
+	 */
 	public void setControlador(ControladorContraseña_Subir c) {
 	}
 
+	/**
+	 * SetControaldor para poder ejecutar la funcion del boton de borrar proyecto
+	 * @param c
+	 */
 	public void setControlador(ControladorPrincipal_Modificar_Contra c) {
 		btnBorrar.addActionListener(c);
 	}
 
+	/**
+	 * SetControlador para poder ejecutar la funcion del boton de Subir proyecto
+	 * @param c
+	 */
 	public void setControlador(ControladorPrincipal_Subir_Contra c) {
 		btnSubir.addActionListener(c);
 	}
