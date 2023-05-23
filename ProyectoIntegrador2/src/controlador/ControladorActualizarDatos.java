@@ -35,14 +35,14 @@ public class ControladorActualizarDatos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Variable y le metemos los datos
 		try {
-			if (ve.getUrl().equals("") || ve.getNota().equals("") || ve.getNombre().equals("")) {
+			if (!(ve.getUrl().equals("") && ve.getNota().equals("") && ve.getNombre().equals(""))) {
 				JOptionPane.showMessageDialog(ve.getContentPane(), "Rellena todos los campos", "Aviso",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
 				Integer.parseInt(ve.getNota().getText());
-				AccesoBBDD.actualizarProyecto(ve.getLbldatonombreAntiguo().getText(), ve.getNombre().getText(),
-						ve.getUrl().getText(), ve.getNota().getText());
+				AccesoBBDD.actualizarProyecto(ve.getLbldatonombreAntiguo().getText(), ve.getNombre().getText(), ve.getUrl().getText(), ve.getNota().getText());
 				ve.dispose();
+				vm.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
 				vm.hacerVisible();
 			}
 		} catch (Exception exception) {
