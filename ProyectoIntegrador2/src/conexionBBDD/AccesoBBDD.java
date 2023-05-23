@@ -441,7 +441,6 @@ public class AccesoBBDD {
 									realizaStmt.setInt(1, idAlumno);
 									realizaStmt.setInt(2, idProyecto);
 									realizaStmt.executeUpdate();
-								} else {
 								}
 							}
 						}

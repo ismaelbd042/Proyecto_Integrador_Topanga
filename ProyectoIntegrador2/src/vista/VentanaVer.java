@@ -3,6 +3,7 @@ package vista;
 import controlador.*;
 import modelo.ProyectosIntegradores;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class VentanaVer extends JFrame implements IVentana {
 	
 	//Creamos las variables de la clase VentanaVer
 	private JLabel lblBusca;
+	private JLabel lblFotoBuscar;
 	private JTextField txtBuscarNombre;
 	private JButton btninspeccionar;
 	private JButton btnatras;
@@ -31,6 +33,7 @@ public class VentanaVer extends JFrame implements IVentana {
 	public VentanaVer() {
 		super("Ver proyectos");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
@@ -45,6 +48,11 @@ public class VentanaVer extends JFrame implements IVentana {
 		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBusca.setBounds(114, 36, 259, 30);
 		getContentPane().add(lblBusca);
+		
+		lblFotoBuscar = new JLabel();
+		lblFotoBuscar.setIcon(new ImageIcon(Ventana.class.getResource("/img/fotobuscar.png")));
+		lblFotoBuscar.setBounds(335, 19, 82, 69);
+		getContentPane().add(lblFotoBuscar);
 
 		btninspeccionar = new JButton("Inspeccionar");
 		btninspeccionar.setBounds(276, 258, 182, 45);

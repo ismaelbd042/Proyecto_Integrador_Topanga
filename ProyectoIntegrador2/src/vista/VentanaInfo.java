@@ -19,6 +19,7 @@ import controlador.ControladorVer_Principal;
 import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 
+import java.awt.Color;
 import java.awt.Font;
 
 /**
@@ -56,6 +57,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 	public VentanaInfo() {
 		super("Información Proyecto");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
@@ -103,7 +105,7 @@ public class VentanaInfo extends JFrame implements IVentana {
 		getContentPane().add(lblArea);
 
 		lblNombre2 = new JLabel("-- TOPANGA --");
-		lblNombre2.setFont(new Font("Times New Roman", Font.BOLD, 11));
+		lblNombre2.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblNombre2.setBounds(10, 11, 230, 20);
 		getContentPane().add(lblNombre2);
 

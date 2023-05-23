@@ -11,6 +11,7 @@ import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 /**
@@ -19,7 +20,7 @@ import java.awt.event.ActionEvent;
  *
  */
 public class VentanaSubir extends JFrame implements IVentana {
-	//Creamos las variabkes de la clase ventana subir
+	// Creamos las variabkes de la clase ventana subir
 	private JTextField nombre;
 	private JButton colaboradores;
 	private JTextField txtano;
@@ -28,7 +29,8 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JRadioButton rbtn2;
 	private JTextField txtgrupo;
 	private JTextField txturl;
-	
+	private JLabel lblFotoAlmacen;
+
 	private JList<String> listaAlu;
 
 	private JLabel lblarea;
@@ -45,15 +47,13 @@ public class VentanaSubir extends JFrame implements IVentana {
 	private JButton btnatras;
 	private JButton btnsubir;
 	private ButtonGroup cursoGroup;
-	
+
 	private JRadioButton rbtnDefault;
-	
+
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 	ListenerRadioButtonCurso listenerRbtn;
 	ListenerComboBoxAREAS listenerCbAreas;
-	
-	DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos;
 
 	/**
 	 * Llamamos a esta clase Subir Proyecto
@@ -61,10 +61,12 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public VentanaSubir() {
 		super("Subir proyecto");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
-	 * Metodo inicializar componentes que sirve para darle tamaño y ajustar los componentes a la ventana
+	 * Metodo inicializar componentes que sirve para darle tamaño y ajustar los
+	 * componentes a la ventana
 	 */
 	@Override
 	public void inicializarComponentes() {
@@ -74,6 +76,11 @@ public class VentanaSubir extends JFrame implements IVentana {
 		nombre.setBounds(164, 51, 96, 19);
 		getContentPane().add(nombre);
 		nombre.setColumns(10);
+		
+		lblFotoAlmacen = new JLabel();
+		lblFotoAlmacen.setIcon(new ImageIcon(Ventana.class.getResource("/img/fotoalmacen.png")));
+		lblFotoAlmacen.setBounds(317, 221, 131, 60);
+		getContentPane().add(lblFotoAlmacen);
 
 		lblintroducir = new JLabel("Introduce los datos para subir el proyecto");
 		lblintroducir.setBounds(126, 10, 244, 18);
@@ -98,12 +105,12 @@ public class VentanaSubir extends JFrame implements IVentana {
 		// mod.addElement(new Alumno ("Aldo", "Manfredotti", "120654894Z", 64));
 		// mod.addElement(new Alumno ("Karina", "Garcia", "465489421Z", 53));
 		listaAlu.setModel(mod);
-		
+
 		JScrollPane panelScrollAlumnos = new JScrollPane();
 		panelScrollAlumnos.setBounds(38, 221, 222, 53);
 		getContentPane().add(panelScrollAlumnos);
 		panelScrollAlumnos.setViewportView(listaAlu);
-		
+
 		txtano = new JTextField();
 		txtano.setBounds(164, 98, 96, 19);
 		getContentPane().add(txtano);
@@ -138,15 +145,16 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		rbtn1 = new JRadioButton("1º");
 		rbtn1.setBounds(367, 98, 37, 20);
+		rbtn1.setBackground(new Color(137,217,194));
 		cursoGroup.add(rbtn1);
 		getContentPane().add(rbtn1);
 
 		rbtn2 = new JRadioButton("2º");
 		rbtn2.setBounds(412, 98, 55, 20);
+		rbtn2.setBackground(new Color(137,217,194));
 		cursoGroup.add(rbtn2);
 		getContentPane().add(rbtn2);
 
-		
 		rbtnDefault = new JRadioButton("");
 		rbtnDefault.setSelected(true);
 		cursoGroup.add(rbtnDefault);
@@ -197,6 +205,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * SetControlador que sirve para darle funcionalidad al boton de volver atras
+	 * 
 	 * @param c
 	 */
 	public void setControlador(ControladorSubir_Principal c) {
@@ -206,24 +215,26 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * SetControlador que sirve para darle funcionalidad al boton de colaboradores
+	 * 
 	 * @param c
 	 */
 	public void setControlador(ControladorSubir_BuscarAlumno c) {
 		colaboradores.addActionListener(c);
 
 	}
-	
+
 	/**
 	 * SetControlador que sirve para darle funcionalidad al boton de subir
+	 * 
 	 * @param c
 	 */
 	public void setControlador(ControladorSubirProyecto c) {
 		btnsubir.addActionListener(c);
 	}
-	
 
 	/**
 	 * Metodo rellenar Areas que sirve para rellenar el arraylista de areas
+	 * 
 	 * @param a
 	 */
 	public void rellenarAreas(ArrayList<String> a) {
@@ -232,9 +243,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 			areas.addItem(aux.get(i));
 		}
 	}
-	
+
 	/**
 	 * Metodo rellenarJList que sirve para rellenar la JList listaAlu
+	 * 
 	 * @param a
 	 */
 	public void rellenarJlist(ArrayList<String> a) {
@@ -248,7 +260,9 @@ public class VentanaSubir extends JFrame implements IVentana {
 	}
 
 	/**
-	 * Metodo getDatosProyecto que sirve para obtener los datos de los proyectos integradores
+	 * Metodo getDatosProyecto que sirve para obtener los datos de los proyectos
+	 * integradores
+	 * 
 	 * @return proyectos
 	 */
 	public ProyectosIntegradores getDatosProyecto() {
@@ -266,18 +280,19 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 		return proyecto;
 	}
-	
+
 	/**
 	 * Metodo agregarAlumno que sirve para agregar alumnos
+	 * 
 	 * @param alumno
 	 */
-	public void agregarAlumno(VentanaBuscarAlumno alumno) {
-	    modeloAlumnosAñadidos.addElement(alumno);
-	}
-	
+//	public void agregarAlumno(VentanaBuscarAlumno alumno) {
+//	    modeloAlumnosAñadidos.addElement(alumno);
+//	}
 
 	/**
 	 * Getter de la variable nombre
+	 * 
 	 * @return nombre
 	 */
 	public JTextField getNombre() {
@@ -286,6 +301,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable nombre
+	 * 
 	 * @param nombre
 	 */
 	public void setNombre(JTextField nombre) {
@@ -294,6 +310,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable colaboradores
+	 * 
 	 * @return colaboradores
 	 */
 	public JButton getColaboradores() {
@@ -302,6 +319,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable colaboradores
+	 * 
 	 * @param colaboradores
 	 */
 	public void setColaboradores(JButton colaboradores) {
@@ -310,6 +328,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable año
+	 * 
 	 * @return txtano
 	 */
 	public JTextField getTxtano() {
@@ -318,6 +337,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable año
+	 * 
 	 * @param txtano
 	 */
 	public void setTxtano(JTextField txtano) {
@@ -326,6 +346,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable nota
+	 * 
 	 * @return txtnota
 	 */
 	public JTextField getTxtnota() {
@@ -334,6 +355,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable nota
+	 * 
 	 * @param txtnota
 	 */
 	public void setTxtnota(JTextField txtnota) {
@@ -342,6 +364,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable radiobutton 1
+	 * 
 	 * @return rbtn1
 	 */
 	public JRadioButton getRbtn1() {
@@ -350,6 +373,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable radioButton1
+	 * 
 	 * @param rbtn1
 	 */
 	public void setRbtn1(JRadioButton rbtn1) {
@@ -358,6 +382,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable radioButon2
+	 * 
 	 * @return rbtn2
 	 */
 	public JRadioButton getRbtn2() {
@@ -366,6 +391,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable radioButton2
+	 * 
 	 * @param rbtn2
 	 */
 	public void setRbtn2(JRadioButton rbtn2) {
@@ -374,6 +400,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable grupo
+	 * 
 	 * @return txtgrupo
 	 */
 	public JTextField getTxtgrupo() {
@@ -382,6 +409,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable grupo
+	 * 
 	 * @param txtgrupo
 	 */
 	public void setTxtgrupo(JTextField txtgrupo) {
@@ -390,6 +418,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable url
+	 * 
 	 * @return txturl
 	 */
 	public JTextField getTxturl() {
@@ -398,6 +427,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable url
+	 * 
 	 * @param txturl
 	 */
 	public void setTxturl(JTextField txturl) {
@@ -406,6 +436,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable listaAlu
+	 * 
 	 * @return listaAlu
 	 */
 	public JList<String> getListaAlu() {
@@ -414,6 +445,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable listaAlu
+	 * 
 	 * @param listaAlu
 	 */
 	public void setListaAlu(JList<String> listaAlu) {
@@ -422,6 +454,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable area
+	 * 
 	 * @return lblarea
 	 */
 	public JLabel getLblarea() {
@@ -430,6 +463,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable area
+	 * 
 	 * @param lblarea
 	 */
 	public void setLblarea(JLabel lblarea) {
@@ -438,6 +472,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable nota
+	 * 
 	 * @return lblnota
 	 */
 	public JLabel getLblnota() {
@@ -446,6 +481,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable nota
+	 * 
 	 * @param lblnota
 	 */
 	public void setLblnota(JLabel lblnota) {
@@ -454,6 +490,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable año
+	 * 
 	 * @return lblano
 	 */
 	public JLabel getLblano() {
@@ -462,6 +499,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable año
+	 * 
 	 * @param lblano
 	 */
 	public void setLblano(JLabel lblano) {
@@ -470,6 +508,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable curso
+	 * 
 	 * @return lblcurso
 	 */
 	public JLabel getLblcurso() {
@@ -478,6 +517,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable curso
+	 * 
 	 * @param lblcurso
 	 */
 	public void setLblcurso(JLabel lblcurso) {
@@ -486,6 +526,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable grupo
+	 * 
 	 * @return lblgrupo
 	 */
 	public JLabel getLblgrupo() {
@@ -494,6 +535,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable grupo
+	 * 
 	 * @param lblgrupo
 	 */
 	public void setLblgrupo(JLabel lblgrupo) {
@@ -502,6 +544,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable url
+	 * 
 	 * @return lblurl
 	 */
 	public JLabel getLblurl() {
@@ -510,6 +553,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable url
+	 * 
 	 * @param lblurl
 	 */
 	public void setLblurl(JLabel lblurl) {
@@ -518,6 +562,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable introducir
+	 * 
 	 * @return lblintroducir
 	 */
 	public JLabel getLblintroducir() {
@@ -526,6 +571,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable introducir
+	 * 
 	 * @param lblintroducir
 	 */
 	public void setLblintroducir(JLabel lblintroducir) {
@@ -534,6 +580,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable nombreGrupo
+	 * 
 	 * @return lblnombreGrupo
 	 */
 	public JLabel getLblnombreGrupo() {
@@ -542,6 +589,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable nombre grupo
+	 * 
 	 * @param lblnombreGrupo
 	 */
 	public void setLblnombreGrupo(JLabel lblnombreGrupo) {
@@ -550,6 +598,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable colaboradores
+	 * 
 	 * @return lblcolaboradores
 	 */
 	public JLabel getLblcolaboradores() {
@@ -558,6 +607,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable colaboradores
+	 * 
 	 * @param lblcolaboradores
 	 */
 	public void setLblcolaboradores(JLabel lblcolaboradores) {
@@ -566,6 +616,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable boton atras
+	 * 
 	 * @return btnatras
 	 */
 	public JButton getBtnatras() {
@@ -574,6 +625,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable boton atras
+	 * 
 	 * @param btnatras
 	 */
 	public void setBtnatras(JButton btnatras) {
@@ -582,6 +634,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable boton subir
+	 * 
 	 * @return btnsubir
 	 */
 	public JButton getBtnsubir() {
@@ -590,6 +643,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable boton subir
+	 * 
 	 * @param btnsubir
 	 */
 	public void setBtnsubir(JButton btnsubir) {
@@ -598,6 +652,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable auxiliar
+	 * 
 	 * @return aux
 	 */
 	public ArrayList<String> getAux() {
@@ -606,6 +661,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable auxiliar
+	 * 
 	 * @param aux
 	 */
 	public void setAux(ArrayList<String> aux) {
@@ -614,6 +670,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable areas
+	 * 
 	 * @return areas
 	 */
 	public JComboBox<String> getAreas() {
@@ -622,6 +679,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable areas
+	 * 
 	 * @param areas
 	 */
 	public void setAreas(JComboBox<String> areas) {
@@ -630,6 +688,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable cursoGroup
+	 * 
 	 * @return cursoGroup
 	 */
 	public ButtonGroup getCursoGroup() {
@@ -638,6 +697,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable cursoGroup
+	 * 
 	 * @param cursoGroup
 	 */
 	public void setCursoGroup(ButtonGroup cursoGroup) {
@@ -646,6 +706,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable Radiobuton default
+	 * 
 	 * @return rbtnDefault
 	 */
 	public JRadioButton getRbtnDefault() {
@@ -654,6 +715,7 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Setter de la variable radiobutton default
+	 * 
 	 * @param rbtnDefault
 	 */
 	public void setRbtnDefault(JRadioButton rbtnDefault) {
@@ -662,20 +724,21 @@ public class VentanaSubir extends JFrame implements IVentana {
 
 	/**
 	 * Getter de la variable Modelo Alumnos Añadidos
+	 * 
 	 * @return modeloAlumnosAñadidos
 	 */
-	public DefaultListModel<VentanaBuscarAlumno> getModeloAlumnosAñadidos() {
-		return modeloAlumnosAñadidos;
-	}
+//	public DefaultListModel<VentanaBuscarAlumno> getModeloAlumnosAñadidos() {
+//		return modeloAlumnosAñadidos;
+//	}
+//
+//	/**
+//	 * Setter de la variable modelo alumnos añadidos 
+//	 * @param modeloAlumnosAñadidos
+//	 */
+//	public void setModeloAlumnosAñadidos(DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos) {
+//		this.modeloAlumnosAñadidos = modeloAlumnosAñadidos;
+//	}
+//	
+//	
 
-	/**
-	 * Setter de la variable modelo alumnos añadidos 
-	 * @param modeloAlumnosAñadidos
-	 */
-	public void setModeloAlumnosAñadidos(DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos) {
-		this.modeloAlumnosAñadidos = modeloAlumnosAñadidos;
-	}
-	
-	
-	
 }

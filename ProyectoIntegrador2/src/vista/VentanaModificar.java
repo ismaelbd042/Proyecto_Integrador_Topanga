@@ -9,6 +9,8 @@ import controlador.ControladorLupaModificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ListenerComboBoxAREAS;
+
+import java.awt.Color;
 import java.awt.Font;
 
 /**
@@ -23,6 +25,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 	private JButton btnBorrar;
 	private JButton btnLupa;
 	private JLabel lblBusca;
+	private JLabel lblFotoBuscar;
 	public JList<String> proyectos;
 
 	private JButton btnatras;
@@ -36,6 +39,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 	public VentanaModificar() {
 		super("Administrar Proyectos");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
@@ -49,6 +53,11 @@ public class VentanaModificar extends JFrame implements IVentana {
 		lblBusca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBusca.setBounds(114, 24, 259, 30);
 		getContentPane().add(lblBusca);
+		
+		lblFotoBuscar = new JLabel();
+		lblFotoBuscar.setIcon(new ImageIcon(Ventana.class.getResource("/img/fotobuscar.png")));
+		lblFotoBuscar.setBounds(339, 11, 82, 59);
+		getContentPane().add(lblFotoBuscar);
 
 		btnEditar = new JButton("Editar");
 		// lblLogo.setIcon(new
@@ -82,7 +91,7 @@ public class VentanaModificar extends JFrame implements IVentana {
 		//Boton lupa
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
-		btnLupa.setBounds(227, 65, 37, 46);
+		btnLupa.setBounds(227, 67, 37, 39);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
 
