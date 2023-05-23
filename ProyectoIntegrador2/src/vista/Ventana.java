@@ -35,7 +35,7 @@ public class Ventana extends JFrame implements IVentana {
 	private JLabel lblCopy;
 
 	/**
-	 * 
+	 * Esta ventana se titulará Adminitrados de proyectos 
 	 */
 	public Ventana() {
 		super("Administrador de Proyectos");

@@ -13,7 +13,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class VentanaSubir extends JFrame implements IVentana {
+	//Creamos las variabkes de la clase ventana subir
 	private JTextField nombre;
 	private JButton colaboradores;
 	private JTextField txtano;
@@ -49,11 +55,17 @@ public class VentanaSubir extends JFrame implements IVentana {
 	
 	DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos;
 
+	/**
+	 * Llamamos a esta clase Subir Proyecto
+	 */
 	public VentanaSubir() {
 		super("Subir proyecto");
 		inicializarComponentes();
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para darle tamaño y ajustar los componentes a la ventana
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -175,26 +187,45 @@ public class VentanaSubir extends JFrame implements IVentana {
 		setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de volver atras
+	 * @param c
+	 */
 	public void setControlador(ControladorSubir_Principal c) {
 		btnatras.addActionListener(c);
 
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de colaboradores
+	 * @param c
+	 */
 	public void setControlador(ControladorSubir_BuscarAlumno c) {
 		colaboradores.addActionListener(c);
 
 	}
 	
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de subir
+	 * @param c
+	 */
 	public void setControlador(ControladorSubirProyecto c) {
 		btnsubir.addActionListener(c);
 	}
 	
 
+	/**
+	 * Metodo rellenar Areas que sirve para rellenar el arraylista de areas
+	 * @param a
+	 */
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
 		for (int i = 0; i < aux.size(); i++) {
@@ -202,6 +233,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		}
 	}
 	
+	/**
+	 * Metodo rellenarJList que sirve para rellenar la JList listaAlu
+	 * @param a
+	 */
 	public void rellenarJlist(ArrayList<String> a) {
 		aux = a;
 		DefaultListModel<String> mod = (DefaultListModel<String>) listaAlu.getModel(); // Obtener el modelo de la JList
@@ -212,6 +247,10 @@ public class VentanaSubir extends JFrame implements IVentana {
 		}
 	}
 
+	/**
+	 * Metodo getDatosProyecto que sirve para obtener los datos de los proyectos integradores
+	 * @return proyectos
+	 */
 	public ProyectosIntegradores getDatosProyecto() {
 
 		ProyectosIntegradores proyecto = new ProyectosIntegradores(null, null, 0, 0, null, null, 0, 0);
@@ -228,207 +267,411 @@ public class VentanaSubir extends JFrame implements IVentana {
 		return proyecto;
 	}
 	
+	/**
+	 * Metodo agregarAlumno que sirve para agregar alumnos
+	 * @param alumno
+	 */
 	public void agregarAlumno(VentanaBuscarAlumno alumno) {
 	    modeloAlumnosAñadidos.addElement(alumno);
 	}
 	
 
+	/**
+	 * Getter de la variable nombre
+	 * @return nombre
+	 */
 	public JTextField getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Setter de la variable nombre
+	 * @param nombre
+	 */
 	public void setNombre(JTextField nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Getter de la variable colaboradores
+	 * @return colaboradores
+	 */
 	public JButton getColaboradores() {
 		return colaboradores;
 	}
 
+	/**
+	 * Setter de la variable colaboradores
+	 * @param colaboradores
+	 */
 	public void setColaboradores(JButton colaboradores) {
 		this.colaboradores = colaboradores;
 	}
 
+	/**
+	 * Getter de la variable año
+	 * @return txtano
+	 */
 	public JTextField getTxtano() {
 		return txtano;
 	}
 
+	/**
+	 * Setter de la variable año
+	 * @param txtano
+	 */
 	public void setTxtano(JTextField txtano) {
 		this.txtano = txtano;
 	}
 
+	/**
+	 * Getter de la variable nota
+	 * @return txtnota
+	 */
 	public JTextField getTxtnota() {
 		return txtnota;
 	}
 
+	/**
+	 * Setter de la variable nota
+	 * @param txtnota
+	 */
 	public void setTxtnota(JTextField txtnota) {
 		this.txtnota = txtnota;
 	}
 
+	/**
+	 * Getter de la variable radiobutton 1
+	 * @return rbtn1
+	 */
 	public JRadioButton getRbtn1() {
 		return rbtn1;
 	}
 
+	/**
+	 * Setter de la variable radioButton1
+	 * @param rbtn1
+	 */
 	public void setRbtn1(JRadioButton rbtn1) {
 		this.rbtn1 = rbtn1;
 	}
 
+	/**
+	 * Getter de la variable radioButon2
+	 * @return rbtn2
+	 */
 	public JRadioButton getRbtn2() {
 		return rbtn2;
 	}
 
+	/**
+	 * Setter de la variable radioButton2
+	 * @param rbtn2
+	 */
 	public void setRbtn2(JRadioButton rbtn2) {
 		this.rbtn2 = rbtn2;
 	}
 
+	/**
+	 * Getter de la variable grupo
+	 * @return txtgrupo
+	 */
 	public JTextField getTxtgrupo() {
 		return txtgrupo;
 	}
 
+	/**
+	 * Setter de la variable grupo
+	 * @param txtgrupo
+	 */
 	public void setTxtgrupo(JTextField txtgrupo) {
 		this.txtgrupo = txtgrupo;
 	}
 
+	/**
+	 * Getter de la variable url
+	 * @return txturl
+	 */
 	public JTextField getTxturl() {
 		return txturl;
 	}
 
+	/**
+	 * Setter de la variable url
+	 * @param txturl
+	 */
 	public void setTxturl(JTextField txturl) {
 		this.txturl = txturl;
 	}
 
+	/**
+	 * Getter de la variable listaAlu
+	 * @return listaAlu
+	 */
 	public JList<String> getListaAlu() {
 		return listaAlu;
 	}
 
+	/**
+	 * Setter de la variable listaAlu
+	 * @param listaAlu
+	 */
 	public void setListaAlu(JList<String> listaAlu) {
 		this.listaAlu = listaAlu;
 	}
 
+	/**
+	 * Getter de la variable area
+	 * @return lblarea
+	 */
 	public JLabel getLblarea() {
 		return lblarea;
 	}
 
+	/**
+	 * Setter de la variable area
+	 * @param lblarea
+	 */
 	public void setLblarea(JLabel lblarea) {
 		this.lblarea = lblarea;
 	}
 
+	/**
+	 * Getter de la variable nota
+	 * @return lblnota
+	 */
 	public JLabel getLblnota() {
 		return lblnota;
 	}
 
+	/**
+	 * Setter de la variable nota
+	 * @param lblnota
+	 */
 	public void setLblnota(JLabel lblnota) {
 		this.lblnota = lblnota;
 	}
 
+	/**
+	 * Getter de la variable año
+	 * @return lblano
+	 */
 	public JLabel getLblano() {
 		return lblano;
 	}
 
+	/**
+	 * Setter de la variable año
+	 * @param lblano
+	 */
 	public void setLblano(JLabel lblano) {
 		this.lblano = lblano;
 	}
 
+	/**
+	 * Getter de la variable curso
+	 * @return lblcurso
+	 */
 	public JLabel getLblcurso() {
 		return lblcurso;
 	}
 
+	/**
+	 * Setter de la variable curso
+	 * @param lblcurso
+	 */
 	public void setLblcurso(JLabel lblcurso) {
 		this.lblcurso = lblcurso;
 	}
 
+	/**
+	 * Getter de la variable grupo
+	 * @return lblgrupo
+	 */
 	public JLabel getLblgrupo() {
 		return lblgrupo;
 	}
 
+	/**
+	 * Setter de la variable grupo
+	 * @param lblgrupo
+	 */
 	public void setLblgrupo(JLabel lblgrupo) {
 		this.lblgrupo = lblgrupo;
 	}
 
+	/**
+	 * Getter de la variable url
+	 * @return lblurl
+	 */
 	public JLabel getLblurl() {
 		return lblurl;
 	}
 
+	/**
+	 * Setter de la variable url
+	 * @param lblurl
+	 */
 	public void setLblurl(JLabel lblurl) {
 		this.lblurl = lblurl;
 	}
 
+	/**
+	 * Getter de la variable introducir
+	 * @return lblintroducir
+	 */
 	public JLabel getLblintroducir() {
 		return lblintroducir;
 	}
 
+	/**
+	 * Setter de la variable introducir
+	 * @param lblintroducir
+	 */
 	public void setLblintroducir(JLabel lblintroducir) {
 		this.lblintroducir = lblintroducir;
 	}
 
+	/**
+	 * Getter de la variable nombreGrupo
+	 * @return lblnombreGrupo
+	 */
 	public JLabel getLblnombreGrupo() {
 		return lblnombreGrupo;
 	}
 
+	/**
+	 * Setter de la variable nombre grupo
+	 * @param lblnombreGrupo
+	 */
 	public void setLblnombreGrupo(JLabel lblnombreGrupo) {
 		this.lblnombreGrupo = lblnombreGrupo;
 	}
 
+	/**
+	 * Getter de la variable colaboradores
+	 * @return lblcolaboradores
+	 */
 	public JLabel getLblcolaboradores() {
 		return lblcolaboradores;
 	}
 
+	/**
+	 * Setter de la variable colaboradores
+	 * @param lblcolaboradores
+	 */
 	public void setLblcolaboradores(JLabel lblcolaboradores) {
 		this.lblcolaboradores = lblcolaboradores;
 	}
 
+	/**
+	 * Getter de la variable boton atras
+	 * @return btnatras
+	 */
 	public JButton getBtnatras() {
 		return btnatras;
 	}
 
+	/**
+	 * Setter de la variable boton atras
+	 * @param btnatras
+	 */
 	public void setBtnatras(JButton btnatras) {
 		this.btnatras = btnatras;
 	}
 
+	/**
+	 * Getter de la variable boton subir
+	 * @return btnsubir
+	 */
 	public JButton getBtnsubir() {
 		return btnsubir;
 	}
 
+	/**
+	 * Setter de la variable boton subir
+	 * @param btnsubir
+	 */
 	public void setBtnsubir(JButton btnsubir) {
 		this.btnsubir = btnsubir;
 	}
 
+	/**
+	 * Getter de la variable auxiliar
+	 * @return aux
+	 */
 	public ArrayList<String> getAux() {
 		return aux;
 	}
 
+	/**
+	 * Setter de la variable auxiliar
+	 * @param aux
+	 */
 	public void setAux(ArrayList<String> aux) {
 		this.aux = aux;
 	}
 
+	/**
+	 * Getter de la variable areas
+	 * @return areas
+	 */
 	public JComboBox<String> getAreas() {
 		return areas;
 	}
 
+	/**
+	 * Setter de la variable areas
+	 * @param areas
+	 */
 	public void setAreas(JComboBox<String> areas) {
 		this.areas = areas;
 	}
 
+	/**
+	 * Getter de la variable cursoGroup
+	 * @return cursoGroup
+	 */
 	public ButtonGroup getCursoGroup() {
 		return cursoGroup;
 	}
 
+	/**
+	 * Setter de la variable cursoGroup
+	 * @param cursoGroup
+	 */
 	public void setCursoGroup(ButtonGroup cursoGroup) {
 		this.cursoGroup = cursoGroup;
 	}
 
+	/**
+	 * Getter de la variable Radiobuton default
+	 * @return rbtnDefault
+	 */
 	public JRadioButton getRbtnDefault() {
 		return rbtnDefault;
 	}
 
+	/**
+	 * Setter de la variable radiobutton default
+	 * @param rbtnDefault
+	 */
 	public void setRbtnDefault(JRadioButton rbtnDefault) {
 		this.rbtnDefault = rbtnDefault;
 	}
 
+	/**
+	 * Getter de la variable Modelo Alumnos Añadidos
+	 * @return modeloAlumnosAñadidos
+	 */
 	public DefaultListModel<VentanaBuscarAlumno> getModeloAlumnosAñadidos() {
 		return modeloAlumnosAñadidos;
 	}
 
+	/**
+	 * Setter de la variable modelo alumnos añadidos 
+	 * @param modeloAlumnosAñadidos
+	 */
 	public void setModeloAlumnosAñadidos(DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos) {
 		this.modeloAlumnosAñadidos = modeloAlumnosAñadidos;
 	}

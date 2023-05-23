@@ -19,8 +19,14 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Mnafredotti
+ *
+ */
 public class VentanaAlumno extends JFrame implements IVentana {
 
+	//Creamos las variables de la ventana alumno
 	private JLabel lblNombre;
 	private JLabel lblApellidos;
 	private JLabel lblExpediente;
@@ -29,12 +35,18 @@ public class VentanaAlumno extends JFrame implements IVentana {
 	public JTextField txtExpediente;
 	private JButton btnAñadir;
 	
+	/**
+	 * Esta ventana se titulará administrador de proyectos
+	 */
 	public VentanaAlumno() {
 		super("Nuevo Alumno");
 		inicializarComponentes();
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para ajustar los componentes a la ventana poniendole tamaños y posiciones
+	 */
 	@Override
 	public void inicializarComponentes() {
 		
@@ -44,6 +56,7 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		lblNombre.setBounds(48, 41, 93, 27);
 		getContentPane().add(lblNombre);
 
+		//Boton para añadir un nuevo alumno
 		btnAñadir = new JButton("Crear nuevo alumno");
 		btnAñadir.setBounds(48, 185, 196, 50);
 		getContentPane().add(btnAñadir);
@@ -68,17 +81,25 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		txtExpediente.setBounds(126, 135, 118, 20);
 		getContentPane().add(txtExpediente);
 
+		//Agregamos tamaño a la ventana en si
 		setSize(302, 306);
 		setLocationRelativeTo(null);
 		
 	}
 
+	/**
+	 * Creamos metodo hacer visible para hacer visible la ventana 
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 		
 	}
 	
+	/**
+	 * SetControlador que nos sirve para darle funcionalidad al boton de Añadir alumno
+	 * @param c
+	 */
 	public void setControlador(ControladorAlumno_BuscarAlumno c) {
 		btnAñadir.addActionListener(c);
 	}

@@ -8,8 +8,14 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class VentanaVer extends JFrame implements IVentana {
 	
+	//Creamos las variables de la clase VentanaVer
 	private JLabel lblBusca;
 	private JTextField txtBuscarNombre;
 	private JButton btninspeccionar;
@@ -19,11 +25,17 @@ public class VentanaVer extends JFrame implements IVentana {
 	ArrayList<String> aux;
 	JComboBox<String> areas;
 
+	/**
+	 * Llamamos a la ventana Ver Proyectos
+	 */
 	public VentanaVer() {
 		super("Ver proyectos");
 		inicializarComponentes();
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para poner tamaño y ajustar los componentes a la ventana
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -73,41 +85,76 @@ public class VentanaVer extends JFrame implements IVentana {
 
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 	
 
+	/**
+	 * Getter de la variable buscar nombre
+	 * @return txtBuscarNombre
+	 */
 	public JTextField getTxtBuscarNombre() {
 		return txtBuscarNombre;
 	}
 
+	/**
+	 * Setter de la variable Buscar Nombre
+	 * @param txtBuscarNombre
+	 */
 	public void setTxtBuscarNombre(JTextField txtBuscarNombre) {
 		this.txtBuscarNombre = txtBuscarNombre;
 	}
 
+	/**
+	 * Getter de la variable Proyectos
+	 * @return proyectos
+	 */
 	public JList<String> getProyectos() {
 		return proyectos;
 	}
 
+	/**
+	 * Setter de la variable proyectos
+	 * @param proyectos
+	 */
 	public void setProyectos(JList<String> proyectos) {
 		this.proyectos = proyectos;
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de volver atras
+	 * @param c
+	 */
 	public void setControlador(ControladorVer_Principal c) {
 		btnatras.addActionListener(c);
 
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de inspeccionar
+	 * @param c
+	 */
 	public void setControlador(ControladorVer_Info c) {
 		btninspeccionar.addActionListener(c);
 	}
 	
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de la lupa
+	 * @param c
+	 */
 	public void setControlador(ControladorLupaVer c) {
 		btnLupa.addActionListener(c);
 	}
   
+	/**
+	 * Metodo rellenarAreas que sirve par arellenar las areas 
+	 * @param a
+	 */
 	public void rellenarAreas(ArrayList<String> a) {
 		aux = a;
 		for (int i = 0; i < aux.size(); i++) {
@@ -115,6 +162,10 @@ public class VentanaVer extends JFrame implements IVentana {
 		}
 	}
 	
+	/**
+	 * Metodo rellenarJList que sirve par arellenar la JList de proyectos
+	 * @param a
+	 */
 	public void rellenarJlist(ArrayList<String> a) {
 		 	aux = a;
 		    DefaultListModel<String> mod = (DefaultListModel<String>) proyectos.getModel(); // Obtener el modelo de la JList
@@ -125,10 +176,18 @@ public class VentanaVer extends JFrame implements IVentana {
 		    }
 	}
 
+	/**
+	 * Getter de la variable areas
+	 * @return areas
+	 */
 	public JComboBox<String> getAreas() {
 		return areas;
 	}
 
+	/**
+	 * Setter de la variable areas
+	 * @param areas
+	 */
 	public void setAreas(JComboBox<String> areas) {
 		this.areas = areas;
 	}
