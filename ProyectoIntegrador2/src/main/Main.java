@@ -74,7 +74,7 @@ public class Main {
 				//Controladores de ventanaSubir
 				ControladorSubir_Principal controladorS_P = new ControladorSubir_Principal(v, vs);
 				ControladorSubir_BuscarAlumno controladorS_BA = new ControladorSubir_BuscarAlumno(vs, vba);
-				ControladorSubirProyecto controladorS = new ControladorSubirProyecto(vs);
+				ControladorSubirProyecto controladorS = new ControladorSubirProyecto(vs, v);
 				
 				//Controladores de buscarAlumno
 				ControladorBuscarAlumno_Subir controladorBA_S = new ControladorBuscarAlumno_Subir(vba, vs);

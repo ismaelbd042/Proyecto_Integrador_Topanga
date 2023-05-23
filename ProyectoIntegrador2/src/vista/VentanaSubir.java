@@ -424,5 +424,15 @@ public class VentanaSubir extends JFrame implements IVentana {
 	public void setRbtnDefault(JRadioButton rbtnDefault) {
 		this.rbtnDefault = rbtnDefault;
 	}
+
+	public DefaultListModel<VentanaBuscarAlumno> getModeloAlumnosAñadidos() {
+		return modeloAlumnosAñadidos;
+	}
+
+	public void setModeloAlumnosAñadidos(DefaultListModel<VentanaBuscarAlumno> modeloAlumnosAñadidos) {
+		this.modeloAlumnosAñadidos = modeloAlumnosAñadidos;
+	}
+	
+	
 	
 }
