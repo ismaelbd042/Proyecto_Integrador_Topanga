@@ -4,9 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import controlador.ControladorActualizarDatos;
 import controlador.ControladorContraseña_Modificar;
 import controlador.ControladorEditar_Modificar;
 import controlador.ControladorInfo_Ver;
+import controlador.ControladorLupaModificar;
 import controlador.ControladorModificar_Editar;
 import controlador.ControladorModificar_Principal;
 import controlador.ControladorPrincipal_Modificar_Contra;
@@ -56,8 +58,8 @@ public class VentanaEditar extends JFrame implements IVentana {
 		lblnombre.setBounds(100, 83, 125, 13);
 		getContentPane().add(lblnombre);
 
-		lblnota = new JLabel("Nueva nota:");
-		lblnota.setBounds(100, 159, 143, 13);
+		lblnota = new JLabel("Nueva nota(sin decimales):");
+		lblnota.setBounds(100, 159, 181, 13);
 		getContentPane().add(lblnota);
 
 		lblurl = new JLabel("Nueva URL:");
@@ -68,7 +70,7 @@ public class VentanaEditar extends JFrame implements IVentana {
 		lblnombreAntiguo.setBounds(100, 59, 125, 13);
 		getContentPane().add(lblnombreAntiguo);
 
-		lblnotaAntiguo = new JLabel("Nota:");
+		lblnotaAntiguo = new JLabel("Nota del proyecto:");
 		lblnotaAntiguo.setBounds(100, 134, 143, 13);
 		getContentPane().add(lblnotaAntiguo);
 
@@ -81,7 +83,7 @@ public class VentanaEditar extends JFrame implements IVentana {
 		getContentPane().add(lbldatonombreAntiguo);
 
 		lbldatonotaAntiguo = new JLabel();
-		lbldatonotaAntiguo.setBounds(235, 129, 95, 19);
+		lbldatonotaAntiguo.setBounds(291, 128, 95, 19);
 		getContentPane().add(lbldatonotaAntiguo);
 
 		lbldatourlAntiguo = new JLabel();
@@ -94,7 +96,7 @@ public class VentanaEditar extends JFrame implements IVentana {
 		nombre.setColumns(10);
 
 		nota = new JTextField();
-		nota.setBounds(235, 155, 95, 19);
+		nota.setBounds(291, 156, 95, 19);
 		getContentPane().add(nota);
 		nota.setColumns(10);
 
@@ -125,4 +127,55 @@ public class VentanaEditar extends JFrame implements IVentana {
 
 	}
 
+	public JTextField getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JTextField nombre) {
+		this.nombre = nombre;
+	}
+
+	public JTextField getNota() {
+		return nota;
+	}
+
+	public void setNota(JTextField nota) {
+		this.nota = nota;
+	}
+
+	public JTextField getUrl() {
+		return url;
+	}
+
+	public void setUrl(JTextField url) {
+		this.url = url;
+	}
+
+	public JLabel getLbldatonombreAntiguo() {
+		return lbldatonombreAntiguo;
+	}
+
+	public void setLbldatonombreAntiguo(JLabel lbldatonombreAntiguo) {
+		this.lbldatonombreAntiguo = lbldatonombreAntiguo;
+	}
+
+	public JLabel getLbldatonotaAntiguo() {
+		return lbldatonotaAntiguo;
+	}
+
+	public void setLbldatonotaAntiguo(JLabel lbldatonotaAntiguo) {
+		this.lbldatonotaAntiguo = lbldatonotaAntiguo;
+	}
+
+	public JLabel getLbldatourlAntiguo() {
+		return lbldatourlAntiguo;
+	}
+
+	public void setLbldatourlAntiguo(JLabel lbldatourlAntiguo) {
+		this.lbldatourlAntiguo = lbldatourlAntiguo;
+	}
+
+	public void setControlador(ControladorActualizarDatos c) {
+		btnactualizar.addActionListener(c);
+	}
 }

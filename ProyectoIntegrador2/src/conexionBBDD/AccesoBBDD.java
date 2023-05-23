@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ProyectosIntegradores;
+import vista.VentanaEditar;
 
 public class AccesoBBDD {
 	static String driver = "com.mysql.cj.jdbc.Driver";
@@ -316,31 +317,47 @@ public class AccesoBBDD {
 		}
 
 	}
-//	        String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
-//
-//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
-//	            query += "?";
-//	            if (i < nombresAlumnos.size() - 1) {
-//	                query += ",";
-//	            }
-//	        }
-//
-//	        query += ") AND p.nombre_proyecto = ?";
-//
-//	        PreparedStatement pstmt = con.prepareStatement(query);
-//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
-//	            pstmt.setString(i + 1, nombresAlumnos.get(i));
-//	        }
-//
-//	        pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
-//
-//	        int rowsAffected = pstmt.executeUpdate();
-//	        if (rowsAffected > 0) {
-//	            System.out.println("Relación creada correctamente.");
-//	        } else {
-//	            System.out.println("No se encontró el proyecto o los alumnos especificados.");
-//	        }
-//	    } catch (SQLException e) {
-//	        e.printStackTrace();
-//	    }
+
+	public static void rellenarDatosModificar(VentanaEditar ventana, String nombreProyecto) {
+		getConexion();
+		try {
+			String query = "SELECT nombre_proyecto, url, nota FROM proyectos WHERE nombre_proyecto = ?";
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, nombreProyecto);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				ventana.getNombre().setText(rs.getString("nombre_proyecto"));
+				ventana.getNota().setText(rs.getString("nota"));
+				ventana.getUrl().setText(rs.getString("url"));
+				ventana.getLbldatonombreAntiguo().setText(rs.getString("nombre_proyecto"));
+				ventana.getLbldatonotaAntiguo().setText(rs.getString("nota"));
+				ventana.getLbldatourlAntiguo().setText(rs.getString("url"));
+			}
+			cerrarConexion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void actualizarProyecto(String nombreProyecto, String nuevoNombre, String nuevaUrl, String nuevaNota) {
+	    getConexion();
+	    try {
+	        String query = "UPDATE proyectos SET nombre_proyecto = ?, url = ?, nota = ? WHERE nombre_proyecto = ?";
+	        PreparedStatement statement = con.prepareStatement(query);
+	        statement.setString(1, nuevoNombre);
+	        statement.setString(2, nuevaUrl);
+	        statement.setString(3, nuevaNota);
+	        statement.setString(4, nombreProyecto);
+	        int filasActualizadas = statement.executeUpdate();
+	        
+	        if (filasActualizadas > 0) {
+	            System.out.println("Proyecto actualizado correctamente.");
+	        } else {
+	            System.out.println("No se encontró el proyecto a actualizar.");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
 }
