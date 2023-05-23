@@ -37,8 +37,14 @@ import modelo.Alumnos;
 import modelo.ProyectosIntegradores;
 import modelo.Áreas;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class VentanaBuscarAlumno extends JFrame implements IVentana {
 
+	//Creamos las variables de la clase VentanaBuscarAlumno
 	private JTextField txtBuscador;
 	private JButton btnCrear;
 	private JButton btnAñadir;
@@ -49,12 +55,18 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 	private JLabel lblFotoAlumno;
 	ArrayList<String> aux;
 
+	/**
+	 * Llamamos a esta ventana Buscar Alumno
+	 */
 	public VentanaBuscarAlumno() {
 		super("Buscar Alumno");
 		inicializarComponentes();
 		getContentPane().setBackground(new Color(137,217,194));
 	}
 
+	/**
+	 * Metodo inicializar componentes que sire para darle tamaño y ajustar los componentes a la ventana 
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -70,10 +82,12 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		lblFotoAlumno.setBounds(9, 74, 130, 151);
 		getContentPane().add(lblFotoAlumno);
 
+		//Boton que sirve para añadir un alumno
 		btnAñadir = new JButton("Añadir alumno");
 		btnAñadir.setBounds(61, 251, 159, 30);
 		getContentPane().add(btnAñadir);
 
+		//Boton para crear alumno
 		btnCrear = new JButton("Crear alumno");
 		// btnBuscar.setIcon(new
 		// ImageIcon(Ventana.class.getResource("/img/logo1.png")));
@@ -98,59 +112,101 @@ public class VentanaBuscarAlumno extends JFrame implements IVentana {
 		getContentPane().add(barradesplazamientoAlu);
 		barradesplazamientoAlu.setViewportView(listAlumnos);
 
+		//Boton lupa
 		btnLupa = new JButton();
 		btnLupa.setIcon(new ImageIcon(VentanaVer.class.getResource("/img/botonLUPA.png")));
 		btnLupa.setBounds(355, 66, 37, 38);
 		btnLupa.setBorderPainted(false);
 		getContentPane().add(btnLupa);
 
+		//Boton cancelar
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(176, 297, 159, 30);
 		getContentPane().add(btnCancelar);
 
+		//Ponemos tamaño a la ventana 
 		setSize(512, 384);
 		setLocationRelativeTo(null);
 
 	}
 
+	/**
+	 * Creamos metodo hacer visible para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 
 	}
 
+	/**
+	 * Getter de la variable txtBuscador
+	 * @return txtBuscador
+	 */
 	public JTextField getTxtBuscador() {
 		return txtBuscador;
 	}
 
+	/**
+	 * Setter de la variable txtBuscador
+	 * @param txtBuscador
+	 */
 	public void setTxtBuscador(JTextField txtBuscador) {
 		this.txtBuscador = txtBuscador;
 	}
 
+	/**
+	 * Getter de la variable listAlumnos
+	 * @return listAlumnos
+	 */
 	public JList<String> getListAlumnos() {
 		return listAlumnos;
 	}
 
+	/**
+	 * Setter de variable listAlumnos
+	 * @param listAlumnos
+	 */
 	public void setListAlumnos(JList<String> listAlumnos) {
 		this.listAlumnos = listAlumnos;
 	}
 
+	/**
+	 * SetControlador para darle funcionalidad al boton Lupa
+	 * @param c
+	 */
 	public void setControlador(ControladorLupaBuscarAlumno c) {
 		btnLupa.addActionListener(c);
 	}
 	
+	/**
+	 * SetControlador para darle funcionalidad al boton de Crear
+	 * @param c
+	 */
 	public void setControlador(ControladorBuscarAlumno_Alumno c) {
 		btnCrear.addActionListener(c);
 	}
 
+	/**
+	 * SetControlador para darle funcionalidad al boton de cancelar
+	 * @param c
+	 */
 	public void setControlador(ControladorBuscarAlumno_Subir c) {
 		btnCancelar.addActionListener(c);
 	}
 	
+	/**
+	 * SetControlador para darle funcionalidad al boton de añadir 
+	 * @param c
+	 */
 	public void setControlador(ControladorAgregarAlumno_BuscarAlumno c) {
 		btnAñadir.addActionListener(c);
 	}
 	
+	/**
+	 * Metodo rellenarJListAlumno sirve para rellenar la lista de alumnos 
+	 * @param a
+	 */
 	public void rellenarJlistAlumno(ArrayList<String> a) {
 		aux = a;
 		DefaultListModel<String> mod = (DefaultListModel<String>) listAlumnos.getModel(); // Obtener el modelo de la JList

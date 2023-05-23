@@ -16,8 +16,14 @@ import controlador.ControladorPrincipal_Ver;
 import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano, Lucca Manfredotti
+ *
+ */
 public class VentanaContraseña2 extends JFrame implements IVentana {
 
+	//Creamos las variables de la clase VentanaContraseña2
 	private JLabel lblIntroduzca;
 	private JButton btnVerificar;
 	private JButton btnverContrasena;
@@ -27,11 +33,17 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 	private char echoChar;
 	public JLabel incorrecto;
 
+	/**
+	 * Llamamos a esta ventana Verificar Contraseña
+	 */
 	public VentanaContraseña2() {
 		super("Verificar Contraseña");
 		inicializarComponentes();
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para poner tamaño y ajustar los componentes a la ventana
+	 */
 	@Override
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
@@ -40,6 +52,7 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		lblIntroduzca.setBounds(39, 35, 168, 20);
 		getContentPane().add(lblIntroduzca);
 
+		//Boton de verificar para verificar la contraseña
 		btnVerificar = new JButton("Verificar Contraseña");
 		btnVerificar.setBounds(33, 104, 219, 29);
 		getContentPane().add(btnVerificar);
@@ -57,6 +70,7 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		JButton verContraseña = new JButton();
 		verContraseña.addActionListener(new ActionListener() {
 
+			//Sirve poder ocultar la contraseña, o mostrarla
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!seVe) {
@@ -74,11 +88,16 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		verContraseña.setBounds(222, 60, 30, 30);
 		getContentPane().add(verContraseña);
 
+		//Ponemos tamaño a la ventana
 		setSize(300, 217);
 		setLocationRelativeTo(null);
 
 	}
 
+	/**
+	 * Metodo getPassword que sirve para obtener la contraseña
+	 * @return
+	 */
 	public String getPassword() {
 		char[] PwrdChar = contraseña.getPassword();
 		String pwrd = new String(PwrdChar);
@@ -86,11 +105,18 @@ public class VentanaContraseña2 extends JFrame implements IVentana {
 		return pwrd;
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana 
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de verficar
+	 * @param c
+	 */
 	public void setControlador(ControladorContraseña_Modificar c) {
 		btnVerificar.addActionListener(c);
 	}

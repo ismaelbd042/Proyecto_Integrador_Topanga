@@ -22,8 +22,14 @@ import modelo.ProyectosIntegradores;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * 
+ * @author Ismael Bodas, Álvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class VentanaInfo extends JFrame implements IVentana {
 
+	//Creamos las variables de la clase ventanaInfo
 	private JLabel lblColaboradores;
 	private JLabel lblUltimaModi;
 	private JLabel lblAno;
@@ -45,12 +51,18 @@ public class VentanaInfo extends JFrame implements IVentana {
 
 	private JButton btnatras;
 
+	/**
+	 * Llamamos a esta ventana información proyecto
+	 */
 	public VentanaInfo() {
 		super("Información Proyecto");
 		inicializarComponentes();
 		getContentPane().setBackground(new Color(137,217,194));
 	}
 
+	/**
+	 * Metodo inicializar componentes que sirve para poner tamaño y ajustar los componentes a la ventana
+	 */
 	@Override
 	public void inicializarComponentes() {
 		// TODO Auto-generated method stub
@@ -139,104 +151,193 @@ public class VentanaInfo extends JFrame implements IVentana {
 		lblurl2.setBounds(80, 209, 363, 20);
 		getContentPane().add(lblurl2);
 
+		//Boton de volver atras
 		btnatras = new JButton("Volver Atras");
 		btnatras.setBounds(163, 240, 125, 25);
 		getContentPane().add(btnatras);
 
+		//Ponemos tamaño a la ventana
 		setSize(469, 315);
 		setLocationRelativeTo(null);
 
 	}
 
+	/**
+	 * Metodo hacer visible que sirve para hacer visible la ventana
+	 */
 	@Override
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * SetControlador que sirve para darle funcionalidad al boton de volver atras
+	 * @param c
+	 */
 	public void setControlador(ControladorInfo_Ver c) {
 		// TODO Auto-generated method stub
 		btnatras.addActionListener(c);
 	}
 
+	/**
+	 * Getter de la variable nombre 
+	 * @return lblnombre
+	 */
 	public JLabel getLblNombre2() {
 		return lblNombre2;
 	}
 
+	/**
+	 * Setter de la variable nombre2
+	 * @param lblNombre2
+	 */
 	public void setLblNombre2(JLabel lblNombre2) {
 		this.lblNombre2 = lblNombre2;
 	}
 
+	/**
+	 * Getter de la variable ListColaboradores2
+	 * @return listColaboradores2
+	 */
 	public JList<String> getListColaboradores2() {
 		return listColaboradores2;
 	}
 
+	/**
+	 * Setter de la variable ListColaboradores2
+	 * @param listColaboradores2
+	 */
 	public void setListColaboradores2(JList<String> listColaboradores2) {
 		this.listColaboradores2 = listColaboradores2;
 	}
 
+	/**
+	 * Getter de la variable ultimaModi2
+	 * @return lblUltimaModi2
+	 */
 	public JLabel getLblUltimaModi2() {
 		return lblUltimaModi2;
 	}
 
+	/**
+	 * Setter de la variable ultima modificación
+	 * @param lblUltimaModi2
+	 */
 	public void setLblUltimaModi2(JLabel lblUltimaModi2) {
 		this.lblUltimaModi2 = lblUltimaModi2;
 	}
 
+	/**
+	 * Getter de la variable año2
+	 * @return lblAno2
+	 */
 	public JLabel getLblAno2() {
 		return lblAno2;
 	}
 
+	/**
+	 * Setter de la variable Año2
+	 * @param lblAno2
+	 */
 	public void setLblAno2(JLabel lblAno2) {
 		this.lblAno2 = lblAno2;
 	}
 
+	/**
+	 * Getter de la variable curso2
+	 * @return lblCurso2
+	 */
 	public JLabel getLblCurso2() {
 		return lblCurso2;
 	}
 
+	/**
+	 * Setter de la variable curso2
+	 * @param lblCurso2
+	 */
 	public void setLblCurso2(JLabel lblCurso2) {
 		this.lblCurso2 = lblCurso2;
 	}
 
+	/**
+	 * Getter de la variable Grupo2
+	 * @return lblGrupo2
+	 */
 	public JLabel getLblGrupo2() {
 		return lblGrupo2;
 	}
 
+	/**
+	 * Stter de la variable Grupo2
+	 * @param lblGrupo2
+	 */
 	public void setLblGrupo2(JLabel lblGrupo2) {
 		this.lblGrupo2 = lblGrupo2;
 	}
 
+	/**
+	 * Getter de la variable nota2
+	 * @return lblNota2
+	 */
 	public JLabel getLblNota2() {
 		return lblNota2;
 	}
 
+	/**
+	 * Setter de la variable nota2
+	 * @param lblNota2
+	 */
 	public void setLblNota2(JLabel lblNota2) {
 		this.lblNota2 = lblNota2;
 	}
 
+	/**
+	 * Getter de la variable Area2
+	 * @return lblArea2
+	 */
 	public JLabel getLblArea2() {
 		return lblArea2;
 	}
 
+	/**
+	 * Setter de la variable Area2
+	 * @param lblArea2
+	 */
 	public void setLblArea2(JLabel lblArea2) {
 		this.lblArea2 = lblArea2;
 	}
 
+	/**
+	 * Getter de la variable url2
+	 * @return lblurl2
+	 */
 	public JLabel getLblurl2() {
 		return lblurl2;
 	}
 
+	/**
+	 * Setter de la variable url2
+	 * @param lblurl2
+	 */
 	public void setLblurl2(JLabel lblurl2) {
 		this.lblurl2 = lblurl2;
 	}
 
+	/**
+	 * Metodo rellenarInfo que sirve para rellenar la información de los proyectos
+	 * @param proyecto
+	 * @param a
+	 */
 	public void rellenarInfo(ProyectosIntegradores proyecto, ArrayList<String> a) {
 		lblNombre2.setText(proyecto.getNombre_proyecto());
+		//Creamos un defaultListModel llamado listModel
 		DefaultListModel<String> listModel = new DefaultListModel<>();
 		for (int i = 0; i < a.size(); i++) {
 			listModel.addElement(a.get(i));
 		}
+		//En la linea de setModel establece el modelo listModel en listaColaboradores2
 		listColaboradores2.setModel(listModel);
+		//En las lineas de setText establece el texto con el valor devuelto por el get
 		lblUltimaModi2.setText(proyecto.getUltima_modificacion());
 		lblAno2.setText(String.valueOf(proyecto.getAño()));
 		lblCurso2.setText(proyecto.getCurso());
