@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,6 +44,7 @@ public class VentanaAlumno extends JFrame implements IVentana {
 		super("Nuevo Alumno");
 		inicializarComponentes();
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
