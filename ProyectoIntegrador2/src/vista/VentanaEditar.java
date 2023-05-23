@@ -19,6 +19,8 @@ import controlador.ControladorSubir_Principal;
 import controlador.ControladorVer_Principal;
 
 import javax.swing.JButton;
+
+import java.awt.Color;
 import java.awt.Font;
 
 /**
@@ -52,6 +54,7 @@ public class VentanaEditar extends JFrame implements IVentana {
 	public VentanaEditar() {
 		super("Editar proyecto");
 		inicializarComponentes();
+		getContentPane().setBackground(new Color(137,217,194));
 	}
 
 	/**
