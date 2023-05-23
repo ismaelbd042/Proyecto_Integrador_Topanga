@@ -124,4 +124,14 @@ public class VentanaVer extends JFrame implements IVentana {
 		        mod.addElement(aux.get(i)); // Agregar el nombre del proyecto al modelo
 		    }
 	}
+
+	public JComboBox<String> getAreas() {
+		return areas;
+	}
+
+	public void setAreas(JComboBox<String> areas) {
+		this.areas = areas;
+	}
+	
+	
 }

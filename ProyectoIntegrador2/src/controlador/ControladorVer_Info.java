@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import conexionBBDD.AccesoBBDD;
 import modelo.ProyectosIntegradores;
 import vista.VentanaInfo;
@@ -34,6 +36,9 @@ public class ControladorVer_Info implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		String nombreProyectoSeleccionado = vv.getProyectos().getSelectedValue();
+		if (nombreProyectoSeleccionado != null) {
 		//Cerramos la ventana ver
 		vv.dispose();
 		//Rellenamos la informacion con los datos
@@ -56,6 +61,11 @@ public class ControladorVer_Info implements ActionListener {
 		vi.getLblArea2().setText(nombreArea);
 		// Hacemos visible la ventan info
 		vi.hacerVisible();
+		} else {
+			// Si no hay proyecto seleccionado, mensaje de aviso
+			JOptionPane.showMessageDialog(vv.getContentPane(), "No hay ningún proyecto seleccionado", "Aviso",
+					JOptionPane.WARNING_MESSAGE);
+		}
 
 	}
 

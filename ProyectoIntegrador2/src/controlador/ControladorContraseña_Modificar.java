@@ -45,6 +45,8 @@ public class ControladorContraseña_Modificar implements ActionListener {
 			vc2.dispose();
 			// Se cierra la ventana principal
 			v.dispose();
+			vm.getAreas().removeAllItems();
+			vm.getTxtBuscarNombre().setText(null);
 			// Se rellenan las areas con el metodo conseguirAreas
 			vm.rellenarAreas(AccesoBBDD.conseguirAreas());
 			// Rellenamos la lista con los nombre de los proyectos

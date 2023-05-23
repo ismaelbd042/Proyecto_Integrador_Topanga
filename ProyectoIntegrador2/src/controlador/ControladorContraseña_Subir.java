@@ -3,6 +3,9 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
+import javax.swing.DropMode;
+
 import conexionBBDD.AccesoBBDD;
 import vista.*;
 
@@ -45,11 +48,11 @@ public class ControladorContraseña_Subir implements ActionListener {
 			vs.getTxtano().setText(null);
 			vs.getTxtnota().setText(null);
 			vs.getTxtgrupo().setText(null);
-			vs.getTxturl().setText(null);;
+			vs.getTxturl().setText(null);
 			vs.getNombre().setText(null);
-			vs.getRbtnDefault().setSelected(true);
-			vs.getListaAlu().clearSelection();
+			vs.getListaAlu().setModel(new DefaultListModel<String>());
 			vs.getAreas().removeAllItems();
+			vs.getRbtnDefault().setSelected(true);
 			
 			// Se rellenan las areas con el metodo conseguirAreas
 			vs.rellenarAreas(AccesoBBDD.conseguirAreas());

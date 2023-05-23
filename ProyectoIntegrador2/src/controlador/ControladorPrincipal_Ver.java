@@ -34,9 +34,11 @@ public class ControladorPrincipal_Ver implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		//Cerramos ventana principal
 		v.dispose();
+		vv.getAreas().removeAllItems();
 		//Rellenamos las areas y la lista de proyectos
 		vv.rellenarAreas(AccesoBBDD.conseguirAreas());
 		vv.rellenarJlist(AccesoBBDD.conseguirNombresProyectos());
+		vv.getTxtBuscarNombre().setText(null);
 		// Hacemos visible la ventana ver
 		vv.hacerVisible();
 
