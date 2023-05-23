@@ -8,23 +8,33 @@ import vista.VentanaEditar;
 import vista.VentanaModificar;
 import vista.VentanaVer;
 
+/**
+ * 
+ * @author Ismael Bodas, Alvaro Serrano y Lucca Manfredotti
+ *
+ */
 public class ControladorModificar_Editar implements ActionListener{
 
-//	private Ventana v;
-//	private VentanaVer vv;
+	// Ventana que vamos a usar
 	private VentanaEditar ve;
-//	private VentanaInfo vi;
-//	private VentanaSubir vs;
 	private VentanaModificar vm;
-//	private VentanaContraseña vc;
 
+	/**
+	 * Constructor de ControladorModificar_Editar
+	 * @param vm
+	 * @param ve
+	 */
 	public ControladorModificar_Editar(VentanaModificar vm, VentanaEditar ve) {
 		this.vm = vm;
 		this.ve = ve;
 	}
 
+	/**
+	 * Metodo de actionPerformed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Cerramos la ventana modificar y abrimos la de editar
 		vm.dispose();
 		ve.hacerVisible();
 		

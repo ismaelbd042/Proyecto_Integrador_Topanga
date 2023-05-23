@@ -36,25 +36,9 @@ public class AccesoBBDD {
 		return con;
 	}
 
-//	public static void prueba() {
-//
-//		try {
-//			Statement statement = con.createStatement();
-//			// Creamos la query
-//			String query = "select * from alumno";
-//			// Guardamos en un Resultset la ejecución de la query anterior
-//			ResultSet resultado = statement.executeQuery(query);
-//			while (resultado.next()) {
-//				System.out.println(resultado.getString("nombre_alumno"));
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-
 	/**
-	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de datos
+	 * Metodo cerrarConexion() que se encarga de cerrar la conexión con la base de
+	 * datos
 	 */
 	public static void cerrarConexion() {
 		try {
@@ -65,28 +49,29 @@ public class AccesoBBDD {
 		}
 	}
 
-	public int registrar(ProyectosIntegradores proyectos) {
-		int rs = 0;
-		String sql = "INSERT INTO proyectos VALUES (?,?,?,?,?,?,?,?,?)";
+	public static void registrar(ProyectosIntegradores proyecto) {
+		getConexion();
+		try {
+			String query = "INSERT INTO proyectos (nombre_proyecto, URL, componentes, ultima_modificacion, año, curso, grupo, nota, cod_area) "
+					+ "VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)";
 
-		try (PreparedStatement ps = getConexion().prepareStatement(sql)) {
-			ps.setString(1, proyectos.getNombre_proyecto());
-			ps.setString(2, proyectos.getURL());
-			ps.setInt(3, proyectos.getComponentes());
-			ps.setInt(4, proyectos.getAño());
-			ps.setString(5, proyectos.getCurso());
-			ps.setString(6, proyectos.getGrupo());
-			ps.setInt(7, proyectos.getNota());
-			ps.setInt(8, proyectos.getCod_area());
-			// ps.setInt(9, proyectos.getAlumnoRealizaProyecto());
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, proyecto.getNombre_proyecto());
+			statement.setString(2, proyecto.getURL());
+			statement.setInt(3, proyecto.getComponentes());
+			statement.setInt(4, proyecto.getAño());
+			statement.setString(5, proyecto.getCurso());
+			statement.setString(6, proyecto.getGrupo());
+			statement.setInt(7, proyecto.getNota());
+			statement.setInt(8, proyecto.getCod_area());
 
-			rs = ps.executeUpdate();
-
-		} catch (Exception e) {
-			// TODO: handle exception
+			statement.executeUpdate();
+			System.out.println("Proyecto insertado correctamente en la base de datos.");
+			cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		return rs;
 	}
 
 	public static ArrayList<String> conseguirAreas() {
@@ -293,33 +278,69 @@ public class AccesoBBDD {
 	public static void relacionarProyectoAlumno(String nombreProyecto, ArrayList<String> nombresAlumnos) {
 		getConexion();
 		try {
-			String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
+			String proyectoQuery = "SELECT id_proyecto FROM proyectos WHERE nombre_proyecto = ?";
+			try (PreparedStatement proyectoStmt = con.prepareStatement(proyectoQuery)) {
+				proyectoStmt.setString(1, nombreProyecto);
+				ResultSet proyectoResult = proyectoStmt.executeQuery();
 
-			for (int i = 0; i < nombresAlumnos.size(); i++) {
-				query += "?";
-				if (i < nombresAlumnos.size() - 1) {
-					query += ",";
+				if (proyectoResult.next()) {
+					int idProyecto = proyectoResult.getInt("id_proyecto");
+					String realizaQuery = "INSERT INTO realiza (id_alumno, id_proyecto) VALUES (?, ?)";
+					try (PreparedStatement realizaStmt = con.prepareStatement(realizaQuery)) {
+						for (String alumno : nombresAlumnos) {
+							String[] nombres = alumno.split(" ");
+							String nombreAlumno = nombres[0];
+							String apellidoAlumno = nombres[1];
+
+							String alumnoQuery = "SELECT id_alumno FROM alumno WHERE nombre_alumno = ? AND apellido_alumno = ?";
+							try (PreparedStatement alumnoStmt = con.prepareStatement(alumnoQuery)) {
+								alumnoStmt.setString(1, nombreAlumno);
+								alumnoStmt.setString(2, apellidoAlumno);
+								ResultSet alumnoResult = alumnoStmt.executeQuery();
+
+								if (alumnoResult.next()) {
+									int idAlumno = alumnoResult.getInt("id_alumno");
+									realizaStmt.setInt(1, idAlumno);
+									realizaStmt.setInt(2, idProyecto);
+									realizaStmt.executeUpdate();
+								} else {
+								}
+							}
+						}
+					}
+				} else {
 				}
-			}
-
-			query += ") AND p.nombre_proyecto = ?";
-
-			PreparedStatement pstmt = con.prepareStatement(query);
-			for (int i = 0; i < nombresAlumnos.size(); i++) {
-				pstmt.setString(i + 1, nombresAlumnos.get(i));
-			}
-
-			pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
-
-			int rowsAffected = pstmt.executeUpdate();
-			if (rowsAffected > 0) {
-				System.out.println("Relación creada correctamente.");
-			} else {
-				System.out.println("No se encontró el proyecto o los alumnos especificados.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
+//	        String query = "INSERT INTO realiza (id_alumno, id_proyecto) SELECT a.id_alumno, p.id_proyecto FROM alumno a, proyectos p WHERE a.nombre_alumno IN (";
+//
+//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
+//	            query += "?";
+//	            if (i < nombresAlumnos.size() - 1) {
+//	                query += ",";
+//	            }
+//	        }
+//
+//	        query += ") AND p.nombre_proyecto = ?";
+//
+//	        PreparedStatement pstmt = con.prepareStatement(query);
+//	        for (int i = 0; i < nombresAlumnos.size(); i++) {
+//	            pstmt.setString(i + 1, nombresAlumnos.get(i));
+//	        }
+//
+//	        pstmt.setString(nombresAlumnos.size() + 1, nombreProyecto);
+//
+//	        int rowsAffected = pstmt.executeUpdate();
+//	        if (rowsAffected > 0) {
+//	            System.out.println("Relación creada correctamente.");
+//	        } else {
+//	            System.out.println("No se encontró el proyecto o los alumnos especificados.");
+//	        }
+//	    } catch (SQLException e) {
+//	        e.printStackTrace();
+//	    }
 }
