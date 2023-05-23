@@ -309,9 +309,9 @@ public class AccesoBBDD {
 							}
 						}
 					}
-				} else {
 				}
 			}
+			cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -355,6 +355,7 @@ public class AccesoBBDD {
 	        } else {
 	            System.out.println("No se encontró el proyecto a actualizar.");
 	        }
+	        cerrarConexion();
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
